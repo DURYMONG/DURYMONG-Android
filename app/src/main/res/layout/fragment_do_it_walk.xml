@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_do_it_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/suite_semi_bold"
@@ -76,6 +77,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_top_rectangle" />
 
             <TextView
+                android:id="@+id/tv_do_it_walk_music_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
@@ -95,8 +97,8 @@
                 android:layout_height="180dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="33dp"
-                android:max="100"
-                android:progress="100"
+                android:max="3600"
+                android:progress="3600"
                 android:progressDrawable="@drawable/ic_do_it_circular_progress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,6 +140,7 @@
 
 
             <TextView
+                android:id="@+id/tv_do_it_walk_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
@@ -177,7 +180,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_30" />
 
             <ImageView
-                android:id="@+id/tv_do_it_walk_run_timer"
+                android:id="@+id/iv_do_it_walk_run_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
@@ -193,10 +196,10 @@
                 android:text="타이머 시작"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_do_it_walk_run_timer"
-                app:layout_constraintEnd_toEndOf="@id/tv_do_it_walk_run_timer"
-                app:layout_constraintStart_toStartOf="@id/tv_do_it_walk_run_timer"
-                app:layout_constraintTop_toTopOf="@id/tv_do_it_walk_run_timer" />
+                app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_run_timer"
+                app:layout_constraintEnd_toEndOf="@id/iv_do_it_walk_run_timer"
+                app:layout_constraintStart_toStartOf="@id/iv_do_it_walk_run_timer"
+                app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_run_timer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -227,6 +230,7 @@
         app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_bottom_rectangle" />
 
     <TextView
+        android:id="@+id/tv_do_it_bottom_tip"
         android:layout_width="311dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

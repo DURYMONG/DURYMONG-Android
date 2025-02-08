@@ -124,7 +124,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/rb_do_it_bed_clean"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
@@ -158,7 +158,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
                 app:layout_constraintTop_toTopOf="@id/tv_do_it_bed_clean" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/rb_do_it_walk"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
@@ -191,7 +191,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
                 app:layout_constraintTop_toTopOf="@id/tv_do_it_walk" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/rb_do_it_stretching"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
@@ -224,7 +224,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
                 app:layout_constraintTop_toTopOf="@id/rb_do_it_stretching" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/rb_do_it_meditation"
                 android:layout_width="12dp"
                 android:layout_height="12dp"

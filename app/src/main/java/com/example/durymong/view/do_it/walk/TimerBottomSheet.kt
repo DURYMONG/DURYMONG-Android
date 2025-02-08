@@ -1,21 +1,14 @@
 package com.example.durymong.view.do_it.walk
 
-import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.NumberPicker
-import androidx.collection.IntIntPair
-import com.example.durymong.R
+import androidx.fragment.app.activityViewModels
 import com.example.durymong.databinding.BottomSheetTimerBinding
 import com.example.durymong.view.do_it.walk.viewmodel.WalkViewModel
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlin.math.log
 
 class TimerBottomSheet : BottomSheetDialogFragment() {
 
@@ -25,7 +18,7 @@ class TimerBottomSheet : BottomSheetDialogFragment() {
     private var hour =0
     private var minute =0
 
-    private val viewModel = WalkViewModel()
+    private val viewModel : WalkViewModel by activityViewModels()
 
 
     // 밑에 네비게이션바가 안보임
@@ -38,7 +31,6 @@ class TimerBottomSheet : BottomSheetDialogFragment() {
         _binding = BottomSheetTimerBinding.inflate(layoutInflater)
 
         initNumberPicker()
-
         initTimerButton()
 
 
@@ -88,8 +80,7 @@ class TimerBottomSheet : BottomSheetDialogFragment() {
         }
 
         binding.tvTimerDone.setOnClickListener {
-            viewModel.sendData(hour,minute)
-            viewModel.closeDialog()
+            viewModel.sendData(hour.toLong(),minute.toLong())
             dismiss()
         }
 

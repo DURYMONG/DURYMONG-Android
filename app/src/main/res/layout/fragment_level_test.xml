@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.do_it.DoItStressLevelTestFragment">
+    tools:context=".view.do_it.test_page.LevelTestFragment">
 
     <View
         android:id="@+id/v_do_it_stress_top"
@@ -27,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_do_it_stress_name_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/suite_semi_bold"
@@ -52,12 +53,12 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_do_it_stress_test"
+                android:id="@+id/tv_do_it_stress_test_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
                 android:fontFamily="@font/suite_semi_bold"
-                android:text="문장 완성 검사"
+                android:text="스트레스 수치 검사"
                 android:textColor="@color/main_purple"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +66,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_do_it_stress_test_name_eng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/suite_medium"
@@ -73,7 +75,40 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stress_test" />
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stress_test_name" />
+
+            <TextView
+                android:id="@+id/tv_do_it_stress_test_main_sentence"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stress_test_name_eng"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="16sp"
+                android:fontFamily="@font/suite_medium"
+                android:textColor="@color/black"
+                android:text="지난 한 달 동안의 상태와 기분을 기준으로 \n 스트레스를 느끼는 정도를 평가하기 위한 검사입니다."
+                />
+
+            <TextView
+                android:id="@+id/tv_do_it_stress_test_explain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/iv_do_it_stress_left_box"
+                android:text="‘1=전혀 없었다’ ~ ‘5=항상 있었다’까지 평가합니다.\n\n평가결과가 22점 이상인 대상자는\n전문가의 상담을 받는 것을 권유합니다."
+                android:textSize="14sp"
+                android:fontFamily="@font/suite_medium"
+                android:textColor="@color/gray3"
+                android:layout_marginBottom="14dp"
+                />
+
+
+
 
             <ImageView
                 android:id="@+id/iv_do_it_stress_left_box"
@@ -148,12 +183,13 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <TextView
+                android:id="@+id/tv_do_it_stress_test_name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/suite_semi_bold"
-                android:text="문장 완성 검사"
+                android:text="스트레스 수치 검사"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"

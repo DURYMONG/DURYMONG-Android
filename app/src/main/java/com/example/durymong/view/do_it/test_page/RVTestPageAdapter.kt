@@ -1,22 +1,18 @@
-package com.example.durymong.view.do_it.stress_test_page
+package com.example.durymong.view.do_it.test_page
 
-import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.example.durymong.R
-import com.example.durymong.databinding.ItemTestCompleteBinding
 import com.example.durymong.databinding.ItemTestFourBinding
 import com.example.durymong.databinding.ItemTestThreeBinding
-import com.example.durymong.view.do_it.stress_test_page.model.TestPageData
+import com.example.durymong.view.do_it.test_page.model.TestPageData
 
 class RVTestPageAdapter(
     private val itemList: List<TestPageData>,
     private val context: Context
 ) :
+
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         private const val VIEW_TYPE_FOUR = 0
@@ -29,6 +25,21 @@ class RVTestPageAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TestPageData) {
             binding.tvQuestionName.text = item.name
+            binding.rbTest1.setOnClickListener{
+                item.selected = 1
+            }
+            binding.rbTest2.setOnClickListener{
+                item.selected = 2
+            }
+            binding.rbTest3.setOnClickListener{
+                item.selected = 3
+            }
+
+            when (item.selected) {
+                1-> binding.rbTest1.isChecked = true
+                2-> binding.rbTest2.isChecked = true
+                3-> binding.rbTest3.isChecked = true
+            }
         }
     }
 
@@ -37,6 +48,24 @@ class RVTestPageAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TestPageData) {
             binding.tvQuestionName.text = item.name
+            binding.rbTest1.setOnClickListener{
+                item.selected = 1
+            }
+            binding.rbTest2.setOnClickListener{
+                item.selected = 2
+            }
+            binding.rbTest3.setOnClickListener{
+                item.selected = 3
+            }
+            binding.rbTest4.setOnClickListener{
+                item.selected = 4
+            }
+            when (item.selected) {
+                1-> binding.rbTest1.isChecked = true
+                2-> binding.rbTest2.isChecked = true
+                3-> binding.rbTest3.isChecked = true
+                4-> binding.rbTest4.isChecked = true
+            }
         }
     }
 

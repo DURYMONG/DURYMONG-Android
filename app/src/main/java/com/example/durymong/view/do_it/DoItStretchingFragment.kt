@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.durymong.R
 import com.example.durymong.databinding.FragmentDoItStretchingBinding
 
 
@@ -20,8 +22,18 @@ class DoItStretchingFragment : Fragment() {
     ): View {
 
         _binding = FragmentDoItStretchingBinding.inflate(layoutInflater)
+        initBack()
 
         return binding.root
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+    private fun initBack() {
+        binding.ivDoItStretchingBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_white"
     android:backgroundTint="@null"
-    tools:context=".view.do_it.stress_test_page.StressTestPageFragment">
+    tools:context=".view.do_it.test_page.TestPageFragment">
 
     <View
         android:id="@+id/v_do_it_stress_test_page_top"
@@ -58,29 +58,27 @@
         android:id="@+id/tv_test_current_page_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/suite_semi_bold"
         android:text="1"
         android:textColor="@color/main_purple"
         android:textSize="14sp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="@id/tv_test_page_slash"
-        app:layout_constraintTop_toTopOf="@id/tv_stress_test_number"
         app:layout_constraintBottom_toBottomOf="@id/tv_stress_test_number"
-        />
+        app:layout_constraintEnd_toEndOf="@id/tv_test_page_slash"
+        app:layout_constraintTop_toTopOf="@id/tv_stress_test_number" />
 
     <TextView
         android:id="@+id/tv_test_page_slash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/suite_semi_bold"
         android:text="/"
         android:textColor="@color/gray3"
         android:textSize="14sp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="@id/tv_test_last_page_number"
-        app:layout_constraintTop_toTopOf="@id/tv_test_last_page_number"
-        />
+        app:layout_constraintTop_toTopOf="@id/tv_test_last_page_number" />
 
 
     <TextView
@@ -91,10 +89,9 @@
         android:text="2"
         android:textColor="@color/gray3"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/iv_stress_back"
-        app:layout_constraintTop_toTopOf="@id/tv_stress_test_number"
         app:layout_constraintBottom_toBottomOf="@id/tv_stress_test_number"
-        />
+        app:layout_constraintEnd_toStartOf="@id/iv_stress_back"
+        app:layout_constraintTop_toTopOf="@id/tv_stress_test_number" />
 
     <View
         android:id="@+id/v_stress_test_line"
@@ -127,6 +124,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_test_before"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이전 페이지"
+        app:layout_constraintBottom_toBottomOf="@id/iv_test_before"
+        app:layout_constraintEnd_toEndOf="@id/iv_test_before"
+        app:layout_constraintStart_toStartOf="@id/iv_test_before"
+        app:layout_constraintTop_toTopOf="@id/iv_test_before" />
+
     <ImageView
         android:id="@+id/iv_test_next"
         android:layout_width="wrap_content"
@@ -146,12 +153,10 @@
         android:text="다음 페이지"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/iv_test_next"
-        app:layout_constraintEnd_toEndOf="@id/iv_test_next"
-        app:layout_constraintTop_toTopOf="@id/iv_test_next"
         app:layout_constraintBottom_toBottomOf="@id/iv_test_next"
-        />
-
+        app:layout_constraintEnd_toEndOf="@id/iv_test_next"
+        app:layout_constraintStart_toStartOf="@id/iv_test_next"
+        app:layout_constraintTop_toTopOf="@id/iv_test_next" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

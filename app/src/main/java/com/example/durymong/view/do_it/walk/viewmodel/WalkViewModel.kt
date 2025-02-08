@@ -11,47 +11,26 @@ import kotlinx.coroutines.launch
 class WalkViewModel : ViewModel() {
 
     // 실제 저장 데이터
-    private val _timeData = MutableLiveData<Pair<Int,Int>>()
-    private val _isDialogOpen = MutableLiveData<Boolean>()
+    private val _timeData = MutableLiveData<Pair<Long,Long>>()
 
     // 값 접근
-    val timeData: LiveData<Pair<Int,Int>> get() = _timeData
-    val isDialogOpen: LiveData<Boolean> get() = _isDialogOpen
-
-    fun openDialog() {
-        _isDialogOpen.value = true
-    }
-
-    fun closeDialog() {
-        _isDialogOpen.value = false
-        Log.d("closeDialog", "closeDialog")
-    }
+    val timeData: LiveData<Pair<Long,Long>> get() = _timeData
 
     init {
         _timeData.value = Pair(0, 0) // 0시간 0분
     }
 
-    fun sendData(hour: Int, minute: Int) {
-        _timeData.value = Pair(hour, minute)
-        startTimer()
-    }
-
-    private fun startTimer() {
-        viewModelScope.launch {
-            var hours = 0
-            var minutes = 0
-            while (true) {
-                delay(1000) // 1분마다 업데이트
-                minutes++
-                if (minutes == 60) {
-                    minutes = 0
-                    hours++
-                }
-                _timeData.postValue(Pair(hours, minutes))
-            }
+    fun sendData(hour: Long, minute: Long) {
+        var hourData= hour
+        var minuteData = minute
+        if(minuteData>59){
+            hourData+=1
+            minuteData-=60
         }
+        if(hourData>24){
+            hourData=24
+        }
+        _timeData.value = Pair(hourData, minuteData)
     }
-
-
 
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.durymong.databinding.FragmentDoItBedBinding
 
 class DoItBedFragment : Fragment() {
@@ -15,10 +16,16 @@ class DoItBedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentDoItBedBinding.inflate(layoutInflater)
 
+        initBack()
         return binding.root
+    }
+
+    private fun initBack() {
+        binding.ivDoItBedBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {
