@@ -4,15 +4,11 @@ import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.durymong.R
-import com.example.durymong.model.repository.ColumnRepository
-import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
 
 
 class ColumnViewModel : ViewModel() {
-    private val repository = ColumnRepository()
     //실제 data를 저장할 변수들
     private val _columnCategoryList = MutableLiveData<List<ColumnCategory>>()
     private val _columnData = MutableLiveData<Column>()
@@ -28,31 +24,23 @@ class ColumnViewModel : ViewModel() {
 
     //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
     fun fetchColumnCategoryData() {
-        viewModelScope.launch{
-            try {
-                val response = repository.getColumnCategories()
-                // TODO: response.result 를 _columnCategoryList 에 저장
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-//        _columnCategoryList.value = listOf(
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#수면장애",
-//                description = "수면장애란 제대로 잘 수 없는~"
-//            ),
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#우울감",
-//                description = "우울감이란~"
-//            ),
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#공황장애",
-//                description = "공황장애란~"
-//            ),
-//        )
+        _columnCategoryList.value = listOf(
+            ColumnCategory(
+                imgId = R.drawable.ic_column_sleep_disorder,
+                name = "#수면장애",
+                description = "수면장애란 제대로 잘 수 없는~"
+            ),
+            ColumnCategory(
+                imgId = R.drawable.ic_column_sleep_disorder,
+                name = "#우울감",
+                description = "우울감이란~"
+            ),
+            ColumnCategory(
+                imgId = R.drawable.ic_column_sleep_disorder,
+                name = "#공황장애",
+                description = "공황장애란~"
+            ),
+        )
     }
 
     //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
