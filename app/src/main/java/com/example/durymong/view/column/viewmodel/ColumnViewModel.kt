@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.durymong.R
+import com.example.durymong.model.dto.response.column.Category
+import com.example.durymong.model.dto.response.column.ColumnResult
 import com.example.durymong.model.repository.ColumnRepository
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
@@ -16,25 +18,24 @@ class ColumnViewModel : ViewModel() {
     private val repository = ColumnRepository()
 
     //실제 data를 저장할 변수들
-    private val _columnCategoryList = MutableLiveData<List<ColumnCategory>>()
-    private val _columnData = MutableLiveData<Column>()
+    private val _columnCategoryList = MutableLiveData<List<Category>>()
+    private val _columnData = MutableLiveData<ColumnResult>()
 
     //화면에서 아래 변수들을 통해 값에 접근
-    val columnCategoryList: LiveData<List<ColumnCategory>> get() = _columnCategoryList
-    val columnData: LiveData<Column> get() = _columnData
+    val columnCategoryList: LiveData<List<Category>> get() = _columnCategoryList
+    val columnData: LiveData<ColumnResult> get() = _columnData
 
     init {
         //처음 viewModel이 생성될 때 실행할 작업들
 //        fetchColumnCategoryData()
     }
 
-    //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
     fun fetchColumnCategoryData() {
         viewModelScope.launch {
             repository.getColumnCategories { response ->
                 if (response != null) {
-                    // TODO: response.result 를 _columnCategoryList 에 저장
                     Log.d("ColumnViewModel", "카테고리 가져오기 성공")
+                    // TODO: 데이터 처리
                 } else {
                     Log.e("ColumnViewModel", "카테고리 가져오기 실패")
                 }
@@ -59,30 +60,43 @@ class ColumnViewModel : ViewModel() {
 //        )
     }
 
-    //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
-    fun fetchColumnData() {
-        _columnData.value = Column(
-            imgId = R.drawable.img_column_thumbnail_dummy,
-            headLine = "잠 못 드는 하루하루, 수면장애",
-            title = "수면장애에 대한 이야기",
-            body = " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
-                    + " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
-                    + " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
-        )
+    fun fetchCategoryDetails(categoryId: String) {
+        viewModelScope.launch {
+            repository.getCategoryDetails(categoryId) { response ->
+                if (response != null) {
+                    Log.d("ColumnViewModel", "카테고리 상세 조회 성공")
+                    // 데이터 처리
+                } else {
+                    Log.e("ColumnViewModel", "카테고리 상세 조회 실패")
+                }
+            }
+        }
     }
 
-    //dummy data들, 이후에 api 연결시에는 dto를 만들고 아래의 data class들은 사용하지 않을 예정
-    data class ColumnCategory(
-        val imgId: Int,
-        val name: String,
-        val description: String
-    )
+    fun searchColumnByKeyword(keyword: String) {
+        viewModelScope.launch {
+            repository.searchColumns(keyword) { response ->
+                if (response != null) {
+                    Log.d("ColumnViewModel", "키워드 검색 성공")
+                    // 데이터 처리
+                } else {
+                    Log.e("ColumnViewModel", "키워드 검색 실패")
+                }
+            }
+        }
+    }
 
-    @Parcelize
-    data class Column(
-        val imgId: Int,
-        val headLine: String,
-        val title: String,
-        val body: String
-    ) : Parcelable
+    fun fetchColumnData(categoryId: String) {
+        viewModelScope.launch {
+            repository.getColumns(categoryId) { response ->
+                if (response != null) {
+                    Log.d("ColumnViewModel", "칼럼 조회 성공")
+                    // 데이터 처리
+                    _columnData.value = response.result
+                } else {
+                    Log.e("ColumnViewModel", "칼럼 조회 실패")
+                }
+            }
+        }
+    }
 }
