@@ -1,7 +1,6 @@
 package com.example.durymong.model.repository
 
 import android.util.Log
-import com.example.durymong.model.dto.response.column.CategoryDetailResponseDto
 import com.example.durymong.model.dto.response.column.CategoryResponseDto
 import com.example.durymong.model.dto.response.column.ColumnResponseDto
 import com.example.durymong.model.dto.response.column.KeywordSearchResponseDto
@@ -34,28 +33,6 @@ class ColumnRepository {
 
             override fun onFailure(call: Call<CategoryResponseDto>, t: Throwable) {
                 Log.d("fail", "네트워크 요청 실패: ${t.message}")
-                callback(null)
-            }
-        })
-    }
-
-    // 카테고리 상세 조회
-    fun getCategoryDetails(categoryId: String, callback: (CategoryDetailResponseDto?) -> Unit) {
-        service.getCategoryDetails(categoryId).enqueue(object : Callback<CategoryDetailResponseDto> {
-            override fun onResponse(
-                call: Call<CategoryDetailResponseDto>,
-                response: Response<CategoryDetailResponseDto>
-            ) {
-                if (response.isSuccessful) {
-                    callback(response.body())
-                } else {
-                    Log.e("ColumnRepository", "카테고리 상세 조회 실패: ${response.errorBody()?.string()}")
-                    callback(null)
-                }
-            }
-
-            override fun onFailure(call: Call<CategoryDetailResponseDto>, t: Throwable) {
-                Log.e("ColumnRepository", "Network error: ${t.message}")
                 callback(null)
             }
         })

@@ -60,19 +60,6 @@ class ColumnViewModel : ViewModel() {
 //        )
     }
 
-    fun fetchCategoryDetails(categoryId: String) {
-        viewModelScope.launch {
-            repository.getCategoryDetails(categoryId) { response ->
-                if (response != null) {
-                    Log.d("ColumnViewModel", "카테고리 상세 조회 성공")
-                    // 데이터 처리
-                } else {
-                    Log.e("ColumnViewModel", "카테고리 상세 조회 실패")
-                }
-            }
-        }
-    }
-
     fun searchColumnByKeyword(keyword: String) {
         viewModelScope.launch {
             repository.searchColumns(keyword) { response ->
