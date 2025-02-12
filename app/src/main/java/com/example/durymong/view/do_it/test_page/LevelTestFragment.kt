@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.durymong.databinding.FragmentLevelTestBinding
+import com.example.durymong.view.do_it.test_page.model.TestMainPageViewModel
 
 class LevelTestFragment : Fragment() {
 
@@ -15,6 +17,8 @@ class LevelTestFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val args: TestPageFragmentArgs by navArgs()
+
+    private val viewModel: TestMainPageViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +40,13 @@ class LevelTestFragment : Fragment() {
         binding.tvDoItStressNameTop.text = args.testName
         binding.tvDoItStressTestName.text = args.testName
         binding.tvDoItStressTestName2.text = args.testName
+
+        binding.tvDoItStressTestNameEng.text=viewModel.testMainPageList.value?.result?.testEnglishName
+        binding.tvDoItStressTestMainSentence.text=viewModel.testMainPageList.value?.result?.content
+        binding.tvDoItStressTestExplain.text=viewModel.testMainPageList.value?.result?.evaluationInfo
+
+        binding.tvDoItQuestionNumber.text=viewModel.testMainPageList.value?.result?.countOfQuestions.toString()+"문항"
+        binding.tvDoItStressTime.text="약"+viewModel.testMainPageList.value?.result?.requiredTime.toString()+"분"
 
         // 추가적으로 작업예정
     }

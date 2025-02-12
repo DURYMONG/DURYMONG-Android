@@ -24,7 +24,7 @@ class RVTestPageAdapter(
         private val binding: ItemTestThreeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TestPageData) {
-            binding.tvQuestionName.text = item.name
+            binding.tvQuestionName.text = item.questionId.question
             binding.rbTest1.setOnClickListener{
                 item.selected = 1
             }
@@ -47,7 +47,7 @@ class RVTestPageAdapter(
         private val binding: ItemTestFourBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TestPageData) {
-            binding.tvQuestionName.text = item.name
+            binding.tvQuestionName.text = item.questionId.question
             binding.rbTest1.setOnClickListener{
                 item.selected = 1
             }
@@ -70,7 +70,7 @@ class RVTestPageAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (itemList[position].number == 4) {
+        return if (itemList[position].radioNumber == 4) {
             VIEW_TYPE_FOUR
         } else
             VIEW_TYPE_THREE

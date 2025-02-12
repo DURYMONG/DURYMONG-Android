@@ -132,6 +132,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_do_it_stress_left_box" />
 
             <TextView
+                android:id="@+id/tv_do_it_question_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -164,6 +165,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_do_it_stress_paper" />
 
             <TextView
+                android:id="@+id/tv_do_it_stress_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
