@@ -37,11 +37,9 @@ class RVAdapterColumnCategory(
             binding.ivColumnCategoryQuestionmark.setOnClickListener{
                 if (position % 3 == 0){
                     //각 행의 첫 번째 아이템
-                    // TODO: description은 이후에 Category에 추가 예정
-//                    showPopupWindow(it, item.description, onLeft = false)
+                    showPopupWindow(it, item.detail, onLeft = false)
                 } else{
-                    // TODO: description은 이후에 Category에 추가 예정
-//                    showPopupWindow(it, item.description, onLeft = true)
+                    showPopupWindow(it, item.detail, onLeft = true)
                 }
             }
         }
