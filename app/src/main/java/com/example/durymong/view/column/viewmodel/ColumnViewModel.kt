@@ -1,6 +1,7 @@
 package com.example.durymong.view.column.viewmodel
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,11 +30,13 @@ class ColumnViewModel : ViewModel() {
     //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
     fun fetchColumnCategoryData() {
         viewModelScope.launch {
-            try {
-                val response = repository.getColumnCategories()
-                // TODO: response.result 를 _columnCategoryList 에 저장
-            } catch (e: Exception) {
-                e.printStackTrace()
+            repository.getColumnCategories { response ->
+                if (response != null) {
+                    // TODO: response.result 를 _columnCategoryList 에 저장
+                    Log.d("ColumnViewModel", "카테고리 가져오기 성공")
+                } else {
+                    Log.e("ColumnViewModel", "카테고리 가져오기 실패")
+                }
             }
         }
 //        _columnCategoryList.value = listOf(
