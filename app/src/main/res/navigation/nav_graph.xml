@@ -60,7 +60,18 @@
         <action
             android:id="@+id/action_fragment_do_it_to_fragment_level_test"
             app:destination="@id/fragment_level_test" />
+
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_do_it_monthly_diary"
+            app:destination="@id/fragment_do_it_monthly_diary" />
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_monthly_diary"
+        android:name="com.example.durymong.view.do_it.record.MonthlyRecordFragment"
+        android:label="do_it_monthly_diary"
+        tools:layout="@layout/fragment_do_it_monthly_record"/>
+
 
     <fragment
         android:id="@+id/fragment_do_it_walk"
@@ -83,6 +94,7 @@
             app:argType="string"
             app:nullable="false" />
     </fragment>
+
 
     <fragment
         android:id="@+id/fragment_level_test"

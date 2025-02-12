@@ -1,7 +1,9 @@
 package com.example.durymong.view.do_it.test_page.model
 
+import com.example.durymong.model.dto.response.doit.QuestionDto
+
 data class TestPageData(
-    val number: Int,  // 라디오버튼 갯수
+    val questionId: QuestionDto,
     var selected: Int,
-    val name: String
+    val radioNumber:Int
 )

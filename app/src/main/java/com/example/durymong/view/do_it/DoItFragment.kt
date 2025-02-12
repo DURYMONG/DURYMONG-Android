@@ -40,9 +40,16 @@ class DoItFragment : Fragment() {
         initDepressionTest()
         initTciTest()
 
+        initMonthlyDiary()
+
         return binding.root
     }
 
+    private fun initMonthlyDiary() {
+        binding.ivDoItCalender.setOnClickListener {
+            navController.navigate(R.id.action_fragment_do_it_to_fragment_do_it_monthly_diary)
+        }
+    }
 
 
     private fun initCheckButton() {
