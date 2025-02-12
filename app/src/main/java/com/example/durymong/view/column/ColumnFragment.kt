@@ -45,15 +45,9 @@ class ColumnFragment : Fragment() {
         //이후에 api 연결시 세부 내용은 아마도 변경될 예정
         rvAdapterColumnCategory =
             RVAdapterColumnCategory(requireContext(), viewModel.columnCategoryList) {
-//                viewModel.fetchColumnData()
-
-                //ColumnDetailFragment로 Column 객체 전달
-                val columnData = viewModel.columnData.value
-                    ?: throw IllegalStateException("Column data is null")
-                val action =
-                    ColumnFragmentDirections.actionFragmentColumnToFragmentColumnDetail(columnData)
-
-                findNavController().navigate(action)
+                // TODO: 이후에 data에 id 추가되면 아래로 넘겨줄 예정, navigation 수정 필요
+//                viewModel.fetchColumnData(it.id)
+//                findNavController().navigate(action)
             }
 
         with(binding.rvColumnMenuList) {

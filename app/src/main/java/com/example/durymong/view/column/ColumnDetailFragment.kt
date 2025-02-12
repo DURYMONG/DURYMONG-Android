@@ -34,6 +34,7 @@ class ColumnDetailFragment: Fragment() {
             Glide.with(requireContext())
                 .load(it.image)
                 .into(binding.ivColumnImg)
+            binding.tvTopAppBarTitle.text = it.categoryName
             binding.tvColumnHeadline.text = it.subtitle
             binding.tvColumnTitle.text = it.title
             binding.tvColumnBody.text = it.content

@@ -35,10 +35,6 @@
         android:name="com.example.durymong.view.column.ColumnDetailFragment"
         android:label="column_detail"
         tools:layout="@layout/fragment_column_detail">
-        <argument
-            android:name="columnData"
-            app:argType="com.example.durymong.view.column.viewmodel.ColumnViewModel$Column"
-            app:nullable="false" />
     </fragment>
 
     <!--Do It-->

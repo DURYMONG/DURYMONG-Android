@@ -8,21 +8,26 @@ import android.widget.PopupWindow
 import androidx.compose.ui.layout.Layout
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.durymong.R
 import com.example.durymong.databinding.ItemColumnCategoryBinding
 import com.example.durymong.databinding.ItemColumnCategoryDescriptionBinding
+import com.example.durymong.model.dto.response.column.Category
 import com.example.durymong.util.dpToPx
 import com.example.durymong.view.column.viewmodel.ColumnViewModel
 
 class RVAdapterColumnCategory(
     private val context: Context,
-    private val items: LiveData<List<ColumnViewModel.ColumnCategory>>,
-    private val onItemClick: (ColumnViewModel.ColumnCategory) -> Unit
+    private val items: LiveData<List<Category>>,
+    private val onItemClick: (Category) -> Unit
 ) : RecyclerView.Adapter<RVAdapterColumnCategory.ViewHolder>() {
     inner class ViewHolder(val binding: ItemColumnCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ColumnViewModel.ColumnCategory, position: Int) {
-            binding.ivColumnCategoryIcon.setImageResource(item.imgId)
+        fun bind(item: Category, position: Int) {
+//            binding.ivColumnCategoryIcon.setImageResource(item.imgId)
+            Glide.with(context)
+                .load(item.image)
+                .into(binding.ivColumnCategoryIcon)
             binding.columnCategoryName.text = item.name
             //카테고리 클릭
             binding.cardColumnCategory.setOnClickListener {
@@ -33,9 +38,11 @@ class RVAdapterColumnCategory(
             binding.ivColumnCategoryQuestionmark.setOnClickListener{
                 if (position % 3 == 0){
                     //각 행의 첫 번째 아이템
-                    showPopupWindow(it, item.description, onLeft = false)
+                    // TODO: description은 이후에 Category에 추가 예정
+//                    showPopupWindow(it, item.description, onLeft = false)
                 } else{
-                    showPopupWindow(it, item.description, onLeft = true)
+                    // TODO: description은 이후에 Category에 추가 예정
+//                    showPopupWindow(it, item.description, onLeft = true)
                 }
             }
         }
