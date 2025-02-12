@@ -18,7 +18,7 @@ class ColumnViewModel : ViewModel() {
     private val repository = ColumnRepository()
 
     //실제 data를 저장할 변수들
-    private val _columnCategoryList = MutableLiveData<List<Category>>()
+    private val _columnCategoryList = MutableLiveData<List<Category>>(emptyList())
     private val _columnData = MutableLiveData<ColumnResult>()
 
     //화면에서 아래 변수들을 통해 값에 접근
@@ -27,37 +27,23 @@ class ColumnViewModel : ViewModel() {
 
     init {
         //처음 viewModel이 생성될 때 실행할 작업들
-//        fetchColumnCategoryData()
+        Log.d("ColumnViewModel", "init")
+        fetchColumnCategoryData()
     }
 
     fun fetchColumnCategoryData() {
         viewModelScope.launch {
             repository.getColumnCategories { response ->
+                Log.d("ColumnViewModel", "in viewModelScope")
                 if (response != null) {
                     Log.d("ColumnViewModel", "카테고리 가져오기 성공")
-                    // TODO: 데이터 처리
+                    _columnCategoryList.value = response.result.categories
                 } else {
                     Log.e("ColumnViewModel", "카테고리 가져오기 실패")
                 }
             }
         }
-//        _columnCategoryList.value = listOf(
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#수면장애",
-//                description = "수면장애란 제대로 잘 수 없는~"
-//            ),
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#우울감",
-//                description = "우울감이란~"
-//            ),
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#공황장애",
-//                description = "공황장애란~"
-//            ),
-//        )
+        Log.d("ColumnViewModel", "fetchColumnCategoryData Done")
     }
 
     fun searchColumnByKeyword(keyword: String) {
@@ -65,7 +51,7 @@ class ColumnViewModel : ViewModel() {
             repository.searchColumns(keyword) { response ->
                 if (response != null) {
                     Log.d("ColumnViewModel", "키워드 검색 성공")
-                    // 데이터 처리
+                    // TODO: 데이터 처리
                 } else {
                     Log.e("ColumnViewModel", "키워드 검색 실패")
                 }
@@ -73,7 +59,7 @@ class ColumnViewModel : ViewModel() {
         }
     }
 
-    fun fetchColumnData(categoryId: String) {
+    fun fetchColumnData(categoryId: Int) {
         viewModelScope.launch {
             repository.getColumns(categoryId) { response ->
                 if (response != null) {

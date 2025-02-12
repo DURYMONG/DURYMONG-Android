@@ -18,13 +18,12 @@ import com.example.durymong.view.column.viewmodel.ColumnViewModel
 
 class RVAdapterColumnCategory(
     private val context: Context,
-    private val items: LiveData<List<Category>>,
+    private val items: List<Category>,
     private val onItemClick: (Category) -> Unit
 ) : RecyclerView.Adapter<RVAdapterColumnCategory.ViewHolder>() {
     inner class ViewHolder(val binding: ItemColumnCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Category, position: Int) {
-//            binding.ivColumnCategoryIcon.setImageResource(item.imgId)
             Glide.with(context)
                 .load(item.image)
                 .into(binding.ivColumnCategoryIcon)
@@ -89,10 +88,10 @@ class RVAdapterColumnCategory(
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = items.value?.size!!
+    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentItem = items.value?.get(position)
+        val currentItem = items[position]
         if (currentItem != null) {
             holder.bind(currentItem, position)
         }

@@ -1,6 +1,7 @@
 package com.example.durymong.view.column
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.durymong.R
 import com.example.durymong.databinding.FragmentColumnBinding
+import com.example.durymong.model.dto.response.column.Category
 import com.example.durymong.view.column.adapter.RVAdapterColumnCategory
 import com.example.durymong.view.column.viewmodel.ColumnViewModel
 
@@ -33,7 +35,12 @@ class ColumnFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        initRVAdapterColumnCategory()
+        viewModel.columnCategoryList.observe(viewLifecycleOwner) { categories ->
+            Log.d("ColumnFragment", "onViewCreated: $categories")
+            if (categories.isNotEmpty()) {
+                initRVAdapterColumnCategory(categories)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -41,13 +48,13 @@ class ColumnFragment : Fragment() {
         _binding = null
     }
 
-    private fun initRVAdapterColumnCategory() {
+    private fun initRVAdapterColumnCategory(categories: List<Category>) {
         //이후에 api 연결시 세부 내용은 아마도 변경될 예정
+        Log.d("ColumnFragment", "initRVAdapterColumnCategory: $categories")
         rvAdapterColumnCategory =
-            RVAdapterColumnCategory(requireContext(), viewModel.columnCategoryList) {
-                // TODO: 이후에 data에 id 추가되면 아래로 넘겨줄 예정, navigation 수정 필요
-//                viewModel.fetchColumnData(it.id)
-//                findNavController().navigate(action)
+            RVAdapterColumnCategory(requireContext(), categories) {
+                viewModel.fetchColumnData(it.categoryId)
+                findNavController().navigate(R.id.action_fragment_column_to_fragment_column_detail)
             }
 
         with(binding.rvColumnMenuList) {

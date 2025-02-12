@@ -23,7 +23,7 @@ class ColumnRepository {
                 response: Response<CategoryResponseDto>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("successful", "카테고리 수정 성공: ")
+                    Log.d("successful", "카테고리 조회 성공 : ${response.body()}")
                     callback(response.body())
                 } else {
                     Log.d("fail", "카테고리 수정 실패: ${response.code()}")
@@ -61,7 +61,7 @@ class ColumnRepository {
     }
 
     // 칼럼 조회
-    fun getColumns(categoryId: String, callback: (ColumnResponseDto?) -> Unit) {
+    fun getColumns(categoryId: Int, callback: (ColumnResponseDto?) -> Unit) {
         service.getColumns(categoryId).enqueue(object : Callback<ColumnResponseDto> {
             override fun onResponse(
                 call: Call<ColumnResponseDto>,

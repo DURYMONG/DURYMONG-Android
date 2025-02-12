@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface ColumnService {
     // 카테고리 목록 조회
-    @GET("column")
+    @GET("columns")
     fun getColumnCategories(): Call<CategoryResponseDto>
 
     // 키워드 검색
@@ -19,6 +19,6 @@ interface ColumnService {
 
     // 칼럼 조회
     @GET("columns/categories/{categoryId}")
-    fun getColumns(@Path("categoryId") categoryId: String): Call<ColumnResponseDto>
+    fun getColumns(@Path("categoryId") categoryId: Int): Call<ColumnResponseDto>
 }
 
