@@ -14,6 +14,7 @@ import kotlinx.parcelize.Parcelize
 
 class ColumnViewModel : ViewModel() {
     private val repository = ColumnRepository()
+
     //실제 data를 저장할 변수들
     private val _columnCategoryList = MutableLiveData<List<ColumnCategory>>()
     private val _columnData = MutableLiveData<Column>()
