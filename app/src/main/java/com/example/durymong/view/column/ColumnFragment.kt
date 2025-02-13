@@ -1,5 +1,6 @@
 package com.example.durymong.view.column
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -74,6 +76,15 @@ class ColumnFragment : Fragment() {
             binding.rvColumnCategoryList.visibility = View.GONE
             binding.rvColumnSearchResult.visibility = View.VISIBLE
         }
+
+        hidekeyboard()
+    }
+
+    private fun hidekeyboard(){
+        val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
+
+        binding.searchEditText.clearFocus()
     }
 
     private fun initRVAdapterColumnCategory(categories: List<Category>) {
