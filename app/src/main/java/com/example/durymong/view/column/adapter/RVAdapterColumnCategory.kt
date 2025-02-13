@@ -82,7 +82,11 @@ class RVAdapterColumnCategory(
         parent: ViewGroup,
         viewType: Int
     ): RVAdapterColumnCategory.ViewHolder {
-        val binding = ItemColumnCategoryBinding.inflate(LayoutInflater.from(context), parent, false)
+        val binding = ItemColumnCategoryBinding.inflate(
+            LayoutInflater.from(context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 

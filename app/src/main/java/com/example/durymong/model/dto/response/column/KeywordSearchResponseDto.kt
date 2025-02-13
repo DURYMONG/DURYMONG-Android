@@ -12,7 +12,7 @@ data class KeywordSearchResult(
 )
 
 data class KeywordSearchColumn(
-    val categoryId: String,
+    val categoryId: Int,
     val categoryName: String,
     val preview: String
 )

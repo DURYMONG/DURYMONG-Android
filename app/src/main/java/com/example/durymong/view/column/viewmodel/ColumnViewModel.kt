@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.durymong.R
 import com.example.durymong.model.dto.response.column.Category
 import com.example.durymong.model.dto.response.column.ColumnResult
+import com.example.durymong.model.dto.response.column.KeywordSearchColumn
 import com.example.durymong.model.repository.ColumnRepository
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
@@ -19,10 +20,12 @@ class ColumnViewModel : ViewModel() {
 
     //실제 data를 저장할 변수들
     private val _columnCategoryList = MutableLiveData<List<Category>>(emptyList())
+    private val _columnSearchResult = MutableLiveData<List<KeywordSearchColumn>>(emptyList())
     private val _columnData = MutableLiveData<ColumnResult>()
 
     //화면에서 아래 변수들을 통해 값에 접근
     val columnCategoryList: LiveData<List<Category>> get() = _columnCategoryList
+    val columnSearchResult: LiveData<List<KeywordSearchColumn>> get() = _columnSearchResult
     val columnData: LiveData<ColumnResult> get() = _columnData
 
     init {
