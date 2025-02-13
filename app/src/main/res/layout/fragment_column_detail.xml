@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:contentDescription="thumbnail img"
-                    android:src="@drawable/img_column_thumbnail_dummy"
+                    android:src="@color/white"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -54,7 +54,7 @@ class ColumnViewModel : ViewModel() {
             repository.searchColumns(keyword) { response ->
                 if (response != null) {
                     Log.d("ColumnViewModel", "키워드 검색 성공")
-                    // TODO: 데이터 처리
+                    _columnSearchResult.value = response.result.columns
                 } else {
                     Log.e("ColumnViewModel", "키워드 검색 실패")
                 }
@@ -67,7 +67,6 @@ class ColumnViewModel : ViewModel() {
             repository.getColumns(categoryId) { response ->
                 if (response != null) {
                     Log.d("ColumnViewModel", "칼럼 조회 성공")
-                    // 데이터 처리
                     _columnData.value = response.result
                 } else {
                     Log.e("ColumnViewModel", "칼럼 조회 실패")
