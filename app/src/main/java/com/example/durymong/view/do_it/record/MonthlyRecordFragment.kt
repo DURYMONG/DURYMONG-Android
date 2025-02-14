@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.durymong.databinding.FragmentDoItMonthlyRecordBinding
+import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.view.do_it.record.adapter.RVAdapterMonthlyRecord
 import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
 import java.time.DayOfWeek
@@ -31,17 +32,19 @@ class MonthlyRecordFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRVAdapterMonthlyRecord()
         observeViewModel()
         onChangeMonthButton()
     }
 
     private fun observeViewModel() {
         viewModel.monthlyRecordList.observe(viewLifecycleOwner) {
-            rvAdapterMonthlyRecord.notifyDataSetChanged()
+            initRVAdapterMonthlyRecord(it)
         }
         viewModel.currentMonth.observe(viewLifecycleOwner) {
             binding.tvCurrentMonthCalendar.text = "${it.monthValue}월 성장일지"
+        }
+        viewModel.nickname.observe(viewLifecycleOwner) {
+            binding.tvUserName.text = it
         }
     }
 
@@ -54,9 +57,9 @@ class MonthlyRecordFragment: Fragment() {
         }
     }
 
-    private fun initRVAdapterMonthlyRecord() {
-        rvAdapterMonthlyRecord = RVAdapterMonthlyRecord(requireContext(), viewModel.monthlyRecordList) {
-            //날짜에 해당하는 화면으로 이동
+    private fun initRVAdapterMonthlyRecord(monthlyRecordList: List<DateInfo>) {
+        rvAdapterMonthlyRecord = RVAdapterMonthlyRecord(requireContext(), monthlyRecordList) {
+            // TODO: 날짜에 해당하는 화면으로 이동
         }
         binding.rvCalendar.adapter = rvAdapterMonthlyRecord
     }
@@ -65,7 +68,4 @@ class MonthlyRecordFragment: Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-
 }

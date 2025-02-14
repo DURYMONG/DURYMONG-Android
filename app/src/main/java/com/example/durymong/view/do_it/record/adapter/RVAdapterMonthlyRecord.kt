@@ -4,12 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.durymong.databinding.ItemCalendarDayBinding
 import com.example.durymong.model.dto.response.doit.DateInfo
-import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
@@ -24,7 +23,7 @@ class RVAdapterMonthlyRecord(
     inner class ViewHolder(val binding: ItemCalendarDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DateInfo) {
-            binding.tvCalendarDate.text = item.date
+            binding.tvCalendarDate.text = item.date.split("-")[2].toInt().toString()
             binding.vCalendarCircle.alpha = if (item.count >= 3) {
                 1f
             } else if (item.count >= 2) {

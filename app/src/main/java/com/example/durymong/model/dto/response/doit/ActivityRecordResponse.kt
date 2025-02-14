@@ -4,7 +4,7 @@ data class ActivityRecordResponse(
     val success: Boolean,
     val code: Int,
     val message: String,
-    val result: List<MonthInfo>
+    val result: MonthInfo
 )
 
 data class MonthInfo(

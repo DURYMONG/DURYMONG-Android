@@ -64,8 +64,8 @@ class MonthlyRecordViewModel : ViewModel() {
     fun fetchMonthlyRecord(year: Int, month: Int) {
         repository.getMonthlyRecord(year, month) { response ->
             if (response != null) {
-                _nickname.value = response.result[0].nickname
-                val newMonthlyData = updateMonthlyRecord(response.result[0].dayCountList, year, month)
+                _nickname.value = response.result.nickname
+                val newMonthlyData = updateMonthlyRecord(response.result.dayCountList, year, month)
                 _monthlyRecordList.value = newMonthlyData
             }
         }
