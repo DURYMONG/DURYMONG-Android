@@ -1,6 +1,7 @@
 package com.example.durymong.model.repository
 
 import android.util.Log
+import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
 import com.example.durymong.retrofit.RetrofitObject
@@ -60,6 +61,32 @@ class DoItRepository {
             override fun onFailure(call: Call<TestMainPageResponseDto>, t: Throwable) {
                 Log.e("DoItRepository", "onFailure: ${t.message}")
                 onError(t) // 실패 시 콜백 실행
+            }
+        })
+    }
+
+    fun getMonthlyRecord(
+        year: Int,
+        month: Int,
+        callback: (ActivityRecordResponse?) -> Unit
+    ) {
+        doItService.getActivityRecords(year, month).enqueue(object : Callback<ActivityRecordResponse> {
+            override fun onResponse(
+                call: Call<ActivityRecordResponse>,
+                response: Response<ActivityRecordResponse>
+            ) {
+                if (response.isSuccessful) {
+                    callback(response.body())
+                    Log.d("DoItRepository", "onResponseSuccess")
+                } else{
+                    Log.d("DoItRepository", "onResponseFail: ${response.code()}")
+                    callback(null)
+                }
+            }
+
+            override fun onFailure(call: Call<ActivityRecordResponse>, t: Throwable) {
+                Log.d("DoItRepository", "onFailure: ${t.message}")
+                callback(null)
             }
         })
     }

@@ -1,6 +1,7 @@
 package com.example.durymong.retrofit.service
 
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import retrofit2.Call
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
@@ -9,6 +10,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface DoItService {
     @GET("tests/{testId}")
@@ -22,4 +24,11 @@ interface DoItService {
                    @Body submitTestRequestDto: SubmitTestRequestDto
     ): Call<SubmitTestResponseDto>
 
+
+    // 월별 성장일지 조회
+    @GET("activities/records")
+    fun getActivityRecords(
+        @Query("year") year: Int,
+        @Query("month") month: Int
+    ): Call<ActivityRecordResponse>
 }
