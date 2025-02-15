@@ -8,16 +8,16 @@
     <!--Mong-->
     <fragment
         android:id="@+id/fragment_mong"
-        android:name="com.example.durymong.view.mong.MongFragment"
+        android:name="com.example.durymong.view.mong.HomeFragment"
         android:label="mong"
-        tools:layout="@layout/fragment_mong" />
+        tools:layout="@layout/fragment_home" />
 
     <!--Chat-->
     <fragment
         android:id="@+id/fragment_chat"
-        android:name="com.example.durymong.view.chat.ChatFragment"
+        android:name="com.example.durymong.view.chat.ChatMainFragment"
         android:label="chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat_main" />
 
     <!--Column -->
     <fragment
@@ -56,7 +56,7 @@
             app:destination="@id/fragment_do_it_bed_clean" />
         <action
             android:id="@+id/action_fragment_do_it_to_fragment_do_it_stretching"
-            app:destination="@id/fragment_do_it_stretching"/>
+            app:destination="@id/fragment_do_it_stretching" />
         <action
             android:id="@+id/action_fragment_do_it_to_fragment_level_test"
             app:destination="@id/fragment_level_test" />
@@ -70,7 +70,7 @@
         android:id="@+id/fragment_do_it_monthly_diary"
         android:name="com.example.durymong.view.do_it.record.MonthlyRecordFragment"
         android:label="do_it_monthly_diary"
-        tools:layout="@layout/fragment_do_it_monthly_record"/>
+        tools:layout="@layout/fragment_do_it_monthly_record" />
 
 
     <fragment
@@ -104,7 +104,7 @@
 
         <action
             android:id="@+id/action_levelTestFragment_to_testPageFragment"
-            app:destination="@id/fragment_stress_test_page"/>
+            app:destination="@id/fragment_stress_test_page" />
 
         <argument
             android:name="testName"
@@ -122,6 +122,6 @@
         android:id="@+id/fragment_do_it_stretching"
         android:name="com.example.durymong.view.do_it.DoItStretchingFragment"
         android:label="do_it_stretching"
-        tools:layout="@layout/fragment_do_it_stretching"/>
+        tools:layout="@layout/fragment_do_it_stretching" />
 
 </navigation>
