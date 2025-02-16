@@ -76,11 +76,6 @@
             app:destination="@id/fragment_do_it_daily_diary"/>
     </fragment>
 
-    <fragment
-        android:id="@+id/fragment_do_it_daily_record"
-        android:name="com.example.durymong.view.do_it.record.DailyRecordFragment"
-        android:label="do_it_daily_diary"
-        tools:layout="@layout/fragment_do_it_daily_record" />
 
     <fragment
         android:id="@+id/fragment_do_it_daily_diary"
@@ -88,6 +83,21 @@
         android:label="do_it_record_daily_diary"
         tools:layout="@layout/fragment_do_it_daily_diary"/>
 
+    <fragment
+        android:id="@+id/fragment_do_it_daily_diary_disabled"
+        android:name="com.example.durymong.view.do_it.record.DailyDiaryDisabledFragment"
+        android:label="do_it_record_daily_diary_disabled"
+        tools:layout="@layout/fragment_do_it_daily_diary_disabled"/>
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_record"
+        android:name="com.example.durymong.view.do_it.record.DailyRecordFragment"
+        android:label="do_it_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_record" >
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_daily_diary_disabled"
+            app:destination="@id/fragment_do_it_daily_diary_disabled"/>
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_do_it_walk"

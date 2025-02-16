@@ -40,6 +40,10 @@ class DailyDiaryDisabledFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val selectedDate = viewModel.selectedDate.value
+        if (selectedDate != null) {
+            viewModel.fetchDiary(selectedDate)
+        }
         observeViewModel()
         initPage()
         initDiaryInput()
@@ -52,6 +56,13 @@ class DailyDiaryDisabledFragment : Fragment() {
 
 
     private fun observeViewModel() {
+        viewModel.selectedDate.observe(viewLifecycleOwner) {
+            val month = it.split("-")[1].toInt().toString()
+            val day = it.split("-")[2].toInt().toString()
+            Log.d("DailyRecordFragment", "Selected Date: ${month}월 ${day}일")
+            binding.tvDate.text = "${month}월 ${day}일"
+        }
+
         viewModel.mongImg.observe(viewLifecycleOwner) {
             Log.d("DailyRecordFragment", "Mong Image: $it")
             val requestOptions = RequestOptions()
