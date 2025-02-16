@@ -38,6 +38,7 @@ class MonthlyRecordViewModel : ViewModel() {
 
     fun updateSelectedDate(dateInfo: DateInfo) {
         _selectedDate.value = dateInfo.date
+        fetchDailyRecord(dateInfo.date)
         Log.d("MonthlyRecordViewModel", "Selected Date: ${dateInfo.date}")
     }
 

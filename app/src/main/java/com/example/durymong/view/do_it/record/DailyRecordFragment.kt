@@ -10,6 +10,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.durymong.databinding.FragmentDoItDailyRecordBinding
 import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
 
@@ -52,8 +54,13 @@ class DailyRecordFragment: Fragment() {
             binding.tvSeeMongChatRecord.text = "${it}과의 대화 기록"
         }
         viewModel.mongImg.observe(viewLifecycleOwner) {
+            Log.d("DailyRecordFragment", "Mong Image: $it")
+            val requestOptions = RequestOptions()
+                .timeout(10000)
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // 캐시 사용
             Glide.with(requireContext())
                 .load(it)
+                .apply(requestOptions)
                 .into(binding.ivMong)
         }
     }
