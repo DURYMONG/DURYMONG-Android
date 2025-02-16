@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.durymong.databinding.FragmentDoItDailyDiaryBinding
 
 class DailyDiaryFragment: Fragment() {
@@ -45,6 +46,10 @@ class DailyDiaryFragment: Fragment() {
         )
 
         binding.tvDate.text = spannableString
+
+        binding.ivTopAppBarBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroyView() {

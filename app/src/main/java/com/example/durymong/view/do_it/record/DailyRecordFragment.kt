@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.durymong.databinding.FragmentDoItDailyRecordBinding
 import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
@@ -30,6 +31,9 @@ class DailyRecordFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        binding.ivTopAppBarBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroyView() {

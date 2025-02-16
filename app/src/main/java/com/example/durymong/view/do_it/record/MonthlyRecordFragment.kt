@@ -37,6 +37,9 @@ class MonthlyRecordFragment: Fragment() {
 
         observeViewModel()
         onChangeMonthButton()
+        binding.ivTopAppBarBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 
     private fun observeViewModel() {
