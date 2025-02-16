@@ -33,8 +33,13 @@ class MonthlyRecordFragment: Fragment() {
         viewModel.updateCurrentDate()
         observeViewModel()
         onChangeMonthButton()
-        binding.ivTopAppBarBack.setOnClickListener{
-            findNavController().popBackStack()
+        with(binding){
+            ivTopAppBarBack.setOnClickListener{
+                findNavController().popBackStack()
+            }
+            btnRecordDay.setOnClickListener {
+                findNavController().navigate(R.id.action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_diary)
+            }
         }
     }
 

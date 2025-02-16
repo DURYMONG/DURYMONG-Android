@@ -1,5 +1,6 @@
 package com.example.durymong.view.do_it.viewmodel
 
+import android.icu.util.Calendar
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,8 +11,10 @@ import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
 import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.model.repository.DoItRepository
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class DoItViewModel : ViewModel() {
     private val repository = DoItRepository()
@@ -39,19 +42,24 @@ class DoItViewModel : ViewModel() {
     private val _mongImg = MutableLiveData<String>()
     val mongImg: LiveData<String> get() = _mongImg
 
-    init{
+    init {
         loadTestMainPage()
+        fetchDailyRecord(
+            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                .format(Calendar.getInstance().time)
+        )
     }
 
     fun submitCheck(checkActivityRequest: CheckActivityRequest) {
-        viewModelScope.launch{
-            try{
+        viewModelScope.launch {
+            try {
                 DoItRepository().submitCheck(checkActivityRequest)
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
+
     fun cancelCheck(id: Int) {
         DoItRepository().cancelCheck(id)
     }
@@ -59,7 +67,7 @@ class DoItViewModel : ViewModel() {
     fun loadTestMainPage() {
         viewModelScope.launch {
             try {
-                DoItRepository().getDoItMainPage (
+                DoItRepository().getDoItMainPage(
                     onSuccess = { dto ->
                         // 여기서 받은 dto를 LiveData에 담아 UI로 전달
                         _doItMainPage.value = dto
@@ -75,21 +83,21 @@ class DoItViewModel : ViewModel() {
     fun changeMonth(offset: Int) {
         val newMonth = _currentMonth.value?.plusMonths(offset.toLong()) ?: return
 
-        fetchMonthlyRecord(newMonth.year, newMonth.monthValue){ success ->
-            if (success){
+        fetchMonthlyRecord(newMonth.year, newMonth.monthValue) { success ->
+            if (success) {
                 _currentMonth.value = newMonth
                 Log.d("DoItViewModel", "Current Month: ${newMonth.monthValue}")
-            } else{
+            } else {
                 Log.d("DoItViewModel", "Failed to fetch monthly record")
             }
         }
     }
 
-    fun updateCurrentDate(){
+    fun updateCurrentDate() {
         val currentDate = YearMonth.now()
         _currentMonth.value = currentDate
-        fetchMonthlyRecord(currentDate.year, currentDate.monthValue){
-            if (it){
+        fetchMonthlyRecord(currentDate.year, currentDate.monthValue) {
+            if (it) {
                 Log.d("DoItViewModel", "Current Month: ${currentDate.monthValue}")
             }
         }
@@ -143,7 +151,7 @@ class DoItViewModel : ViewModel() {
         Log.d("MonthlyRecordViewModel", "Selected Date: ${dateInfo.date}")
     }
 
-    fun fetchDailyRecord(date: String){
+    fun fetchDailyRecord(date: String) {
         repository.getDailyRecord(date) { response ->
             if (response != null) {
                 _mongName.value = response.result.mongName

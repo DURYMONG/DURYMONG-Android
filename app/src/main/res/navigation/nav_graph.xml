@@ -71,6 +71,9 @@
         <action
             android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_record"
             app:destination="@id/fragment_do_it_daily_record" />
+        <action
+            android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_diary"
+            app:destination="@id/fragment_do_it_daily_diary"/>
     </fragment>
 
     <fragment
@@ -78,6 +81,12 @@
         android:name="com.example.durymong.view.do_it.record.DailyRecordFragment"
         android:label="do_it_daily_diary"
         tools:layout="@layout/fragment_do_it_daily_record" />
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_diary"
+        android:name="com.example.durymong.view.do_it.record.DailyDiaryFragment"
+        android:label="do_it_record_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_diary"/>
 
 
     <fragment
