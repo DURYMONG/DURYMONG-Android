@@ -1,6 +1,7 @@
 package com.example.durymong.retrofit.service
 
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.response.doit.ActivityDayRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import retrofit2.Call
@@ -31,4 +32,10 @@ interface DoItService {
         @Query("year") year: Int,
         @Query("month") month: Int
     ): Call<ActivityRecordResponse>
+
+    // 일별 기록 조회
+    @GET("activities/records/{date}")
+    fun getActivityDailyRecord(
+        @Path("date") date: String // "YYYY-MM-DD" 형식의 날짜
+    ): Call<ActivityDayRecordResponse>
 }

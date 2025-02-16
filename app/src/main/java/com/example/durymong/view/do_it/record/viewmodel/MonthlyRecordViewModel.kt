@@ -85,4 +85,13 @@ class MonthlyRecordViewModel : ViewModel() {
             }
         }
     }
+
+    fun fetchDailyRecord(date: String){
+        repository.getDailyRecord(date) { response ->
+            if (response != null) {
+                _mongName.value = response.result.mongName
+                _mongImg.value = response.result.mongImage
+            }
+        }
+    }
 }
