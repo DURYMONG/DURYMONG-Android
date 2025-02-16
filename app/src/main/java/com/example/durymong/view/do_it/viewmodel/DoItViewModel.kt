@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
+import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
 import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.model.repository.DoItRepository
@@ -41,6 +42,10 @@ class DoItViewModel : ViewModel() {
 
     private val _mongImg = MutableLiveData<String>()
     val mongImg: LiveData<String> get() = _mongImg
+
+    //일기 조회
+    private val _diary = MutableLiveData<String>()
+    val diary: LiveData<String> get() = _diary
 
     init {
         loadTestMainPage()
@@ -156,6 +161,34 @@ class DoItViewModel : ViewModel() {
             if (response != null) {
                 _mongName.value = response.result.mongName
                 _mongImg.value = response.result.mongImage
+            }
+        }
+    }
+
+    // 일기 저장
+    fun writeDiary(request: WriteDiaryReq) {
+        viewModelScope.launch {
+            repository.writeDiary(request) { response ->
+                if (response != null) {
+                    Log.d("DoItViewModel", "Diary 작성 성공")
+                } else {
+                    Log.e("DoItViewModel", "Diary 작성 실패")
+                }
+            }
+        }
+    }
+
+    // 일기 조회
+    fun fetchDiary(date: String) {
+        viewModelScope.launch {
+            repository.getDiary(date) { response ->
+                if (response != null) {
+                    Log.d("DoItViewModel", "Diary 조회 성공")
+                    _diary.value = response.result.content
+                    _mongImg.value = response.result.mongImage
+                } else {
+                    Log.e("DoItViewModel", "Diary 조회 실패")
+                }
             }
         }
     }

@@ -49,6 +49,7 @@
         android:layout_marginTop="20dp"
         android:background="#FAFAFA"
         app:layout_constraintTop_toBottomOf="@id/cl_daily_diary_top_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -123,10 +124,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="45dp"
+            android:paddingVertical="20dp"
             android:minHeight="178dp"
             android:background="@drawable/et_diary_background"
-            android:imeOptions="actionDone"
-            android:text=""
+            android:inputType="textMultiLine"
+            android:text="_"
             android:textColor="@color/main_purple"
             android:textSize="14sp"
             android:gravity="center"
@@ -137,6 +139,22 @@
             android:layout_marginTop="10dp"
             />
 
+        <Button
+            android:id="@+id/btn_save_diary"
+            style="@style/CustomButtonStyle"
+            android:layout_width="182dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/btn_bg_8_white_purple"
+            android:backgroundTint="@null"
+            android:drawableLeft="@drawable/ic_do_it_record_edit"
+            android:paddingHorizontal="30dp"
+            android:text="일기 저장하기"
+            android:textColor="@color/main_purple"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_diary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

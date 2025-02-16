@@ -3,10 +3,12 @@ package com.example.durymong.model.repository
 import android.util.Log
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityDayRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
 import com.example.durymong.model.dto.response.doit.DeactivationResponse
+import com.example.durymong.model.dto.response.doit.DiaryResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
@@ -194,6 +196,46 @@ class DoItRepository {
             override fun onFailure(p0: Call<ActivityDayRecordResponse>, t: Throwable) {
                 Log.d("DoItRepository", "onFailure: ${t.message}")
                 callback(null)
+            }
+        })
+    }
+
+    // 일기 저장
+    fun writeDiary(request: WriteDiaryReq, onSuccess: (DiaryResponse?) -> Unit) {
+        doItService.writeDiary(request).enqueue(object : Callback<DiaryResponse> {
+            override fun onResponse(call: Call<DiaryResponse>, response: Response<DiaryResponse>) {
+                if (response.isSuccessful) {
+                    onSuccess(response.body())
+                    Log.d("DoItRepository", "writeDiary Success")
+                } else {
+                    Log.e("DoItRepository", "writeDiary Failed: ${response.code()}")
+                    onSuccess(null)
+                }
+            }
+
+            override fun onFailure(call: Call<DiaryResponse>, t: Throwable) {
+                Log.e("DoItRepository", "writeDiary Error: ${t.message}")
+                onSuccess(null)
+            }
+        })
+    }
+
+    // 일기 조회
+    fun getDiary(date: String, onSuccess: (DiaryResponse?) -> Unit) {
+        doItService.getDiary(date).enqueue(object : Callback<DiaryResponse> {
+            override fun onResponse(call: Call<DiaryResponse>, response: Response<DiaryResponse>) {
+                if (response.isSuccessful) {
+                    onSuccess(response.body())
+                    Log.d("DoItRepository", "getDiary Success")
+                } else {
+                    Log.e("DoItRepository", "getDiary Failed: ${response.code()}")
+                    onSuccess(null)
+                }
+            }
+
+            override fun onFailure(call: Call<DiaryResponse>, t: Throwable) {
+                Log.e("DoItRepository", "getDiary Error: ${t.message}")
+                onSuccess(null)
             }
         })
     }
