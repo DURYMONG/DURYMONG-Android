@@ -68,7 +68,12 @@ class DoItWalkFragment : Fragment(){
     private fun initTimePlus() {
         binding.ivDoItWalk30.setOnClickListener{
             viewModel.sendData(viewModel.timeData.value!!.first, viewModel.timeData.value!!.second+30)
-
+            circularProgressBar = binding.pbDoItWalk
+            val animator = ObjectAnimator.ofInt(circularProgressBar, "progress", 0, 3600).apply{
+                duration = viewModel.timeData.value!!.first * 1000 * 3600 + viewModel.timeData.value!!.second * 1000 *60 // 1000=1초
+                interpolator = LinearInterpolator() // 일정한 속도
+            }
+            animator.start()
         }
     }
 

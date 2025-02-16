@@ -1,8 +1,11 @@
 package com.example.durymong.retrofit.service
 
+import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
 import com.example.durymong.model.dto.response.doit.ActivityDayRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
+import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
+import com.example.durymong.model.dto.response.doit.DeactivationResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import retrofit2.Call
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
@@ -17,14 +20,15 @@ interface DoItService {
     @GET("tests/{testId}")
     fun getTestMainPage(@Path("testId") testId: Int): Call<TestMainPageResponseDto>
 
-    @GET("tests/{testId}/questions")  // 위치 다시 해줘야 함
-    fun getTestPage(@Path("testId") testId: Int): Call<TestPageResponseDto>
+    @GET("tests/{testId}/questions")
+    fun getTestPage(
+        @Path("testId") testId: Int
+    ): Call<TestPageResponseDto>
 
     @POST("tests/{testId}/results")
     fun submitTest(@Path("testId") testId: Int,
                    @Body submitTestRequestDto: SubmitTestRequestDto
     ): Call<SubmitTestResponseDto>
-
 
     // 월별 성장일지 조회
     @GET("activities/records")
@@ -38,4 +42,13 @@ interface DoItService {
     fun getActivityDailyRecord(
         @Path("date") date: String // "YYYY-MM-DD" 형식의 날짜
     ): Call<ActivityDayRecordResponse>
+
+    @GET("activities")
+    fun getDoItMainPage(): Call<ActivityTestListResponse>
+
+    @POST("activities/user-records")
+    fun submitCheck(@Body checkActivityRequest: CheckActivityRequest): Call<Void>
+
+    @POST("activities/user-records/{activityId}/deactivation")
+    fun cancelCheck(@Path("activityId") activityId: Int): Call<DeactivationResponse>
 }

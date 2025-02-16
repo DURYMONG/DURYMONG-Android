@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:layout_width="230dp"
+        android:layout_width="250dp"
         android:layout_height="26dp"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="14dp"
@@ -53,23 +53,31 @@
             android:id="@+id/rb_test_2"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:background="@drawable/ic_test_radio_button_left"
             android:button="@null" />
 
         <RadioButton
             android:id="@+id/rb_test_3"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="40dp"
-            android:background="@drawable/ic_test_radio_button_right"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_test_radio_button_mid"
             android:button="@null" />
 
         <RadioButton
             android:id="@+id/rb_test_4"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_test_radio_button_right"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_test_5"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="30dp"
             android:background="@drawable/ic_test_radio_button_right"
             android:button="@null" />
     </RadioGroup>

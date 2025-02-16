@@ -1,6 +1,6 @@
 package com.example.durymong.model.dto.response.doit
 
-class TestPageResponseDto(
+data class TestPageResponseDto(
     val code : String,
     val message : String,
     val result : TestPageDto,
@@ -12,14 +12,14 @@ data class TestPageDto(
     val testName: String,
     val numberOfQuestions : Int,
     val numberOfOptions : Int,
+    val questionList : List<QuestionDto>,
     val requiredTime : Int,
-    val questions : List<QuestionDto>
+
 )
 
 data class QuestionDto(
     val number : Int,
     val question: String
-
 )
 
 
