@@ -7,19 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.durymong.databinding.FragmentDoItDailyRecordBinding
-import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
+import com.example.durymong.view.do_it.viewmodel.DoItViewModel
 
 class DailyRecordFragment: Fragment() {
     private var _binding: FragmentDoItDailyRecordBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MonthlyRecordViewModel by activityViewModels()
+    private val viewModel: DoItViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

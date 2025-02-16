@@ -6,23 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.durymong.R
 import com.example.durymong.databinding.FragmentDoItMonthlyRecordBinding
 import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.view.do_it.record.adapter.RVAdapterMonthlyRecord
-import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
-import java.time.DayOfWeek
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import com.example.durymong.view.do_it.viewmodel.DoItViewModel
 
 class MonthlyRecordFragment: Fragment() {
     private var _binding: FragmentDoItMonthlyRecordBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvAdapterMonthlyRecord: RVAdapterMonthlyRecord
 
-    private val viewModel: MonthlyRecordViewModel by activityViewModels()
+    private val viewModel: DoItViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +30,7 @@ class MonthlyRecordFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.updateCurrentDate()
         observeViewModel()
         onChangeMonthButton()
         binding.ivTopAppBarBack.setOnClickListener{
