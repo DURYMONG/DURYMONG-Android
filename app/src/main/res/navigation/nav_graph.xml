@@ -66,7 +66,18 @@
         android:id="@+id/fragment_do_it_monthly_diary"
         android:name="com.example.durymong.view.do_it.record.MonthlyRecordFragment"
         android:label="do_it_monthly_diary"
-        tools:layout="@layout/fragment_do_it_monthly_record"/>
+        tools:layout="@layout/fragment_do_it_monthly_record"
+        >
+        <action
+            android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_record"
+            app:destination="@id/fragment_do_it_daily_record" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_record"
+        android:name="com.example.durymong.view.do_it.record.DailyRecordFragment"
+        android:label="do_it_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_record" />
 
 
     <fragment

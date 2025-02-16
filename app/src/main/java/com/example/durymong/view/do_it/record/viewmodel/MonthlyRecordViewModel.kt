@@ -1,5 +1,6 @@
 package com.example.durymong.view.do_it.record.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,10 +21,24 @@ class MonthlyRecordViewModel : ViewModel() {
     private val _nickname = MutableLiveData<String>()
     val nickname: LiveData<String> get() = _nickname
 
+    private val _selectedDate = MutableLiveData<String>()
+    val selectedDate: LiveData<String> get() = _selectedDate
+
+    private val _mongName = MutableLiveData<String>()
+    val mongName: LiveData<String> get() = _mongName
+
+    private val _mongImg = MutableLiveData<String>()
+    val mongImg: LiveData<String> get() = _mongImg
+
     init {
         val currentDate = YearMonth.now()
         _currentMonth.value = currentDate
         fetchMonthlyRecord(currentDate.year, currentDate.monthValue)
+    }
+
+    fun updateSelectedDate(dateInfo: DateInfo) {
+        _selectedDate.value = dateInfo.date
+        Log.d("MonthlyRecordViewModel", "Selected Date: ${dateInfo.date}")
     }
 
     fun changeMonth(offset: Int) {
