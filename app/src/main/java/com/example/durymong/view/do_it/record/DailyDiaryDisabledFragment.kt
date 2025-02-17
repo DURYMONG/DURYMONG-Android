@@ -1,6 +1,5 @@
 package com.example.durymong.view.do_it.record
 
-import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.Editable
@@ -14,21 +13,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.durymong.databinding.FragmentDoItDailyDiaryBinding
-import com.example.durymong.model.dto.request.doit.WriteDiaryReq
+import com.example.durymong.databinding.FragmentDoItDailyDiaryDisabledBinding
 import com.example.durymong.view.do_it.viewmodel.DoItViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class DailyDiaryFragment: Fragment() {
-    private var _binding: FragmentDoItDailyDiaryBinding? = null
+class DailyDiaryDisabledFragment : Fragment() {
+    private var _binding: FragmentDoItDailyDiaryDisabledBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: DoItViewModel by activityViewModels()
@@ -37,24 +34,19 @@ class DailyDiaryFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDoItDailyDiaryBinding.inflate(layoutInflater)
+        _binding = FragmentDoItDailyDiaryDisabledBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchDiary(
-            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(Calendar.getInstance().time)
-        )
+        val selectedDate = viewModel.selectedDate.value
+        if (selectedDate != null) {
+            viewModel.fetchDiary(selectedDate)
+        }
         observeViewModel()
         initPage()
         initDiaryInput()
-        initSubmitButton()
-        binding.clRecordDiaryScreenContainer.setOnClickListener {
-            hideKeyboard()
-            binding.etDiary.clearFocus()
-        }
     }
 
     override fun onDestroyView() {
@@ -62,7 +54,15 @@ class DailyDiaryFragment: Fragment() {
         _binding = null
     }
 
+
     private fun observeViewModel() {
+        viewModel.selectedDate.observe(viewLifecycleOwner) {
+            val month = it.split("-")[1].toInt().toString()
+            val day = it.split("-")[2].toInt().toString()
+            Log.d("DailyRecordFragment", "Selected Date: ${month}월 ${day}일")
+            binding.tvDate.text = "${month}월 ${day}일"
+        }
+
         viewModel.mongImg.observe(viewLifecycleOwner) {
             Log.d("DailyRecordFragment", "Mong Image: $it")
             val requestOptions = RequestOptions()
@@ -142,21 +142,5 @@ class DailyDiaryFragment: Fragment() {
                 isEditing = false // 변경 완료 후 플래그 해제
             }
         })
-    }
-
-    private fun initSubmitButton(){
-        binding.btnSaveDiary.setOnClickListener {
-            val diaryContent = binding.etDiary.text.toString()
-            if (diaryContent.isNotEmpty()) {
-                Log.d("DailyDiaryFragment", "Diary Content: $diaryContent")
-                val newDiary = WriteDiaryReq(diaryContent)
-                viewModel.writeDiary(newDiary)
-            }
-        }
-    }
-
-    private fun hideKeyboard(){
-        val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(binding.etDiary.windowToken, 0)
     }
 }

@@ -5,20 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.durymong.R
 import com.example.durymong.databinding.FragmentDoItMonthlyRecordBinding
+import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.view.do_it.record.adapter.RVAdapterMonthlyRecord
-import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
-import java.time.DayOfWeek
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import com.example.durymong.view.do_it.viewmodel.DoItViewModel
 
 class MonthlyRecordFragment: Fragment() {
     private var _binding: FragmentDoItMonthlyRecordBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvAdapterMonthlyRecord: RVAdapterMonthlyRecord
 
-    private val viewModel: MonthlyRecordViewModel by viewModels()
+    private val viewModel: DoItViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,18 +30,28 @@ class MonthlyRecordFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initRVAdapterMonthlyRecord()
+        viewModel.updateCurrentDate()
         observeViewModel()
         onChangeMonthButton()
+        with(binding){
+            ivTopAppBarBack.setOnClickListener{
+                findNavController().popBackStack()
+            }
+            btnRecordDay.setOnClickListener {
+                findNavController().navigate(R.id.action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_diary)
+            }
+        }
     }
 
     private fun observeViewModel() {
         viewModel.monthlyRecordList.observe(viewLifecycleOwner) {
-            rvAdapterMonthlyRecord.notifyDataSetChanged()
+            initRVAdapterMonthlyRecord(it)
         }
         viewModel.currentMonth.observe(viewLifecycleOwner) {
             binding.tvCurrentMonthCalendar.text = "${it.monthValue}월 성장일지"
+        }
+        viewModel.nickname.observe(viewLifecycleOwner) {
+            binding.tvUserName.text = it
         }
     }
 
@@ -54,9 +64,10 @@ class MonthlyRecordFragment: Fragment() {
         }
     }
 
-    private fun initRVAdapterMonthlyRecord() {
-        rvAdapterMonthlyRecord = RVAdapterMonthlyRecord(requireContext(), viewModel.monthlyRecordList) {
-            //날짜에 해당하는 화면으로 이동
+    private fun initRVAdapterMonthlyRecord(monthlyRecordList: List<DateInfo>) {
+        rvAdapterMonthlyRecord = RVAdapterMonthlyRecord(requireContext(), monthlyRecordList) {
+            viewModel.updateSelectedDate(it)
+            findNavController().navigate(R.id.action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_record)
         }
         binding.rvCalendar.adapter = rvAdapterMonthlyRecord
     }
@@ -65,7 +76,4 @@ class MonthlyRecordFragment: Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-
 }
