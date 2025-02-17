@@ -95,8 +95,37 @@
         android:label="do_it_daily_diary"
         tools:layout="@layout/fragment_do_it_daily_record" >
         <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_mong_history"
+            app:destination="@id/fragment_do_it_mong_history"/>
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_chat_history_character"
+            app:destination="@id/fragment_chat_history_character"/>
+        <action
             android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_daily_diary_disabled"
             app:destination="@id/fragment_do_it_daily_diary_disabled"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_mong_history"
+        android:name="com.example.durymong.view.do_it.record.DoItMongHistoryFragment"
+        android:label="do_it_mong_history"
+        tools:layout="@layout/fragment_do_it_mong_history"/>
+
+    <fragment
+        android:id="@+id/fragment_chat_history"
+        android:name="com.example.durymong.view.do_it.record.DoItChatHistoryFragment"
+        android:label="do_it_chat_history"
+        tools:layout="@layout/fragment_do_it_chat_history"/>
+
+    <fragment
+        android:id="@+id/fragment_chat_history_character"
+        android:name="com.example.durymong.view.do_it.record.DoItChatHistoryCharacterFragment"
+        android:label="do_it_chat_history_character"
+        tools:layout="@layout/fragment_do_it_chat_history_character"
+        >
+        <action
+            android:id="@+id/action_fragment_do_it_chat_history_character_to_fragment_do_it_chat_history"
+            app:destination="@id/fragment_chat_history"/>
     </fragment>
 
     <fragment

@@ -34,8 +34,16 @@ class DailyRecordFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         initShowRecordButton()
-        binding.ivTopAppBarBack.setOnClickListener{
-            findNavController().popBackStack()
+        with(binding){
+            ivTopAppBarBack.setOnClickListener{
+                findNavController().popBackStack()
+            }
+            cardMongChatRecord.setOnClickListener{
+                findNavController().navigate(R.id.action_fragment_do_it_daily_record_to_fragment_do_it_mong_history)
+            }
+            cardAiChatRecord.setOnClickListener {
+                findNavController().navigate(R.id.action_fragment_do_it_daily_record_to_fragment_do_it_chat_history_character)
+            }
         }
     }
 
