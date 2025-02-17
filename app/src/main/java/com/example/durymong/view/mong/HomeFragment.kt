@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.durymong.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -16,6 +17,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
+
+        binding.ivHomeSettings.setOnClickListener {
+            val action = HomeFragmentDirections.actionFragmentHomeToFragmentSettings()
+            findNavController().navigate(action)
+        }
         return binding.root
     }
 

@@ -10,7 +10,13 @@
         android:id="@+id/fragment_mong"
         android:name="com.example.durymong.view.mong.HomeFragment"
         android:label="mong"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_settings"
+            app:destination="@id/fragment_settings"/>
+
+    </fragment>
+
 
     <!--Chat-->
     <fragment
@@ -123,5 +129,50 @@
         android:name="com.example.durymong.view.do_it.DoItStretchingFragment"
         android:label="do_it_stretching"
         tools:layout="@layout/fragment_do_it_stretching" />
+
+    <!--setting-->
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.example.durymong.view.settings.SettingsFragment"
+        android:label="settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_edit_password"
+            app:destination="@id/fragment_settings_edit_password"/>
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_edit_user_info"
+            app:destination="@id/fragment_settings_edit_user_info"/>
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_alarm"
+            app:destination="@id/fragment_settings_alarm"/>
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_resign"
+            app:destination="@id/fragment_settings_resign"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_settings_edit_password"
+        android:name="com.example.durymong.view.settings.SettingsEditPasswordFragment"
+        android:label="settings_edit_password"
+        tools:layout="@layout/fragment_settings_edit_password"/>
+
+    <fragment
+        android:id="@+id/fragment_settings_edit_user_info"
+        android:name="com.example.durymong.view.settings.SettingsEditUserInfo"
+        android:label="settings_edit_user_info"
+        tools:layout="@layout/fragment_settings_edit_user_info"/>
+
+    <fragment
+        android:id="@+id/fragment_settings_alarm"
+        android:name="com.example.durymong.view.settings.SettingsAlarmFragment"
+        android:label="settings_alarm"
+        tools:layout="@layout/fragment_settings_alarm"/>
+
+    <fragment
+        android:id="@+id/fragment_settings_resign"
+        android:name="com.example.durymong.view.settings.SettingsResignFragment"
+        android:label="settings_resign"
+        tools:layout="@layout/fragment_settings_resign"/>
 
 </navigation>
