@@ -25,7 +25,7 @@ class DailyRecordFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDoItDailyRecordBinding.inflate(layoutInflater)
         return binding.root
     }
