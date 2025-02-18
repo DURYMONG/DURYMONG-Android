@@ -7,7 +7,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface UserService {
-    @POST("users/login")
+    @POST("auth/login")
     fun postLogin(
         @Body userData: UserLoginRequestDto
     ): Call<UserTokenRequestDto>
