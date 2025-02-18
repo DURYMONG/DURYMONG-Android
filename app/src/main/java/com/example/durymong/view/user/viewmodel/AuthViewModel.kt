@@ -20,11 +20,14 @@ class AuthViewModel : ViewModel() {
         viewModelScope.launch {
             repository.postLogin(userData) { response ->
                 if (response != null) {
-                    Log.d("AuthViewModel", "로그인 성공: ${response.result.accessToken}")
+                    Log.d("AuthViewModel", "로그인 성공")
                     val token = response.result.accessToken
+                    val refreshToken = response.result.refreshToken
                     if (token.isNotBlank()) {
                         TokenManager.saveToken(token)
                         Log.d("AuthViewModel", "토큰 저장 성공 : $token")
+                        TokenManager.saveRefreshToken(refreshToken)
+                        Log.d("AuthViewModel", "refresh 토큰 저장 성공 : $refreshToken")
                     } else{
                         Log.e("AuthViewModel", "토큰 저장 실패")
                     }
