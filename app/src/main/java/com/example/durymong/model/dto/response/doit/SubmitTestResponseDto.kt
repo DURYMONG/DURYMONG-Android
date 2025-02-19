@@ -9,7 +9,7 @@ data class SubmitTestResponseDto(
 
 data class ResponseResultData (
     val testName: String,
-    val userName: String,
+    val nickName: String,
     val userScore: Int,
     val userResult: String,
     val scoreDistributionList: String

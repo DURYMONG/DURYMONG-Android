@@ -233,7 +233,7 @@ class TestPageFragment : Fragment() {
         val resultText1 = resultDialog.findViewById<TextView>(R.id.tv_result_message_0_11)
 
         viewModel.testResult.observe(viewLifecycleOwner){
-            userName.text=viewModel.testResult.value?.result?.userName
+            userName.text=viewModel.testResult.value?.result?.nickName
             resultScore.text=viewModel.testResult.value?.result?.userScore.toString()+"점"
             resultText.text=viewModel.testResult.value?.result?.userResult
             resultText1.text=viewModel.testResult.value?.result?.scoreDistributionList

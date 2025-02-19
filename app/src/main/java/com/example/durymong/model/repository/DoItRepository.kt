@@ -56,7 +56,6 @@ class DoItRepository {
                     val body = response.body()
                     if (body != null) {
                         onSuccess(body)
-                        Log.d("getTestMainPage", body.result.lastTestDTO.userName)
                     }
                 }
             }

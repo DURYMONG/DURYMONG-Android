@@ -67,7 +67,7 @@ class LevelTestFragment : Fragment() {
                         if (lastTest.date != null) {//
                             tvDoItStressTestRecentRecordDate.text = lastTest.date
                             tvDoItStressTestRecentRecordNameScore.text =
-                                "${lastTest.userName}님      ${lastTest.lastScore}점"
+                                "${lastTest.nickName}님      ${lastTest.lastScore}점"
                         } else {
                             tvDoItStressTestRecentRecordDate.text = "최근 기록 없음"
                             tvDoItStressTestRecentRecordNameScore.text = ""
