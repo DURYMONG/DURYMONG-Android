@@ -13,6 +13,8 @@ data class CategoryResult(
 )
 
 data class Category(
+    val categoryId: Int,
     val name: String,
-    val image: String
+    val image: String,
+    val detail: String
 )

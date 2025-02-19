@@ -41,10 +41,6 @@
         android:name="com.example.durymong.view.column.ColumnDetailFragment"
         android:label="column_detail"
         tools:layout="@layout/fragment_column_detail">
-        <argument
-            android:name="columnData"
-            app:argType="com.example.durymong.view.column.viewmodel.ColumnViewModel$Column"
-            app:nullable="false" />
     </fragment>
 
     <!--Do It-->
@@ -76,8 +72,67 @@
         android:id="@+id/fragment_do_it_monthly_diary"
         android:name="com.example.durymong.view.do_it.record.MonthlyRecordFragment"
         android:label="do_it_monthly_diary"
-        tools:layout="@layout/fragment_do_it_monthly_record" />
+        tools:layout="@layout/fragment_do_it_monthly_record"
+        >
+        <action
+            android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_record"
+            app:destination="@id/fragment_do_it_daily_record" />
+        <action
+            android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_diary"
+            app:destination="@id/fragment_do_it_daily_diary"/>
+    </fragment>
 
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_diary"
+        android:name="com.example.durymong.view.do_it.record.DailyDiaryFragment"
+        android:label="do_it_record_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_diary"/>
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_diary_disabled"
+        android:name="com.example.durymong.view.do_it.record.DailyDiaryDisabledFragment"
+        android:label="do_it_record_daily_diary_disabled"
+        tools:layout="@layout/fragment_do_it_daily_diary_disabled"/>
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_record"
+        android:name="com.example.durymong.view.do_it.record.DailyRecordFragment"
+        android:label="do_it_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_record" >
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_mong_history"
+            app:destination="@id/fragment_do_it_mong_history"/>
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_chat_history_character"
+            app:destination="@id/fragment_chat_history_character"/>
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_daily_diary_disabled"
+            app:destination="@id/fragment_do_it_daily_diary_disabled"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_mong_history"
+        android:name="com.example.durymong.view.do_it.record.DoItMongHistoryFragment"
+        android:label="do_it_mong_history"
+        tools:layout="@layout/fragment_do_it_mong_history"/>
+
+    <fragment
+        android:id="@+id/fragment_chat_history"
+        android:name="com.example.durymong.view.do_it.record.DoItChatHistoryFragment"
+        android:label="do_it_chat_history"
+        tools:layout="@layout/fragment_do_it_chat_history"/>
+
+    <fragment
+        android:id="@+id/fragment_chat_history_character"
+        android:name="com.example.durymong.view.do_it.record.DoItChatHistoryCharacterFragment"
+        android:label="do_it_chat_history_character"
+        tools:layout="@layout/fragment_do_it_chat_history_character"
+        >
+        <action
+            android:id="@+id/action_fragment_do_it_chat_history_character_to_fragment_do_it_chat_history"
+            app:destination="@id/fragment_chat_history"/>
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_do_it_walk"

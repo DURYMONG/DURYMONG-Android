@@ -4,26 +4,26 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.durymong.databinding.ItemCalendarDayBinding
-import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
+import com.example.durymong.model.dto.response.doit.DateInfo
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
 class RVAdapterMonthlyRecord(
     private val context: Context,
-    private val items: LiveData<List<MonthlyRecordViewModel.DateRecord>>,
-    private val onItemClick: (MonthlyRecordViewModel.DateRecord) -> Unit
+    private val items: List<DateInfo>,
+    private val onItemClick: (DateInfo) -> Unit
 ) : RecyclerView.Adapter<RVAdapterMonthlyRecord.ViewHolder>() {
 
     private var currentDate: String = getCurrentDate()
 
     inner class ViewHolder(val binding: ItemCalendarDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MonthlyRecordViewModel.DateRecord) {
-            binding.tvCalendarDate.text = item.date
+        fun bind(item: DateInfo) {
+            binding.tvCalendarDate.text = item.date.split("-")[2].toInt().toString()
             binding.vCalendarCircle.alpha = if (item.count >= 3) {
                 1f
             } else if (item.count >= 2) {
@@ -52,11 +52,11 @@ class RVAdapterMonthlyRecord(
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = items.value?.size!!
+    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items.value?.get(position)
-        if (item == null || item.date.isEmpty()){
+        val item = items[position]
+        if (item.date.isEmpty()){
             holder.binding.tvCalendarDate.text = ""
             holder.binding.vCalendarCircle.visibility = View.INVISIBLE
             holder.binding.vCalendarSelected.visibility = View.INVISIBLE

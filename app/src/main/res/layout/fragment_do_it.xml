@@ -57,10 +57,11 @@
         android:layout_marginStart="3.72dp"
         android:layout_marginTop="30dp"
         android:contentDescription="두리몽 이미지"
-        android:src="@drawable/img_do_it_mong"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_do_it_circle" />
+    <!--    android:src="@drawable/img_do_it_mong"-->
 
     <ImageView
         android:id="@+id/iv_do_it_calender"
@@ -125,7 +126,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
-                android:id="@+id/rb_do_it_bed_clean"
+                android:id="@+id/cb_do_it_bed_clean"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_marginStart="43dp"
@@ -144,8 +145,8 @@
                 android:text="침구 정리하기"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/rb_do_it_bed_clean"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean" />
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean" />
 
             <ImageView
                 android:id="@+id/iv_do_it_bed_clean"
@@ -155,18 +156,18 @@
                 android:layout_marginTop="3dp"
                 android:contentDescription="침구 정리하기 화살표"
                 android:src="@drawable/ic_do_it_next"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
                 app:layout_constraintTop_toTopOf="@id/tv_do_it_bed_clean" />
 
             <CheckBox
-                android:id="@+id/rb_do_it_walk"
+                android:id="@+id/cb_do_it_walk"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/ic_do_it_radio_button"
                 android:button="@null"
-                app:layout_constraintStart_toStartOf="@id/rb_do_it_bed_clean"
-                app:layout_constraintTop_toBottomOf="@id/rb_do_it_bed_clean" />
+                app:layout_constraintStart_toStartOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toBottomOf="@id/cb_do_it_bed_clean" />
 
             <TextView
                 android:id="@+id/tv_do_it_walk"
@@ -177,8 +178,8 @@
                 android:text="30분 걷기"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/rb_do_it_walk"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_walk" />
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_walk"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_walk" />
 
             <ImageView
                 android:id="@+id/iv_do_it_walk"
@@ -188,18 +189,18 @@
                 android:layout_marginTop="3dp"
                 android:contentDescription="30분 걷기 아이콘"
                 android:src="@drawable/ic_do_it_next"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
                 app:layout_constraintTop_toTopOf="@id/tv_do_it_walk" />
 
             <CheckBox
-                android:id="@+id/rb_do_it_stretching"
+                android:id="@+id/cb_do_it_stretching"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/ic_do_it_radio_button"
                 android:button="@null"
-                app:layout_constraintStart_toStartOf="@id/rb_do_it_walk"
-                app:layout_constraintTop_toBottomOf="@id/rb_do_it_walk" />
+                app:layout_constraintStart_toStartOf="@id/cb_do_it_walk"
+                app:layout_constraintTop_toBottomOf="@id/cb_do_it_walk" />
 
             <TextView
                 android:id="@+id/tv_do_it_stretching"
@@ -210,8 +211,8 @@
                 android:text="실내 스트레칭"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/rb_do_it_stretching"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_stretching" />
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_stretching"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_stretching" />
 
             <ImageView
                 android:id="@+id/iv_do_it_stretching"
@@ -221,18 +222,18 @@
                 android:layout_marginTop="-3dp"
                 android:contentDescription="실내 스트레칭 아이콘"
                 android:src="@drawable/ic_do_it_next"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
-                app:layout_constraintTop_toTopOf="@id/rb_do_it_stretching" />
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toTopOf="@id/cb_do_it_stretching" />
 
             <CheckBox
-                android:id="@+id/rb_do_it_meditation"
+                android:id="@+id/cb_do_it_meditation"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/ic_do_it_radio_button"
                 android:button="@null"
-                app:layout_constraintStart_toStartOf="@id/rb_do_it_stretching"
-                app:layout_constraintTop_toBottomOf="@id/rb_do_it_stretching" />
+                app:layout_constraintStart_toStartOf="@id/cb_do_it_stretching"
+                app:layout_constraintTop_toBottomOf="@id/cb_do_it_stretching" />
 
             <TextView
                 android:id="@+id/tv_do_it_meditation"
@@ -243,8 +244,8 @@
                 android:text="명상하기"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/rb_do_it_meditation"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_meditation" />
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_meditation"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_meditation" />
 
             <ImageView
                 android:id="@+id/iv_do_it_meditation"
@@ -254,10 +255,11 @@
                 android:layout_marginTop="-3dp"
                 android:contentDescription="명상하기 아이콘"
                 android:src="@drawable/ic_do_it_next"
-                app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean"
-                app:layout_constraintTop_toTopOf="@id/rb_do_it_meditation" />
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toTopOf="@id/cb_do_it_meditation" />
 
             <View
+                android:id="@+id/v_do_it_mid"
                 android:layout_width="1dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="66dp"
@@ -271,9 +273,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="81dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -284,7 +286,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/suite_semi_bold"
-                        android:text="외상후 스트레스 검사"
+                        android:text="우울증 검사"
                         android:textColor="@color/do_it_purple"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -300,9 +302,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_post_traumatic_stress_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -313,7 +315,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/suite_semi_bold"
-                        android:text="문장 완성 검사"
+                        android:text="외상 후 스트레스 검사"
                         android:textColor="@color/do_it_purple"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -329,9 +331,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_sentence_completion_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -358,9 +360,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_stress_level_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -371,7 +373,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/suite_semi_bold"
-                        android:text="우울감 검사"
+                        android:text="조울증 검사"
                         android:textColor="@color/do_it_purple"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -387,9 +389,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_depression_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -400,7 +402,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/suite_semi_bold"
-                        android:text="TCI 검사"
+                        android:text="범불안 장애 검사"
                         android:textColor="@color/do_it_purple"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"

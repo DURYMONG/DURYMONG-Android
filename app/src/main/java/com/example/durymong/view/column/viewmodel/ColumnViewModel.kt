@@ -1,11 +1,15 @@
 package com.example.durymong.view.column.viewmodel
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.durymong.R
+import com.example.durymong.model.dto.response.column.Category
+import com.example.durymong.model.dto.response.column.ColumnResult
+import com.example.durymong.model.dto.response.column.KeywordSearchColumn
 import com.example.durymong.model.repository.ColumnRepository
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
@@ -13,72 +17,61 @@ import kotlinx.parcelize.Parcelize
 
 class ColumnViewModel : ViewModel() {
     private val repository = ColumnRepository()
+
     //실제 data를 저장할 변수들
-    private val _columnCategoryList = MutableLiveData<List<ColumnCategory>>()
-    private val _columnData = MutableLiveData<Column>()
+    private val _columnCategoryList = MutableLiveData<List<Category>>(emptyList())
+    private val _columnSearchResult = MutableLiveData<List<KeywordSearchColumn>>(emptyList())
+    private val _columnData = MutableLiveData<ColumnResult>()
 
     //화면에서 아래 변수들을 통해 값에 접근
-    val columnCategoryList: LiveData<List<ColumnCategory>> get() = _columnCategoryList
-    val columnData: LiveData<Column> get() = _columnData
+    val columnCategoryList: LiveData<List<Category>> get() = _columnCategoryList
+    val columnSearchResult: LiveData<List<KeywordSearchColumn>> get() = _columnSearchResult
+    val columnData: LiveData<ColumnResult> get() = _columnData
 
     init {
         //처음 viewModel이 생성될 때 실행할 작업들
-//        fetchColumnCategoryData()
+        Log.d("ColumnViewModel", "init")
+        fetchColumnCategoryData()
     }
 
-    //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
     fun fetchColumnCategoryData() {
         viewModelScope.launch {
-            try {
-                val response = repository.getColumnCategories()
-                // TODO: response.result 를 _columnCategoryList 에 저장
-            } catch (e: Exception) {
-                e.printStackTrace()
+            repository.getColumnCategories { response ->
+                Log.d("ColumnViewModel", "in viewModelScope")
+                if (response != null) {
+                    Log.d("ColumnViewModel", "카테고리 가져오기 성공")
+                    _columnCategoryList.value = response.result.categories
+                } else {
+                    Log.e("ColumnViewModel", "카테고리 가져오기 실패")
+                }
             }
         }
-//        _columnCategoryList.value = listOf(
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#수면장애",
-//                description = "수면장애란 제대로 잘 수 없는~"
-//            ),
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#우울감",
-//                description = "우울감이란~"
-//            ),
-//            ColumnCategory(
-//                imgId = R.drawable.ic_column_sleep_disorder,
-//                name = "#공황장애",
-//                description = "공황장애란~"
-//            ),
-//        )
+        Log.d("ColumnViewModel", "fetchColumnCategoryData Done")
     }
 
-    //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
-    fun fetchColumnData() {
-        _columnData.value = Column(
-            imgId = R.drawable.img_column_thumbnail_dummy,
-            headLine = "잠 못 드는 하루하루, 수면장애",
-            title = "수면장애에 대한 이야기",
-            body = " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
-                    + " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
-                    + " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
-        )
+    fun searchColumnByKeyword(keyword: String) {
+        viewModelScope.launch {
+            repository.searchColumns(keyword) { response ->
+                if (response != null) {
+                    Log.d("ColumnViewModel", "키워드 검색 성공")
+                    _columnSearchResult.value = response.result.columns
+                } else {
+                    Log.e("ColumnViewModel", "키워드 검색 실패")
+                }
+            }
+        }
     }
 
-    //dummy data들, 이후에 api 연결시에는 dto를 만들고 아래의 data class들은 사용하지 않을 예정
-    data class ColumnCategory(
-        val imgId: Int,
-        val name: String,
-        val description: String
-    )
-
-    @Parcelize
-    data class Column(
-        val imgId: Int,
-        val headLine: String,
-        val title: String,
-        val body: String
-    ) : Parcelable
+    fun fetchColumnData(categoryId: Int) {
+        viewModelScope.launch {
+            repository.getColumns(categoryId) { response ->
+                if (response != null) {
+                    Log.d("ColumnViewModel", "칼럼 조회 성공")
+                    _columnData.value = response.result
+                } else {
+                    Log.e("ColumnViewModel", "칼럼 조회 실패")
+                }
+            }
+        }
+    }
 }

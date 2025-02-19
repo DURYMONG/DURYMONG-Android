@@ -2,7 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="108dp">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_test_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="보라색 테두리"
+        android:src="@drawable/img_test_warning_rectangle"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_question_name"
@@ -18,17 +30,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:layout_width="170dp"
+        android:layout_width="230dp"
         android:layout_height="26dp"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="14dp"
         android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_not_at_all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
         >
-<!--         이미지는 수정예정-->
+        <!--         이미지는 수정예정-->
         <RadioButton
             android:id="@+id/rb_test_1"
             android:layout_width="26dp"
@@ -38,17 +51,17 @@
 
         <RadioButton
             android:id="@+id/rb_test_2"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/ic_test_radio_button_mid"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/ic_test_radio_button_left"
             android:button="@null" />
 
         <RadioButton
             android:id="@+id/rb_test_3"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="40dp"
             android:background="@drawable/ic_test_radio_button_right"
             android:button="@null" />
 
@@ -56,30 +69,33 @@
             android:id="@+id/rb_test_4"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="40dp"
             android:background="@drawable/ic_test_radio_button_right"
             android:button="@null" />
     </RadioGroup>
 
     <TextView
+        android:id="@+id/tv_not_at_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="50dp"
         android:fontFamily="@font/suite_medium"
         android:text="그렇지 않다"
         android:textColor="@color/gray3"
         android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_question_name"
         app:layout_constraintBottom_toBottomOf="@id/v_stress_test_line"
         app:layout_constraintStart_toStartOf="@id/v_stress_test_line" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="50dp"
         android:fontFamily="@font/suite_medium"
         android:text="매우 그렇다"
         android:textColor="@color/gray3"
         android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_question_name"
         app:layout_constraintBottom_toBottomOf="@id/v_stress_test_line"
         app:layout_constraintEnd_toEndOf="@id/v_stress_test_line" />
 
