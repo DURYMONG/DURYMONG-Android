@@ -4,10 +4,10 @@ data class UserDailyChatResponse(
     val success: Boolean,
     val code: Int,
     val message: String,
-    val result: UserDailyChatResult
+    val result: UserDailyMongChatResult
 )
 
-data class UserDailyChatResult(
+data class UserDailyMongChatResult(
     val createdAt: String,
     val mongQuestion: String,
     val userAnswer: String

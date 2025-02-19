@@ -10,10 +10,10 @@ data class UserDailyBotChatResponse(
 data class UserDailyBotChatResult(
     val targetDate: String,
     val chatBotImage: String,
-    val chatHistory: List<MongChatHistory>
+    val chatHistory: List<ChatBotHistory>
 )
 
-data class MongChatHistory(
+data class ChatBotHistory(
     val startTime: String,
     val greetingMessage: String,
     val symptoms: List<String>,
