@@ -20,6 +20,6 @@ data class TestMainPageDto(
 
 data class LastTestDto(
     val date : String,
-    val userName : String,
+    val nickName : String,
     val lastScore : Int
 )
