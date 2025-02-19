@@ -39,7 +39,6 @@ class AuthActivity : AppCompatActivity(){
         }
         binding.ivDurymongMainLogo.setOnClickListener {
             // 임의로 테스트용 함수 호출, 이후에는 수정해서 사용
-            loginTest()
             navigateToMain()
         }
     }
@@ -51,6 +50,7 @@ class AuthActivity : AppCompatActivity(){
 
     private fun navigateToLogin(){
         // TODO: 로그인 화면으로 이동
+        loginTest()
     }
 
     private fun navigateToMain(){
