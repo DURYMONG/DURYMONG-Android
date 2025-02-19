@@ -3,6 +3,9 @@ package com.example.durymong.model.repository
 import android.util.Log
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.request.doit.UserDailyBotChatChoiceRequest
+import com.example.durymong.model.dto.request.doit.UserDailyBotChatRequest
+import com.example.durymong.model.dto.request.doit.UserDailyChatRequest
 import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityDayRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
@@ -12,6 +15,9 @@ import com.example.durymong.model.dto.response.doit.DiaryResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatChoiceResponse
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatResponse
+import com.example.durymong.model.dto.response.doit.UserDailyChatResponse
 import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.DoItService
 import retrofit2.Call
@@ -239,4 +245,70 @@ class DoItRepository {
         })
     }
 
+    // 챗봇 기록 메뉴 조회
+    fun getChatbotHistoryMenu(request: UserDailyBotChatChoiceRequest, onSuccess: (UserDailyBotChatChoiceResponse?) -> Unit){
+        doItService.getChatbotHistoryMenu(request).enqueue(object : Callback<UserDailyBotChatChoiceResponse>{
+            override fun onResponse(
+                call: Call<UserDailyBotChatChoiceResponse>,
+                response: Response<UserDailyBotChatChoiceResponse>
+            ) {
+                if(response.isSuccessful){
+                    onSuccess(response.body())
+                    Log.d("DoItRepository", "getChatbotHistoryMenu Success")
+                }else{
+                    Log.d("DoItRepository", "getChatbotHistoryMenu Failed: ${response.code()}")
+                    onSuccess(null)
+                }
+            }
+
+            override fun onFailure(call: Call<UserDailyBotChatChoiceResponse>, t: Throwable) {
+                Log.d("DoItRepository", "getChatbotHistoryMenu Error: ${t.message}")
+            }
+
+        })
+    }
+
+    // 챗봇 상담 기록 조회
+    fun getChatbotHistory(request: UserDailyBotChatRequest, onSuccess: (UserDailyBotChatResponse?) -> Unit){
+        doItService.getChatbotHistory(request).enqueue(object : Callback<UserDailyBotChatResponse>{
+            override fun onResponse(
+                call: Call<UserDailyBotChatResponse>,
+                response: Response<UserDailyBotChatResponse>
+            ) {
+                if(response.isSuccessful){
+                    onSuccess(response.body())
+                    Log.d("DoItRepository", "getChatbotHistory Success")
+                }else{
+                    Log.d("DoItRepository", "getChatbotHistory Failed: ${response.code()}")
+                    onSuccess(null)
+                }
+            }
+
+            override fun onFailure(call: Call<UserDailyBotChatResponse>, t: Throwable) {
+                Log.d("DoItRepository", "getChatbotHistory Error: ${t.message}")
+            }
+        })
+    }
+
+    // 몽 대화 기록 조회
+    fun getMongChatHistory(request: UserDailyChatRequest, onSuccess: (UserDailyChatResponse?) -> Unit){
+        doItService.getMongChatHistory(request).enqueue(object : Callback<UserDailyChatResponse>{
+            override fun onResponse(
+                call: Call<UserDailyChatResponse>,
+                response: Response<UserDailyChatResponse>
+            ) {
+                if(response.isSuccessful){
+                    onSuccess(response.body())
+                    Log.d("DoItRepository", "getMongChatHistory Success")
+                }else{
+                    Log.d("DoItRepository", "getMongChatHistory Failed: ${response.code()}")
+                    onSuccess(null)
+                }
+            }
+
+            override fun onFailure(call: Call<UserDailyChatResponse>, t: Throwable) {
+                Log.d("DoItRepository", "getMongChatHistory Error: ${t.message}")
+            }
+        })
+    }
 }

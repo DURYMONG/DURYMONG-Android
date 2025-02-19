@@ -2,6 +2,9 @@ package com.example.durymong.retrofit.service
 
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.request.doit.UserDailyBotChatChoiceRequest
+import com.example.durymong.model.dto.request.doit.UserDailyBotChatRequest
+import com.example.durymong.model.dto.request.doit.UserDailyChatRequest
 import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityDayRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
@@ -12,6 +15,9 @@ import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import retrofit2.Call
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatChoiceResponse
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatResponse
+import com.example.durymong.model.dto.response.doit.UserDailyChatResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -61,4 +67,23 @@ interface DoItService {
     // 일기 조회
     @GET("activities/records/{date}/diaries")
     fun getDiary(@Path("date") date: String): Call<DiaryResponse>
+
+    // 챗봇 기록 메뉴 조회
+    @GET("users/daily-bot-chat-choice")
+    fun getChatbotHistoryMenu(
+        @Body request: UserDailyBotChatChoiceRequest
+    ): Call<UserDailyBotChatChoiceResponse>
+
+    // 챗봇 상담 기록 조회
+    @GET("users/daily-bot-chat")
+    fun getChatbotHistory(
+        @Body request: UserDailyBotChatRequest
+    ): Call<UserDailyBotChatResponse>
+
+    // 몽 대화 기록 조회
+    @GET("users/daily-mong-chat")
+    fun getMongChatHistory(
+        @Body request: UserDailyChatRequest
+    ): Call<UserDailyChatResponse>
+
 }
