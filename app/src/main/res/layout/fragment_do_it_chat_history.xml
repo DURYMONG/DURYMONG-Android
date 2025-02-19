@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/suite_semi_bold"
-                android:text="의 기록"
+                android:text="의 상담"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/tv_date"
@@ -87,19 +87,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <TextView
-            android:id="@+id/tv_no_history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="상담 기록이 존재하지 않아요."
-            android:textColor="@color/gray4"
-            android:textSize="16sp"
-            android:fontFamily="@font/suite_semi_bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
