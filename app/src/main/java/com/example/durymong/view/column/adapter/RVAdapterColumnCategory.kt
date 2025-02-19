@@ -29,6 +29,7 @@ class RVAdapterColumnCategory(
             val requestOptions = RequestOptions()
                 .timeout(10000)
                 .diskCacheStrategy(DiskCacheStrategy.ALL) // 캐시 사용
+                .override(binding.ivColumnCategoryIcon.width, binding.ivColumnCategoryIcon.height)
             Glide.with(context)
                 .load(item.image)
                 .apply(requestOptions)

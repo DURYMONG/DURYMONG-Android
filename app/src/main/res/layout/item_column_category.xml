@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/iv_column_category_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="19dp"
                 android:contentDescription="sleep disorder"
                 android:src="@drawable/ic_column_sleep_disorder"
