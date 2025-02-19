@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.durymong.R
 import com.example.durymong.databinding.FragmentDoItChatHistoryCharacterBinding
 import com.example.durymong.model.dto.response.doit.BotChatDto
 import com.example.durymong.view.do_it.record.adapter.RVAdapterChatbotHistory
@@ -37,6 +39,8 @@ class DoItChatHistoryCharacterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPage()
+        viewModel.selectedDate.value?.let { viewModel.fetchChatBotMenu(it) }
+        observeViewModel()
     }
 
     override fun onDestroyView() {
@@ -45,11 +49,26 @@ class DoItChatHistoryCharacterFragment : Fragment() {
     }
 
     private fun observeViewModel(){
-
+        viewModel.chatBotCardList.observe(viewLifecycleOwner){ cards ->
+            Log.d("DoItChatHistoryCharacterFragment", "observeViewModel: $cards")
+            if(cards.isNotEmpty()){
+                initRVAdapterChatbotHistory(cards)
+                binding.tvNoChatbotHistory.visibility = View.GONE
+                binding.rvChatbotHistoryList.visibility = View.VISIBLE
+            } else{
+                binding.tvNoChatbotHistory.visibility = View.VISIBLE
+                binding.rvChatbotHistoryList.visibility = View.GONE
+            }
+        }
     }
 
     private fun initRVAdapterChatbotHistory(chatbotHistory: List<BotChatDto>){
-
+        Log.d("DoItChatHistoryCharacterFragment", "initRVAdapterChatbotHistory: $chatbotHistory")
+        rvAdapterChatbotHistory =
+            RVAdapterChatbotHistory(requireContext(), chatbotHistory) {
+                viewModel.fetchDailyChatBotHistory(viewModel.selectedDate.value!!, it.chatBotId)
+                findNavController().navigate(R.id.action_fragment_do_it_chat_history_character_to_fragment_do_it_chat_history)
+            }
     }
 
     private fun initPage(){

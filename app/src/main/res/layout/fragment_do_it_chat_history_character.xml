@@ -99,7 +99,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_column_search_result"
+            android:id="@+id/rv_chatbot_history_list"
             tools:listitem="@layout/item_do_it_chatbot_card"
             android:layout_width="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

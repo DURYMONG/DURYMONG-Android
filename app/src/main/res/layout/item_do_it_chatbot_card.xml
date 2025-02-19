@@ -48,7 +48,7 @@
             </FrameLayout>
 
             <TextView
-                android:id="@+id/tv_chat_dog_name"
+                android:id="@+id/tv_chatbot_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13.37dp"

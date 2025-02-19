@@ -1,6 +1,9 @@
 package com.example.durymong.view.do_it.record
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.durymong.R
 import com.example.durymong.databinding.FragmentDoItDailyRecordBinding
 import com.example.durymong.view.do_it.viewmodel.DoItViewModel
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class DailyRecordFragment: Fragment() {
     private var _binding: FragmentDoItDailyRecordBinding? = null
@@ -34,6 +39,7 @@ class DailyRecordFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         initShowRecordButton()
+        initPage()
         with(binding){
             ivTopAppBarBack.setOnClickListener{
                 findNavController().popBackStack()
@@ -59,12 +65,6 @@ class DailyRecordFragment: Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.selectedDate.observe(viewLifecycleOwner) {
-            val month = it.split("-")[1].toInt().toString()
-            val day = it.split("-")[2].toInt().toString()
-            Log.d("DailyRecordFragment", "Selected Date: ${month}월 ${day}일")
-            binding.tvDate.text = "${month}월 ${day}일"
-        }
         viewModel.mongName.observe(viewLifecycleOwner) {
             binding.tvSeeMongChatRecord.text = "${it}과의 대화 기록"
         }
@@ -78,5 +78,42 @@ class DailyRecordFragment: Fragment() {
                 .apply(requestOptions)
                 .into(binding.ivMong)
         }
+    }
+
+    private fun initPage(){
+        val dateTextColor = binding.tvDate.currentTextColor
+
+        val selectedDateString =
+            viewModel.selectedDate.value?.let {
+                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    .parse(it)
+            }
+        val dateText = selectedDateString?.let {
+            SimpleDateFormat("M월 d일", Locale.getDefault())
+                .format(it)
+        }
+
+        val spannableString = SpannableString(dateText)
+
+        //색상 적용
+        if (dateText != null) {
+            spannableString.setSpan(
+                ForegroundColorSpan(dateTextColor),
+                0,
+                dateText.length,
+                SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+        //밑줄 적용
+        if (dateText != null) {
+            spannableString.setSpan(
+                UnderlineSpan(),
+                0,
+                dateText.length,
+                SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+
+        binding.tvDate.text = spannableString
     }
 }

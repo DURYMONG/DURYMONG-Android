@@ -82,25 +82,37 @@ class DailyDiaryFragment: Fragment() {
 
     private fun initPage(){
         val dateTextColor = binding.tvDate.currentTextColor
-        val dateText = SimpleDateFormat("M월 d일", Locale.getDefault())
-            .format(Calendar.getInstance().time)
+
+        val selectedDateString =
+            viewModel.selectedDate.value?.let {
+                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    .parse(it)
+            }
+        val dateText = selectedDateString?.let {
+            SimpleDateFormat("M월 d일", Locale.getDefault())
+                .format(it)
+        }
 
         val spannableString = SpannableString(dateText)
 
         //색상 적용
-        spannableString.setSpan(
-            ForegroundColorSpan(dateTextColor),
-            0,
-            dateText.length,
-            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+        if (dateText != null) {
+            spannableString.setSpan(
+                ForegroundColorSpan(dateTextColor),
+                0,
+                dateText.length,
+                SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
         //밑줄 적용
-        spannableString.setSpan(
-            UnderlineSpan(),
-            0,
-            dateText.length,
-            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+        if (dateText != null) {
+            spannableString.setSpan(
+                UnderlineSpan(),
+                0,
+                dateText.length,
+                SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
 
         binding.tvDate.text = spannableString
 
