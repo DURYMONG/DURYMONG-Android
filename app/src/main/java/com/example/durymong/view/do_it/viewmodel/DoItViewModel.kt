@@ -6,9 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
-import com.example.durymong.model.dto.request.doit.UserDailyBotChatChoiceRequest
-import com.example.durymong.model.dto.request.doit.UserDailyBotChatRequest
-import com.example.durymong.model.dto.request.doit.UserDailyChatRequest
 import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
 import com.example.durymong.model.dto.response.doit.BotChatDto
@@ -206,10 +203,11 @@ class DoItViewModel : ViewModel() {
     }
 
     // 챗봇 대화 목록 조회
-    fun fetchChatBotMenu(date: String){
+    fun fetchChatBotMenu(targetDate: String){
         viewModelScope.launch {
-            repository.getChatbotHistoryMenu(UserDailyBotChatChoiceRequest(date)){ response ->
+            repository.getChatbotHistoryMenu(targetDate){ response ->
                 if (response != null){
+                    Log.d("DoItViewModel", "response code: ${response.code}")
                     Log.d("DoItViewModel", "챗봇 메뉴 조회 성공")
                     _chatBotCardList.value = response.result.botChatDtos
                 } else{
@@ -220,9 +218,9 @@ class DoItViewModel : ViewModel() {
     }
 
     // 챗봇 대화 기록 조회
-    fun fetchDailyChatBotHistory(date: String, chatBotId: Int){
+    fun fetchDailyChatBotHistory(targetDate: String, chatBotId: Int){
         viewModelScope.launch {
-            repository.getChatbotHistory(UserDailyBotChatRequest(date, chatBotId)){ response ->
+            repository.getChatbotHistory(targetDate, chatBotId){ response ->
                 if (response != null){
                     Log.d("DoItViewModel", "챗봇 기록 조회 성공")
                     _selectedChatBotHistory.value = response.result
@@ -233,10 +231,11 @@ class DoItViewModel : ViewModel() {
         }
     }
 
-    fun fetchDailyMongChatHistory(date: String){
+    fun fetchDailyMongChatHistory(targetDate: String){
         viewModelScope.launch {
-            repository.getMongChatHistory(UserDailyChatRequest(date)){ response ->
+            repository.getMongChatHistory(targetDate){ response ->
                 if (response != null){
+                    Log.d("DoItViewModel", "response code: ${response.code}")
                     Log.d("DoItViewModel", "몽 대화 기록 조회 성공")
                     _selectedMongChatHistory.value = response.result
                 } else{

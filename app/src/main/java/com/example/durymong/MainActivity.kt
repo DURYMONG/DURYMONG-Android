@@ -14,6 +14,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.durymong.databinding.ActivityMainBinding
 import com.example.durymong.model.TokenManager
+import com.example.durymong.retrofit.RetrofitObject
+import com.example.durymong.retrofit.service.UserService
 import com.example.durymong.view.user.AuthActivity
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         TokenManager.accessTokenLiveData.observe(this, Observer { token ->
             if (token == null) {
                 // 토큰이 null이면 로그아웃 처리
+                val userService: UserService = RetrofitObject.createService()
+//                userService.postLogout()
                 val intent = Intent(this, AuthActivity::class.java).apply{
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }

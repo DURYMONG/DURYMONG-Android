@@ -3,9 +3,6 @@ package com.example.durymong.model.repository
 import android.util.Log
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
-import com.example.durymong.model.dto.request.doit.UserDailyBotChatChoiceRequest
-import com.example.durymong.model.dto.request.doit.UserDailyBotChatRequest
-import com.example.durymong.model.dto.request.doit.UserDailyChatRequest
 import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityDayRecordResponse
 import com.example.durymong.model.dto.response.doit.ActivityRecordResponse
@@ -246,8 +243,8 @@ class DoItRepository {
     }
 
     // 챗봇 기록 메뉴 조회
-    fun getChatbotHistoryMenu(request: UserDailyBotChatChoiceRequest, onSuccess: (UserDailyBotChatChoiceResponse?) -> Unit){
-        doItService.getChatbotHistoryMenu(request).enqueue(object : Callback<UserDailyBotChatChoiceResponse>{
+    fun getChatbotHistoryMenu(targetDate: String, onSuccess: (UserDailyBotChatChoiceResponse?) -> Unit){
+        doItService.getChatbotHistoryMenu(targetDate).enqueue(object : Callback<UserDailyBotChatChoiceResponse>{
             override fun onResponse(
                 call: Call<UserDailyBotChatChoiceResponse>,
                 response: Response<UserDailyBotChatChoiceResponse>
@@ -269,8 +266,8 @@ class DoItRepository {
     }
 
     // 챗봇 상담 기록 조회
-    fun getChatbotHistory(request: UserDailyBotChatRequest, onSuccess: (UserDailyBotChatResponse?) -> Unit){
-        doItService.getChatbotHistory(request).enqueue(object : Callback<UserDailyBotChatResponse>{
+    fun getChatbotHistory(targetDate: String, chatBotId: Int, onSuccess: (UserDailyBotChatResponse?) -> Unit){
+        doItService.getChatbotHistory(targetDate,chatBotId).enqueue(object : Callback<UserDailyBotChatResponse>{
             override fun onResponse(
                 call: Call<UserDailyBotChatResponse>,
                 response: Response<UserDailyBotChatResponse>
@@ -291,8 +288,8 @@ class DoItRepository {
     }
 
     // 몽 대화 기록 조회
-    fun getMongChatHistory(request: UserDailyChatRequest, onSuccess: (UserDailyChatResponse?) -> Unit){
-        doItService.getMongChatHistory(request).enqueue(object : Callback<UserDailyChatResponse>{
+    fun getMongChatHistory(targetDate: String, onSuccess: (UserDailyChatResponse?) -> Unit){
+        doItService.getMongChatHistory(targetDate).enqueue(object : Callback<UserDailyChatResponse>{
             override fun onResponse(
                 call: Call<UserDailyChatResponse>,
                 response: Response<UserDailyChatResponse>
@@ -301,6 +298,12 @@ class DoItRepository {
                     onSuccess(response.body())
                     Log.d("DoItRepository", "getMongChatHistory Success")
                 }else{
+                    Log.d("DoItRepository", "getMongChatHistory Failed: ${response.body()?.code}")
+                    if (response.body()?.code == -500){
+                        Log.d("DoItRepository", "getMongChatHistory Error: ${response.body()?.message}")
+                        onSuccess(response.body())
+                    }
+
                     Log.d("DoItRepository", "getMongChatHistory Failed: ${response.code()}")
                     onSuccess(null)
                 }
