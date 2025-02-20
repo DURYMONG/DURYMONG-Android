@@ -9,16 +9,12 @@ import com.example.durymong.databinding.ItemChatbotTestCategoryBinding
 class RVAdapterTestRecommendation(
     private val context: Context,
     private val items: List<String>,
-    private val onItemClick: (String) -> Unit
 ) : RecyclerView.Adapter<RVAdapterTestRecommendation.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemChatbotTestCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
             fun bind(item: String){
                 binding.tvTestName.text = item
-                binding.cardChatbotTestItem.setOnClickListener {
-                    onItemClick(item)
-                }
             }
     }
 

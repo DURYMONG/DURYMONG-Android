@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -50,11 +51,24 @@ class DoItChatHistoryFragment : Fragment() {
 
     private fun initRVSymptoms(symptomList: List<String>){
         Log.d("DoItChatHistoryFragment", "initRVSymptoms: $symptomList")
+        rvAdapterSymptoms =
+            RVAdapterSymptoms(requireContext(), symptomList)
 
+        with(binding.rvSymptomList){
+            adapter = rvAdapterSymptoms
+            layoutManager = GridLayoutManager(requireContext(), 3)
+        }
     }
 
     private fun initRVTestRecommendations(testList: List<String>){
         Log.d("DoItChatHistoryFragment", "initRVTestRecommendations: $testList")
+        rvTestRecommendation =
+            RVAdapterTestRecommendation(requireContext(), testList)
+
+        with(binding.rvTests) {
+            adapter = rvTestRecommendation
+            layoutManager = GridLayoutManager(requireContext(), 1)
+        }
     }
 
     private fun observeViewModel(){

@@ -9,16 +9,12 @@ import com.example.durymong.databinding.ItemDoitChatbotSymptomBinding
 class RVAdapterSymptoms(
     private val context: Context,
     private val items: List<String>,
-    private val onItemClick: (String) -> Unit
 ) : RecyclerView.Adapter<RVAdapterSymptoms.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemDoitChatbotSymptomBinding) :
             RecyclerView.ViewHolder(binding.root) {
                 fun bind(item: String){
                     binding.tvSymptom.text = item
-                    binding.cardChatbotSymptom.setOnClickListener {
-                        onItemClick(item)
-                    }
                 }
     }
 
