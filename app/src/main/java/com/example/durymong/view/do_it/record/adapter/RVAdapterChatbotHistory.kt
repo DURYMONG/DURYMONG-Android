@@ -27,7 +27,7 @@ class RVAdapterChatbotHistory(
                 .load(item.chatBotImage)
                 .apply(requestOptions)
                 .into(binding.ivChatbotImg)
-            binding.tvChatbotName.text = "${item.description}와의 대화 보기"
+            binding.tvChatbotName.text = item.description
             binding.cardChatbotHistory.setOnClickListener {
                 onItemClick(item)
             }

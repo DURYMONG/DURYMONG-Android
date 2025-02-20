@@ -9,7 +9,6 @@ import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
 import com.example.durymong.model.dto.response.doit.BotChatDto
-import com.example.durymong.model.dto.response.doit.ChatBotHistory
 import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.model.dto.response.doit.UserDailyBotChatResult
 import com.example.durymong.model.dto.response.doit.UserDailyMongChatResult
@@ -49,7 +48,7 @@ class DoItViewModel : ViewModel() {
     val diary: LiveData<String> get() = _diary
 
     // 챗봇 대화 목록
-    private val _chatBotCardList = MutableLiveData<List<BotChatDto>>()
+    private val _chatBotCardList = MutableLiveData<List<BotChatDto>>(emptyList())
     val chatBotCardList: LiveData<List<BotChatDto>> get() = _chatBotCardList
 
     // 선택된 챗봇 대화 기록
@@ -209,9 +208,10 @@ class DoItViewModel : ViewModel() {
                 if (response != null){
                     Log.d("DoItViewModel", "response code: ${response.code}")
                     Log.d("DoItViewModel", "챗봇 메뉴 조회 성공")
-                    _chatBotCardList.value = response.result.botChatDtos
+                    _chatBotCardList.value = response.result.chatBotChoiceDtos
                 } else{
                     Log.e("DoItViewModel", "챗봇 메뉴 조회 실패")
+                    _chatBotCardList.value = emptyList()
                 }
             }
         }
@@ -240,6 +240,9 @@ class DoItViewModel : ViewModel() {
                     _selectedMongChatHistory.value = response.result
                 } else{
                     Log.e("DoItViewModel", "몽 대화 기록 조회 실패")
+                    _selectedMongChatHistory.value = UserDailyMongChatResult(
+                        "","",""
+                    )
                 }
             }
         }

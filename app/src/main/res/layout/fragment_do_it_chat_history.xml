@@ -115,415 +115,458 @@
                 android:id="@+id/cl_chatbot_chat_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintVertical_chainStyle="packed"
                 >
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_character_background"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/white"
-                    android:layout_margin="3dp"
-                    app:cardCornerRadius="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                <!--1번 채팅-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_greeting_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     >
-
-                    <!--    캐릭터 배치     -->
-                    <ImageView
-                        android:id="@+id/iv_chatbot"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_character_background"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_chat_bot_dog"
-                        />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <FrameLayout
-                    android:id="@+id/fl_chatbot_greeting_chat_bubble"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="@id/card_character_background"
-                    app:layout_constraintStart_toEndOf="@id/card_character_background"
-                    >
-                    <TextView
-                        android:id="@+id/tv_chatbot_greeting"
-                        android:maxWidth="256dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_chat_bubble_chatbot_history"
-                        android:text="반가워 NN아! 어떤 증상을 느꼈어?"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/suite_medium"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="14dp"
-                        android:paddingVertical="8dp"
-                        />
-                </FrameLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_symptom_list"
-                    tools:listitem="@layout/item_doit_chatbot_symptom"
-                    android:layout_width="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="3"
-                    android:visibility="visible"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/fl_chatbot_greeting_chat_bubble"
-                    />
-
-                <View
-                    android:id="@+id/v_1st_spacer"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray2"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/rv_symptom_list"
-                    />
-
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_character_background_prediction"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/white"
-                    android:layout_marginTop="30dp"
-                    app:cardCornerRadius="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_1st_spacer"
-                    >
-
-                    <!--    캐릭터 배치     -->
-                    <ImageView
-                        android:id="@+id/iv_chatbot_prediction"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_chat_bot_dog"
-                        />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <FrameLayout
-                    android:id="@+id/fl_chatbot_prediction_chat_bubble"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="@id/card_character_background_prediction"
-                    app:layout_constraintStart_toEndOf="@id/card_character_background_prediction"
-                    >
-                    <TextView
-                        android:id="@+id/tv_chatbot_prediction"
-                        android:maxWidth="256dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_chat_bubble_chatbot_history"
-                        android:text="내 생각에 NN이는 식이장애일 수 있을 것 같아. 관련 정보를 확인하거나, 활동을 추천해줄게!"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/suite_medium"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="14dp"
-                        android:paddingVertical="8dp"
-                        />
-                </FrameLayout>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_read_column"
-                    android:layout_width="116dp"
-                    android:layout_height="32dp"
-                    app:cardCornerRadius="8dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/main_purple"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/fl_chatbot_prediction_chat_bubble"
-                    >
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:layout_margin="3dp"
+                        app:cardCornerRadius="25dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         >
+
+                        <!--    캐릭터 배치     -->
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:src="@drawable/ic_chat_book"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:id="@+id/iv_chatbot"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/img_chat_bot_dog"
+                            />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="17.4dp"
-                            android:fontFamily="@font/suite_medium"
-                            android:text="칼럼 읽기"
-                            android:textColor="@color/main_purple"
-                            android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_activity"
-                    android:layout_width="116dp"
-                    android:layout_height="32dp"
-                    app:cardCornerRadius="8dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/main_purple"
-                    android:layout_marginTop="14dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/card_read_column"
-                    >
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                    <FrameLayout
+                        android:id="@+id/fl_chatbot_greeting_chat_bubble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@id/card_character_background"
+                        app:layout_constraintStart_toEndOf="@id/card_character_background"
                         >
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:src="@drawable/ic_chat_chart"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
                         <TextView
+                            android:id="@+id/tv_chatbot_greeting"
+                            android:maxWidth="256dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="17.4dp"
+                            android:background="@drawable/ic_chat_bubble_chatbot_history"
+                            android:text="반가워 NN아! 어떤 증상을 느꼈어?"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
                             android:fontFamily="@font/suite_medium"
-                            android:text="활동 하기"
-                            android:textColor="@color/main_purple"
-                            android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                            android:paddingStart="12dp"
+                            android:paddingEnd="14dp"
+                            android:paddingVertical="10dp"
+                            />
+                    </FrameLayout>
 
-                <View
-                    android:id="@+id/v_2nd_spacer"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray2"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/card_activity"
-                    />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_character_background_recommendation"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/white"
-                    android:layout_marginTop="30dp"
-                    app:cardCornerRadius="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_2nd_spacer"
-                    >
-
-                    <!--    캐릭터 배치     -->
-                    <ImageView
-                        android:id="@+id/iv_chatbot_recommendation"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_chat_bot_dog"
-                        />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <FrameLayout
-                    android:id="@+id/fl_chatbot_recommendation_chat_bubble"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="@id/card_character_background_recommendation"
-                    app:layout_constraintStart_toEndOf="@id/card_character_background_recommendation"
-                    >
-                    <TextView
-                        android:id="@+id/tv_chatbot_recommendation"
-                        android:maxWidth="256dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_chat_bubble_chatbot_history"
-                        android:text="NN이를 위한 흥미로운 테스트를 추천해줄게!"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/suite_medium"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="14dp"
-                        android:paddingVertical="8dp"
-                        />
-                </FrameLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_tests"
-                    tools:listitem="@layout/item_chatbot_test_category"
-                    android:layout_width="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="1"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="28dp"
-                    app:layout_constraintTop_toBottomOf="@id/fl_chatbot_recommendation_chat_bubble"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    />
-
-                <View
-                    android:id="@+id/v_3rd_spacer"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray2"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/rv_tests"
-                    />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_character_background_record"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/white"
-                    android:layout_marginTop="30dp"
-                    app:cardCornerRadius="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_3rd_spacer"
-                    >
-
-                    <!--    캐릭터 배치     -->
-                    <ImageView
-                        android:id="@+id/iv_chatbot_record"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_chat_bot_dog"
-                        />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <FrameLayout
-                    android:id="@+id/fl_chatbot_record_chat_bubble"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="@id/card_character_background_record"
-                    app:layout_constraintStart_toEndOf="@id/card_character_background_record"
-                    >
-                    <TextView
-                        android:id="@+id/tv_chatbot_record"
-                        android:maxWidth="256dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_chat_bubble_chatbot_history"
-                        android:text="오늘 하루는 어땠어? 하루 기록을 남겨봐"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/suite_medium"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="14dp"
-                        android:paddingVertical="8dp"
-                        />
-                </FrameLayout>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_record_day"
-                    android:layout_width="116dp"
-                    android:layout_height="32dp"
-                    app:cardCornerRadius="8dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/main_purple"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/fl_chatbot_record_chat_bubble"
-                    >
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_symptom_list"
+                        tools:listitem="@layout/item_doit_chatbot_symptom"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:src="@drawable/ic_do_it_record_edit"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="3"
+                        android:visibility="visible"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/fl_chatbot_greeting_chat_bubble"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="17.4dp"
-                            android:fontFamily="@font/suite_medium"
-                            android:text="하루 기록하기"
-                            android:textColor="@color/main_purple"
-                            android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    <View
+                        android:id="@+id/v_1st_spacer"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray2"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/rv_symptom_list"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View
-                    android:id="@+id/v_4th_spacer"
+                <!--2번 채팅-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_prediction_block"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray2"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/card_record_day"
-                    />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_character_background_final"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/white"
-                    android:layout_marginTop="30dp"
-                    app:cardCornerRadius="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_4th_spacer"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cl_greeting_block"
                     >
 
-                    <!--    캐릭터 배치     -->
-                    <ImageView
-                        android:id="@+id/iv_chatbot_final"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_character_background_prediction"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_chat_bot_dog"
-                        />
+                        android:backgroundTint="@color/white"
+                        android:layout_marginTop="30dp"
+                        app:cardCornerRadius="25dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        >
 
-                </com.google.android.material.card.MaterialCardView>
+                        <!--    캐릭터 배치     -->
+                        <ImageView
+                            android:id="@+id/iv_chatbot_prediction"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/img_chat_bot_dog"
+                            />
 
-                <FrameLayout
-                    android:id="@+id/fl_chatbot_final_chat_bubble"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="@id/card_character_background_final"
-                    app:layout_constraintStart_toEndOf="@id/card_character_background_final"
-                    >
-                    <TextView
-                        android:id="@+id/tv_chatbot_final"
-                        android:maxWidth="256dp"
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <FrameLayout
+                        android:id="@+id/fl_chatbot_prediction_chat_bubble"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_chat_bubble_chatbot_history"
-                        android:text="대화 즐거웠어! (이름)이를 항상 응원할게"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/suite_medium"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="14dp"
-                        android:paddingVertical="8dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@id/card_character_background_prediction"
+                        app:layout_constraintStart_toEndOf="@id/card_character_background_prediction"
+                        >
+                        <TextView
+                            android:id="@+id/tv_chatbot_prediction"
+                            android:maxWidth="256dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_chat_bubble_chatbot_history"
+                            android:text="내 생각에 NN이는 식이장애일 수 있을 것 같아. 관련 정보를 확인하거나, 활동을 추천해줄게!"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/suite_medium"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="14dp"
+                            android:paddingVertical="10dp"
+                            />
+                    </FrameLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_read_column"
+                        android:layout_width="116dp"
+                        android:layout_height="32dp"
+                        app:cardCornerRadius="8dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/main_purple"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fl_chatbot_prediction_chat_bubble"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:src="@drawable/ic_chat_book"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="17.4dp"
+                                android:fontFamily="@font/suite_medium"
+                                android:text="칼럼 읽기"
+                                android:textColor="@color/main_purple"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_activity"
+                        android:layout_width="116dp"
+                        android:layout_height="32dp"
+                        app:cardCornerRadius="8dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/main_purple"
+                        android:layout_marginTop="14dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_read_column"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:src="@drawable/ic_chat_chart"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="17.4dp"
+                                android:fontFamily="@font/suite_medium"
+                                android:text="활동 하기"
+                                android:textColor="@color/main_purple"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <View
+                        android:id="@+id/v_2nd_spacer"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray2"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/card_activity"
                         />
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--3번 채팅-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_recommendation_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cl_prediction_block"
+                    >
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_character_background_recommendation"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="@color/white"
+                        android:layout_marginTop="30dp"
+                        app:cardCornerRadius="25dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                        <!--    캐릭터 배치     -->
+                        <ImageView
+                            android:id="@+id/iv_chatbot_recommendation"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/img_chat_bot_dog"
+                            />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <FrameLayout
+                        android:id="@+id/fl_chatbot_recommendation_chat_bubble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@id/card_character_background_recommendation"
+                        app:layout_constraintStart_toEndOf="@id/card_character_background_recommendation"
+                        >
+                        <TextView
+                            android:id="@+id/tv_chatbot_recommendation"
+                            android:maxWidth="256dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_chat_bubble_chatbot_history"
+                            android:text="NN이를 위한 흥미로운 테스트를 추천해줄게!"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/suite_medium"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="14dp"
+                            android:paddingVertical="10dp"
+                            />
+                    </FrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_tests"
+                        tools:listitem="@layout/item_chatbot_test_category"
+                        android:layout_width="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="1"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="28dp"
+                        app:layout_constraintTop_toBottomOf="@id/fl_chatbot_recommendation_chat_bubble"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <View
+                        android:id="@+id/v_3rd_spacer"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray2"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/rv_tests"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--4번 채팅-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_record_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cl_recommendation_block"
+                    >
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_character_background_record"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="@color/white"
+                        android:layout_marginTop="30dp"
+                        app:cardCornerRadius="25dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                        <!--    캐릭터 배치     -->
+                        <ImageView
+                            android:id="@+id/iv_chatbot_record"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/img_chat_bot_dog"
+                            />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <FrameLayout
+                        android:id="@+id/fl_chatbot_record_chat_bubble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@id/card_character_background_record"
+                        app:layout_constraintStart_toEndOf="@id/card_character_background_record"
+                        >
+                        <TextView
+                            android:id="@+id/tv_chatbot_record"
+                            android:maxWidth="256dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_chat_bubble_chatbot_history"
+                            android:text="오늘 하루는 어땠어? 하루 기록을 남겨봐"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/suite_medium"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="14dp"
+                            android:paddingVertical="10dp"
+                            />
+                    </FrameLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_record_day"
+                        android:layout_width="116dp"
+                        android:layout_height="32dp"
+                        app:cardCornerRadius="8dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/main_purple"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fl_chatbot_record_chat_bubble"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:src="@drawable/ic_do_it_record_edit"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="17.4dp"
+                                android:fontFamily="@font/suite_medium"
+                                android:text="하루 기록하기"
+                                android:textColor="@color/main_purple"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <View
+                        android:id="@+id/v_4th_spacer"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray2"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/card_record_day"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--5번 채팅-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_final_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cl_record_block"
+                    >
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_character_background_final"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="@color/white"
+                        android:layout_marginTop="30dp"
+                        app:cardCornerRadius="25dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                        <!--    캐릭터 배치     -->
+                        <ImageView
+                            android:id="@+id/iv_chatbot_final"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/img_chat_bot_dog"
+                            />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <FrameLayout
+                        android:id="@+id/fl_chatbot_final_chat_bubble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@id/card_character_background_final"
+                        app:layout_constraintStart_toEndOf="@id/card_character_background_final"
+                        >
+                        <TextView
+                            android:id="@+id/tv_chatbot_final"
+                            android:maxWidth="256dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_chat_bubble_chatbot_history"
+                            android:text="대화 즐거웠어! (이름)이를 항상 응원할게"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/suite_medium"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="14dp"
+                            android:paddingVertical="10dp"
+                            />
+                    </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

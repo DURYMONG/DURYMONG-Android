@@ -81,7 +81,7 @@ class DoItChatHistoryFragment : Fragment() {
                     .timeout(10000)
                     .diskCacheStrategy(DiskCacheStrategy.ALL) // 캐시 사용
                 // 증상 질문
-                if(chats.greetingMessage.isNotEmpty()){
+                if(chats.greetingMessage?.isNotEmpty() == true){
                     Glide.with(requireContext())
                         .load(it.chatBotImage)
                         .apply(requestOptions)
@@ -89,71 +89,51 @@ class DoItChatHistoryFragment : Fragment() {
                     binding.tvChatbotGreeting.text = chats.greetingMessage
                     val symptoms = mutableListOf<String>()
                     symptoms.addAll(chats.symptoms)
-                    if(chats.additionalSymptom.isNotEmpty()) symptoms.add(chats.additionalSymptom)
+                    if(chats.additionalSymptom?.isNotEmpty() == true) symptoms.add(chats.additionalSymptom)
                     initRVSymptoms(symptoms.toList())
-                    binding.v1stSpacer.visibility = View.VISIBLE
                 } else {
-                    binding.cardCharacterBackground.visibility = View.GONE
-                    binding.flChatbotGreetingChatBubble.visibility = View.GONE
-                    binding.rvSymptomList.visibility = View.GONE
-                    binding.v1stSpacer.visibility = View.GONE
+                    binding.clGreetingBlock.visibility = View.GONE
                 }
                 // 증상 예측
-                if (chats.botPredictionMessage.isNotEmpty()){
+                if (chats.botPredictionMessage?.isNotEmpty() == true){
                     Glide.with(requireContext())
                         .load(it.chatBotImage)
                         .apply(requestOptions)
                         .into(binding.ivChatbotPrediction)
                     binding.tvChatbotPrediction.text = chats.botPredictionMessage
-                    binding.cardReadColumn.visibility = View.VISIBLE
-                    binding.cardActivity.visibility = View.VISIBLE
-                    binding.v2ndSpacer.visibility = View.VISIBLE
                 } else{
-                    binding.cardCharacterBackgroundPrediction.visibility = View.GONE
-                    binding.flChatbotPredictionChatBubble.visibility = View.GONE
-                    binding.cardReadColumn.visibility = View.GONE
-                    binding.cardActivity.visibility = View.GONE
-                    binding.v2ndSpacer.visibility = View.GONE
+                    binding.clPredictionBlock.visibility = View.GONE
                 }
                 // 테스트 추천
-                if (chats.testRecommendationMessage.isNotEmpty()){
+                if (chats.testRecommendationMessage?.isNotEmpty() == true){
                     Glide.with(requireContext())
                         .load(it.chatBotImage)
                         .apply(requestOptions)
                         .into(binding.ivChatbotRecommendation)
                     binding.tvChatbotRecommendation.text = chats.testRecommendationMessage
                     initRVTestRecommendations(chats.recommendedTests)
-                    binding.v3rdSpacer.visibility = View.VISIBLE
                 } else{
-                    binding.cardCharacterBackgroundRecommendation.visibility = View.GONE
-                    binding.flChatbotRecommendationChatBubble.visibility = View.GONE
-                    binding.rvTests.visibility = View.GONE
-                    binding.v3rdSpacer.visibility = View.GONE
+                    binding.clRecommendationBlock.visibility = View.GONE
                 }
                 // 하루 기록하기
-                if (chats.diaryRecommendationMessage.isNotEmpty()){
+                if (chats.diaryRecommendationMessage?.isNotEmpty() == true){
                     Glide.with(requireContext())
                         .load(it.chatBotImage)
                         .apply(requestOptions)
                         .into(binding.ivChatbotRecord)
                     binding.tvChatbotRecord.text = chats.diaryRecommendationMessage
-                    binding.cardRecordDay.visibility = View.VISIBLE
                 } else{
-                    binding.cardCharacterBackgroundRecord.visibility = View.GONE
-                    binding.flChatbotRecordChatBubble.visibility = View.GONE
-                    binding.cardRecordDay.visibility = View.GONE
-                    binding.v4thSpacer.visibility = View.GONE
+                    binding.clRecordBlock.visibility = View.GONE
                 }
                 // 마지막 대화
-                if (chats.finalMessage.isNotEmpty()){
+                if (chats.finalMessage?.isNotEmpty() == true){
                     Glide.with(requireContext())
                         .load(it.chatBotImage)
                         .apply(requestOptions)
                         .into(binding.ivChatbotFinal)
                     binding.tvChatbotFinal.text = chats.finalMessage
                 } else{
-                    binding.cardCharacterBackgroundFinal.visibility = View.GONE
-                    binding.flChatbotFinalChatBubble.visibility = View.GONE
+                    binding.clFinalBlock.visibility = View.GONE
                 }
 
             } else{

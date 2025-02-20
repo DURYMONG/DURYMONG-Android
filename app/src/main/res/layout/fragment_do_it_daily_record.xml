@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/suite_bold"
                     android:textSize="16sp"
-                    android:text="바둑이와의 상담 채팅 보기"
+                    android:text="상담 채팅 보기"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -193,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/suite_medium"
-                    android:text="AI 상담가 바둑이와의 상담"
+                    android:text="AI 상담가와의 상담 기록을 볼 수 있어요!"
                     android:textSize="14sp"
                     android:textColor="@color/gray3"
                     app:layout_constraintStart_toStartOf="parent"

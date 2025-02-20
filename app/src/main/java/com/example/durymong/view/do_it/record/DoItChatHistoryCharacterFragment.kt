@@ -38,8 +38,8 @@ class DoItChatHistoryCharacterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initPage()
         viewModel.selectedDate.value?.let { viewModel.fetchChatBotMenu(it) }
+        initPage()
         observeViewModel()
     }
 
@@ -52,9 +52,9 @@ class DoItChatHistoryCharacterFragment : Fragment() {
         viewModel.chatBotCardList.observe(viewLifecycleOwner){ cards ->
             Log.d("DoItChatHistoryCharacterFragment", "observeViewModel: $cards")
             if(cards.isNotEmpty()){
-                initRVAdapterChatbotHistory(cards)
                 binding.tvNoChatbotHistory.visibility = View.GONE
                 binding.rvChatbotHistoryList.visibility = View.VISIBLE
+                initRVAdapterChatbotHistory(cards)
             } else{
                 binding.tvNoChatbotHistory.visibility = View.VISIBLE
                 binding.rvChatbotHistoryList.visibility = View.GONE
@@ -69,6 +69,8 @@ class DoItChatHistoryCharacterFragment : Fragment() {
                 viewModel.fetchDailyChatBotHistory(viewModel.selectedDate.value!!, it.chatBotId)
                 findNavController().navigate(R.id.action_fragment_do_it_chat_history_character_to_fragment_do_it_chat_history)
             }
+
+        binding.rvChatbotHistoryList.adapter = rvAdapterChatbotHistory
     }
 
     private fun initPage(){

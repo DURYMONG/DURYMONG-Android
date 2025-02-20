@@ -9,7 +9,7 @@ data class UserDailyBotChatChoiceResponse(
 
 data class UserDailyBotChatChoiceResult(
     val targetDate: String,
-    val botChatDtos: List<BotChatDto>
+    val chatBotChoiceDtos: List<BotChatDto>
 )
 
 data class BotChatDto(
