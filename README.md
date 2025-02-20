@@ -23,7 +23,7 @@
       <td align="center"><a href="https://github.com/pyosm217">
       <img width=140px src="https://avatars.githubusercontent.com/u/102792687?v=4" alt=""/><br />
       <sub><b>표수민</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/ikseong00">
+      <td align="center"><a href="https://github.com/casper-jr">
       <img width=140px src="https://avatars.githubusercontent.com/u/93777192?v=4" alt=""/><br />
       <sub><b>현재우</b></sub></a><br /></td>
     </tr>
