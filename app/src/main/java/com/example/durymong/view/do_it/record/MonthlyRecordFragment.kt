@@ -12,6 +12,9 @@ import com.example.durymong.databinding.FragmentDoItMonthlyRecordBinding
 import com.example.durymong.model.dto.response.doit.DateInfo
 import com.example.durymong.view.do_it.record.adapter.RVAdapterMonthlyRecord
 import com.example.durymong.view.do_it.viewmodel.DoItViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MonthlyRecordFragment: Fragment() {
     private var _binding: FragmentDoItMonthlyRecordBinding? = null
@@ -38,6 +41,12 @@ class MonthlyRecordFragment: Fragment() {
                 findNavController().popBackStack()
             }
             btnRecordDay.setOnClickListener {
+                viewModel.updateSelectedDate(
+                    DateInfo(
+                        date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()),
+                        count = 0
+                    )
+                )
                 findNavController().navigate(R.id.action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_diary)
             }
         }
