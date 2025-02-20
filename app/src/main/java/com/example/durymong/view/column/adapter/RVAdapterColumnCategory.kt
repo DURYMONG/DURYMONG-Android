@@ -9,6 +9,8 @@ import androidx.compose.ui.layout.Layout
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.durymong.R
 import com.example.durymong.databinding.ItemColumnCategoryBinding
 import com.example.durymong.databinding.ItemColumnCategoryDescriptionBinding
@@ -24,8 +26,13 @@ class RVAdapterColumnCategory(
     inner class ViewHolder(val binding: ItemColumnCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Category, position: Int) {
+            val requestOptions = RequestOptions()
+                .timeout(10000)
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // 캐시 사용
+                .override(binding.ivColumnCategoryIcon.width, binding.ivColumnCategoryIcon.height)
             Glide.with(context)
                 .load(item.image)
+                .apply(requestOptions)
                 .into(binding.ivColumnCategoryIcon)
             binding.columnCategoryName.text = item.name
             //카테고리 클릭

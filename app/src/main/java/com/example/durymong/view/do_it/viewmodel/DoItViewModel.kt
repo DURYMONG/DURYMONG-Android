@@ -49,10 +49,6 @@ class DoItViewModel : ViewModel() {
 
     init {
         loadTestMainPage()
-        fetchDailyRecord(
-            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(Calendar.getInstance().time)
-        )
     }
 
     fun submitCheck(checkActivityRequest: CheckActivityRequest) {
