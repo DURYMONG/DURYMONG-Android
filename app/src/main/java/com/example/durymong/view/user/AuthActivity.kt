@@ -6,26 +6,24 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.durymong.MainActivity
 import com.example.durymong.databinding.ActivityDurymongMainBinding
+import com.example.durymong.model.TokenManager
 import com.example.durymong.view.user.viewmodel.AuthViewModel
 
 class AuthActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityDurymongMainBinding
     private val viewModel: AuthViewModel by viewModels()
-    var isLoggedIn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDurymongMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        // TODO: 로그인 여부 판단 로직 이후에 추가(sharedPreference 사용?)
-
-        if(isLoggedIn){
-            // 로그인 되어있을 경우 MainActivity로 이동
+        if (TokenManager.getAccessToken() != null){
             navigateToMain()
+            return
         }
 
+        binding = ActivityDurymongMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initButtons()
     }
 

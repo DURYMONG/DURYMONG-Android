@@ -128,7 +128,7 @@
             android:minHeight="178dp"
             android:background="@drawable/et_diary_background"
             android:inputType="textMultiLine"
-            android:text="_"
+            android:text=""
             android:textColor="@color/main_purple"
             android:textSize="14sp"
             android:gravity="center"

@@ -1,6 +1,5 @@
 package com.example.durymong.view.do_it.viewmodel
 
-import android.icu.util.Calendar
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,13 +8,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.WriteDiaryReq
 import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
+import com.example.durymong.model.dto.response.doit.BotChatDto
 import com.example.durymong.model.dto.response.doit.DateInfo
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatResult
+import com.example.durymong.model.dto.response.doit.UserDailyMongChatResult
 import com.example.durymong.model.repository.DoItRepository
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 class DoItViewModel : ViewModel() {
     private val repository = DoItRepository()
@@ -46,6 +46,18 @@ class DoItViewModel : ViewModel() {
     //일기 조회
     private val _diary = MutableLiveData<String>()
     val diary: LiveData<String> get() = _diary
+
+    // 챗봇 대화 목록
+    private val _chatBotCardList = MutableLiveData<List<BotChatDto>>(emptyList())
+    val chatBotCardList: LiveData<List<BotChatDto>> get() = _chatBotCardList
+
+    // 선택된 챗봇 대화 기록
+    private val _selectedChatBotHistory = MutableLiveData<UserDailyBotChatResult>()
+    val selectedChatBotHistory: LiveData<UserDailyBotChatResult> get() = _selectedChatBotHistory
+
+    // 선택된 몽 대화 기록
+    private val _selectedMongChatHistory = MutableLiveData<UserDailyMongChatResult>()
+    val selectedMongChatHistory: LiveData<UserDailyMongChatResult> get() = _selectedMongChatHistory
 
     init {
         loadTestMainPage()
@@ -188,4 +200,52 @@ class DoItViewModel : ViewModel() {
             }
         }
     }
+
+    // 챗봇 대화 목록 조회
+    fun fetchChatBotMenu(targetDate: String){
+        viewModelScope.launch {
+            repository.getChatbotHistoryMenu(targetDate){ response ->
+                if (response != null){
+                    Log.d("DoItViewModel", "response code: ${response.code}")
+                    Log.d("DoItViewModel", "챗봇 메뉴 조회 성공")
+                    _chatBotCardList.value = response.result.chatBotChoiceDtos
+                } else{
+                    Log.e("DoItViewModel", "챗봇 메뉴 조회 실패")
+                    _chatBotCardList.value = emptyList()
+                }
+            }
+        }
+    }
+
+    // 챗봇 대화 기록 조회
+    fun fetchDailyChatBotHistory(targetDate: String, chatBotId: Int){
+        viewModelScope.launch {
+            repository.getChatbotHistory(targetDate, chatBotId){ response ->
+                if (response != null){
+                    Log.d("DoItViewModel", "챗봇 기록 조회 성공")
+                    _selectedChatBotHistory.value = response.result
+                } else{
+                    Log.e("DoItViewModel", "챗봇 기록 조회 실패")
+                }
+            }
+        }
+    }
+
+    fun fetchDailyMongChatHistory(targetDate: String){
+        viewModelScope.launch {
+            repository.getMongChatHistory(targetDate){ response ->
+                if (response != null){
+                    Log.d("DoItViewModel", "response code: ${response.code}")
+                    Log.d("DoItViewModel", "몽 대화 기록 조회 성공")
+                    _selectedMongChatHistory.value = response.result
+                } else{
+                    Log.e("DoItViewModel", "몽 대화 기록 조회 실패")
+                    _selectedMongChatHistory.value = UserDailyMongChatResult(
+                        "","",""
+                    )
+                }
+            }
+        }
+    }
+
 }

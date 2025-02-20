@@ -12,6 +12,9 @@ import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import retrofit2.Call
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatChoiceResponse
+import com.example.durymong.model.dto.response.doit.UserDailyBotChatResponse
+import com.example.durymong.model.dto.response.doit.UserDailyChatResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -28,8 +31,9 @@ interface DoItService {
     ): Call<TestPageResponseDto>
 
     @POST("tests/{testId}/results")
-    fun submitTest(@Path("testId") testId: Int,
-                   @Body submitTestRequestDto: SubmitTestRequestDto
+    fun submitTest(
+        @Path("testId") testId: Int,
+        @Body submitTestRequestDto: SubmitTestRequestDto
     ): Call<SubmitTestResponseDto>
 
     // 월별 성장일지 조회
@@ -61,4 +65,24 @@ interface DoItService {
     // 일기 조회
     @GET("activities/records/{date}/diaries")
     fun getDiary(@Path("date") date: String): Call<DiaryResponse>
+
+    // 챗봇 기록 메뉴 조회
+    @GET("users/daily-bot-chat-choice/{targetDate}")
+    fun getChatbotHistoryMenu(
+        @Path("targetDate") targetDate: String
+    ): Call<UserDailyBotChatChoiceResponse>
+
+    // 챗봇 상담 기록 조회
+    @GET("users/daily-bot-chat/{targetDate}/{chatBotId}")
+    fun getChatbotHistory(
+        @Path("targetDate") targetDate: String,
+        @Path("chatBotId") chatBotId: Int
+    ): Call<UserDailyBotChatResponse>
+
+    // 몽 대화 기록 조회
+    @GET("users/daily-mong-chat/{targetDate}")
+    fun getMongChatHistory(
+        @Path("targetDate") targetDate: String
+    ): Call<UserDailyChatResponse>
+
 }

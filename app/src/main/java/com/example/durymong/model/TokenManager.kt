@@ -2,6 +2,7 @@ package com.example.durymong.model
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -19,6 +20,7 @@ object TokenManager {
     fun init(context: Context) {
         prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         _accessTokenLiveData.value = prefs.getString(TOKEN_KEY, null)
+        Log.d("TokenManager", "init: _accessTokenLiveData.value = ${_accessTokenLiveData.value}")
     }
 
     fun saveToken(token: String) {

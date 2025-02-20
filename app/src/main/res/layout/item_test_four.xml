@@ -20,6 +20,8 @@
         android:id="@+id/tv_question_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxWidth="350dp"
+        android:gravity="center"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/suite_medium"
         android:text="1. 쉽게 짜증이 나고 기분의 변동이 심하다."
