@@ -235,8 +235,8 @@ class TestPageFragment : Fragment() {
         viewModel.testResult.observe(viewLifecycleOwner){
             userName.text=viewModel.testResult.value?.result?.nickName
             resultScore.text=viewModel.testResult.value?.result?.userScore.toString()+"점"
-            resultText.text=viewModel.testResult.value?.result?.userResult
-            resultText1.text=viewModel.testResult.value?.result?.scoreDistributionList
+            resultText.text=viewModel.testResult.value?.result?.userResult?.replace("-null"," 이상")
+            resultText1.text=viewModel.testResult.value?.result?.scoreDistributionList?.replace("-null", " 이상")
 
         }
 

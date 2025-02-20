@@ -31,8 +31,9 @@ interface DoItService {
     ): Call<TestPageResponseDto>
 
     @POST("tests/{testId}/results")
-    fun submitTest(@Path("testId") testId: Int,
-                   @Body submitTestRequestDto: SubmitTestRequestDto
+    fun submitTest(
+        @Path("testId") testId: Int,
+        @Body submitTestRequestDto: SubmitTestRequestDto
     ): Call<SubmitTestResponseDto>
 
     // 월별 성장일지 조회
