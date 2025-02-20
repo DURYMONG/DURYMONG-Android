@@ -20,7 +20,7 @@ data class ChatBotHistory(
     val additionalSymptom: String,
     val botPredictionMessage: String,
     val testRecommendationMessage: String,
-    val recommendTests: String,
+    val recommendedTests: List<String>,
     val diaryRecommendationMessage: String,
     val finalMessage: String
 )

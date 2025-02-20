@@ -87,7 +87,23 @@
                 app:layout_constraintTop_toTopOf="@id/cl_date_info_container" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/tv_no_chatbot_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상담 기록이 존재하지 않아요."
+            android:visibility="gone"
+            android:textColor="@color/gray4"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_semi_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_date_info_container"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
         <ScrollView
+            android:id="@+id/sv_chat_scrollview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -114,7 +130,7 @@
 
                     <!--    캐릭터 배치     -->
                     <ImageView
-                        android:id="@+id/iv_mong"
+                        android:id="@+id/iv_chatbot"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
@@ -182,7 +198,7 @@
 
                     <!--    캐릭터 배치     -->
                     <ImageView
-                        android:id="@+id/iv_mong_prediction"
+                        android:id="@+id/iv_chatbot_prediction"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
@@ -315,7 +331,7 @@
 
                     <!--    캐릭터 배치     -->
                     <ImageView
-                        android:id="@+id/iv_mong_recommendation"
+                        android:id="@+id/iv_chatbot_recommendation"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
@@ -350,7 +366,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_tests"
-                    tools:listitem="@layout/item_mong_test_category"
+                    tools:listitem="@layout/item_chatbot_test_category"
                     android:layout_width="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="1"
@@ -382,7 +398,7 @@
 
                     <!--    캐릭터 배치     -->
                     <ImageView
-                        android:id="@+id/iv_mong_record"
+                        android:id="@+id/iv_chatbot_record"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
@@ -476,7 +492,7 @@
 
                     <!--    캐릭터 배치     -->
                     <ImageView
-                        android:id="@+id/iv_mong_final"
+                        android:id="@+id/iv_chatbot_final"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
