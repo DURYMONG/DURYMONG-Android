@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.durymong.databinding.FragmentHomeBinding
 import com.example.durymong.view.mong.viewmodel.HomeDataViewModel
 
@@ -31,8 +33,12 @@ class HomeFragment : Fragment() {
                 binding.tvHomeChatQuestion.text = it.mongQuestion
 
                 if(it!=null) {
+                    val requestOptions = RequestOptions()
+                        .timeout(10000)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL) // 캐시 사용
                     Glide.with(this)
                         .load(it.mongImage)
+                        .apply(requestOptions)
                         .into(binding.ivHomeCharacter)
                 }
             }
