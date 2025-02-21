@@ -6,16 +6,27 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.durymong.model.TokenManager
+import com.example.durymong.model.dto.request.mong.MongCreateRequest
 import com.example.durymong.model.dto.request.user.UserLoginRequestDto
 import com.example.durymong.model.dto.response.user.ApiResponse
 import com.example.durymong.model.dto.response.user.IdCheckResponse
 import com.example.durymong.model.dto.response.user.PasswordCheckResponse
 import com.example.durymong.model.dto.response.user.RegisterResponse
+import com.example.durymong.model.dto.response.user.UserTokenRequestDto
+import com.example.durymong.model.repository.MongRepository
 import com.example.durymong.model.repository.UserRepository
 import kotlinx.coroutines.launch
 
 class AuthViewModel : ViewModel() {
     private val repository = UserRepository()
+
+    private val mongRepository = MongRepository()
+
+    private val _createMongResult = MutableLiveData<ApiResponse<String>>()
+    val createMongResult: LiveData<ApiResponse<String>> get() = _createMongResult
+
+    private val _loginResult = MutableLiveData<UserTokenRequestDto?>()
+    val loginResult: LiveData<UserTokenRequestDto?> get() = _loginResult
 
     private val _checkUserIdResult = MutableLiveData<IdCheckResponse<String>>()
     val checkUserIdResult: LiveData<IdCheckResponse<String>> get() = _checkUserIdResult
@@ -35,7 +46,7 @@ class AuthViewModel : ViewModel() {
     private val _registerResult = MutableLiveData<RegisterResponse>()
     val registerResult: LiveData<RegisterResponse> get() = _registerResult
 
-    fun loginTest() {
+    /*fun loginTest() {
         val userData = UserLoginRequestDto(
             id = "durymong",
             password = "durymong12"
@@ -58,6 +69,14 @@ class AuthViewModel : ViewModel() {
                 } else {
                     Log.e("AuthViewModel", "로그인 실패")
                 }
+            }
+        }
+    }*/
+
+    fun login(userId: String, password: String) {
+        viewModelScope.launch {
+            repository.postLogin(UserLoginRequestDto(userId, password)) { response ->
+                _loginResult.postValue(response)
             }
         }
     }
@@ -103,6 +122,13 @@ class AuthViewModel : ViewModel() {
             Log.d("회원가입 API 응답", "성공 여부: ${response.success}, 코드: ${response.code}, 메시지: ${response.message}")
 
             _registerResult.postValue(response)
+        }
+    }
+
+    fun createMong(mongName: String, mongType: String, mongColor: String) {
+        viewModelScope.launch {
+            val request = MongCreateRequest(mongName, mongType, mongColor)
+            _createMongResult.value = mongRepository.createMong(request)
         }
     }
 

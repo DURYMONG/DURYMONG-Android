@@ -1,13 +1,16 @@
 package com.example.durymong.model.repository
 
 import android.util.Log
+import com.example.durymong.model.dto.request.mong.MongCreateRequest
 import com.example.durymong.model.dto.response.mong.ChatHistoryResponse
 import com.example.durymong.model.dto.response.mong.ChatHistoryResult
 import com.example.durymong.model.dto.response.mong.HomeResponse
+import com.example.durymong.model.dto.response.user.ApiResponse
 import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.MongService
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.HttpException
 import retrofit2.Response
 
 class MongRepository {
@@ -58,5 +61,23 @@ class MongRepository {
                 callback(null)
             }
         })
+    }
+
+    suspend fun createMong(request: MongCreateRequest): ApiResponse<String> {
+        return try {
+            val response = service.createMong(request)
+
+            if (response.isSuccessful) {
+                response.body() ?: ApiResponse(false, 500, "서버 응답 없음", null)
+            } else {
+                ApiResponse(false, response.code(), "몽 생성 실패", null)
+            }
+        } catch (e: HttpException) {
+            Log.e("MongRepository", "HTTP 오류: ${e.message}")
+            ApiResponse(false, 500, "서버 오류 발생", null)
+        } catch (e: Exception) {
+            Log.e("MongRepository", "네트워크 오류: ${e.message}")
+            ApiResponse(false, 500, "네트워크 오류 발생", null)
+        }
     }
 }

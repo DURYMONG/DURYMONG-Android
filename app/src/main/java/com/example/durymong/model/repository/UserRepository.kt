@@ -7,6 +7,7 @@ import com.example.durymong.model.dto.response.user.ApiResponse
 import com.example.durymong.model.dto.response.user.IdCheckResponse
 import com.example.durymong.model.dto.response.user.PasswordCheckResponse
 import com.example.durymong.model.dto.response.user.RegisterResponse
+import com.example.durymong.model.dto.response.user.Token
 import com.example.durymong.model.dto.response.user.UserTokenRequestDto
 import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.UserService
@@ -29,16 +30,15 @@ class UserRepository {
                 response: Response<UserTokenRequestDto>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("successful", "로그인 성공")
                     callback(response.body())
                 } else {
-                    Log.e("UserRepository", "로그인 실패: ${response.errorBody()?.string()}")
-                    callback(null)
+                    val errorMessage = response.errorBody()?.string() ?: "알 수 없는 오류"
+                    callback(UserTokenRequestDto(false, response.code(), errorMessage, Token("", "")))
                 }
             }
 
             override fun onFailure(call: Call<UserTokenRequestDto>, t: Throwable) {
-                Log.e("UserRepository", "Network error: ${t.message}")
+                callback(UserTokenRequestDto(false, -1, "네트워크 오류: ${t.message}", Token("", "")))
             }
         })
     }

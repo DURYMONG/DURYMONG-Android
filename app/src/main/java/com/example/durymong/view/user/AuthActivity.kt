@@ -8,6 +8,7 @@ import com.example.durymong.MainActivity
 import com.example.durymong.R
 import com.example.durymong.databinding.ActivityDurymongMainBinding
 import com.example.durymong.model.TokenManager
+import com.example.durymong.util.SharedPreferencesHelper
 import com.example.durymong.view.user.viewmodel.AuthViewModel
 
 class AuthActivity : AppCompatActivity(){
@@ -18,10 +19,15 @@ class AuthActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // SharedPreferences 초기화
+        SharedPreferencesHelper.init(this)
+
         if (TokenManager.getAccessToken() != null){
             navigateToMain()
-            return
+        } else {
+            navigateToCreateMong()
         }
+        return
 
         binding = ActivityDurymongMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -62,9 +68,21 @@ class AuthActivity : AppCompatActivity(){
         finish()
     }
 
-    private fun loginTest(){
+    private fun navigateToCreateMong() {
+        //startActivity(Intent(this, CreateMongActivity::class.java))
+        val mongName = "두리몽"
+        val mongType = "tree"
+        val mongColor = "purple"
+
+        viewModel.createMong(mongName, mongType, mongColor)
+
+        finish() // AuthActivity 종료
+    }
+
+
+/*    private fun loginTest(){
         // 로그인 테스트
         viewModel.loginTest()
-    }
+    }*/
 
 }
