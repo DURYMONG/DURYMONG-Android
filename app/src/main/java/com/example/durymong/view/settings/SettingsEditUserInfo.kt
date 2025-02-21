@@ -32,7 +32,7 @@ class SettingsEditUserInfo : Fragment() {
         }
 
         binding.btnSettingsEditUserInfoDelete.setOnClickListener {
-            //TODO 기록 지우기
+            viewModel.deleteUserHistory()
         }
 
         binding.btnSettingsEditUserInfoLogout.setOnClickListener {
@@ -53,6 +53,15 @@ class SettingsEditUserInfo : Fragment() {
                 Toast.makeText(requireContext(), "회원 정보 변경 성공: $message", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "회원 정보 변경 실패: $message", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.deleteHistoryResult.observe(viewLifecycleOwner) { result ->
+            val (success, message) = result
+            if (success) {
+                Toast.makeText(requireContext(), "기록 삭제 성공: $message", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "기록 삭제 실패: $message", Toast.LENGTH_SHORT).show()
             }
         }
 

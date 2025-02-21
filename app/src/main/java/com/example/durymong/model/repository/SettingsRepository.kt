@@ -3,7 +3,10 @@ package com.example.durymong.model.repository
 import android.util.Log
 import com.example.durymong.model.dto.request.settings.PasswordRequestDto
 import com.example.durymong.model.dto.request.settings.UserInfoRequestDto
+import com.example.durymong.model.dto.response.settings.DeleteHistoryResponse
 import com.example.durymong.model.dto.response.settings.PasswordResponseDto
+import com.example.durymong.model.dto.response.settings.UserEliminationResponse
+import com.example.durymong.model.dto.response.settings.UserEliminationResult
 import com.example.durymong.model.dto.response.settings.UserInfoResponseDto
 import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.SettingService
@@ -62,6 +65,62 @@ class SettingsRepository {
                 callback(false, "네트워크 오류 발생")
             }
 
+        })
+    }
+
+    fun deleteUserHistory(
+        onSuccess: (String) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        service.deleteHistory().enqueue(object : Callback<DeleteHistoryResponse> {
+            override fun onResponse(
+                call: Call<DeleteHistoryResponse>,
+                response: Response<DeleteHistoryResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.success) {
+                            onSuccess(it.message)
+                        } else {
+                            onFailure(it.message)
+                        }
+                    } ?: onFailure("응답이 없습니다.")
+                } else {
+                    onFailure("서버 오류 발생")
+                }
+            }
+
+            override fun onFailure(call: Call<DeleteHistoryResponse>, t: Throwable) {
+                onFailure("네트워크 오류 발생")
+            }
+        })
+    }
+
+    fun getUserEliminationInfo(
+        onSuccess: (UserEliminationResult) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        service.getUserEliminationInfo().enqueue(object : Callback<UserEliminationResponse> {
+            override fun onResponse(
+                call: Call<UserEliminationResponse>,
+                response: Response<UserEliminationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.success) {
+                            it.result?.let(onSuccess)
+                        } else {
+                            onFailure(it.message)
+                        }
+                    } ?: onFailure("응답이 없습니다.")
+                } else {
+                    onFailure("서버 오류 발생")
+                }
+            }
+
+            override fun onFailure(call: Call<UserEliminationResponse>, t: Throwable) {
+                onFailure("네트워크 오류 발생")
+            }
         })
     }
 }
