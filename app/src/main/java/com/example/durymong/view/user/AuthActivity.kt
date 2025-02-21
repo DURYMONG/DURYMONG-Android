@@ -19,15 +19,9 @@ class AuthActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // SharedPreferences 초기화
-        SharedPreferencesHelper.init(this)
-
         if (TokenManager.getAccessToken() != null){
             navigateToMain()
-        } else {
-            navigateToCreateMong()
         }
-        return
 
         binding = ActivityDurymongMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
