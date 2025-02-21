@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.durymong.MainActivity
+import com.example.durymong.R
 import com.example.durymong.databinding.ActivityDurymongMainBinding
 import com.example.durymong.model.TokenManager
 import com.example.durymong.view.user.viewmodel.AuthViewModel
@@ -48,8 +49,11 @@ class AuthActivity : AppCompatActivity(){
 
 
     private fun navigateToLogin(){
-        val intent = Intent(this, LoginFragment::class.java)
-        startActivity(intent)
+        val loginFragment = LoginFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fl_main, loginFragment) // LoginFragment를 FrameLayout에 추가
+            .addToBackStack(null) // 뒤로 가기 가능하도록 설정
+            .commit()
         //loginTest()
     }
 
