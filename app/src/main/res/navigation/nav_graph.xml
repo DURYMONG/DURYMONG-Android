@@ -25,7 +25,56 @@
         android:id="@+id/fragment_chat"
         android:name="com.example.durymong.view.chat.ChatMainFragment"
         android:label="chat"
-        tools:layout="@layout/fragment_chat_main" />
+        tools:layout="@layout/fragment_chat_main">
+
+        <!-- Chat Detail로 이동하는 Action -->
+        <action
+            android:id="@+id/action_chatMain_to_chatDetail"
+            app:destination="@id/fragment_chat_detail">
+
+            <argument
+                android:name="chatBotId"
+                app:argType="integer"
+                android:defaultValue="0"/>
+            <argument
+                android:name="chatBotImage"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument
+                android:name="message"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument
+                android:name="chatSessionId"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </action>
+    </fragment>
+
+    <!-- Chat Detail Fragment -->
+    <fragment
+        android:id="@+id/fragment_chat_detail"
+        android:name="com.example.durymong.view.chat.ChatDetailFragment"
+        android:label="Chat Detail"
+        tools:layout="@layout/fragment_chat_detail">
+
+        <argument
+            android:name="chatBotId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="chatBotImage"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="chatSessionId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 
     <!--Column -->
     <fragment
