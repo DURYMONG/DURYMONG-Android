@@ -19,9 +19,21 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
         binding.ivHomeSettings.setOnClickListener {
-            val action = HomeFragmentDirections.actionFragmentHomeToFragmentSettings()
-            findNavController().navigate(action)
+            findNavController().navigate(HomeFragmentDirections.actionFragmentHomeToFragmentSettings())
         }
+
+        binding.clHomeAnswer.setOnClickListener {
+            //TODO : editText 기능 구현
+        }
+
+        binding.clHomeGrowMong.setOnClickListener {
+            //TODO : 두리몽 키우기 화면 추가, 연결
+        }
+
+        binding.clHomeChatRecord.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionFragmentHomeToFragmentHomeChat())
+        }
+
         return binding.root
     }
 

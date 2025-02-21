@@ -14,7 +14,9 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_settings"
             app:destination="@id/fragment_settings"/>
-
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_home_chat"
+            app:destination="@id/fragment_home_chat"/>
     </fragment>
 
 
@@ -174,5 +176,12 @@
         android:name="com.example.durymong.view.settings.SettingsResignFragment"
         android:label="settings_resign"
         tools:layout="@layout/fragment_settings_resign"/>
+
+    <!--home관련-->
+    <fragment
+        android:id="@+id/fragment_home_chat"
+        android:name="com.example.durymong.view.mong.HomeChatFragment"
+        android:label="home_chat"
+        tools:layout="@layout/item_home_chat"/>
 
 </navigation>
