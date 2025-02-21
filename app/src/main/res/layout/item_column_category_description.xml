@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="172dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_column_category_description_bubble"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/fl_bg_column_category_description"
+        android:contentDescription="@string/menu_description"
+        />
+
+    <TextView
+        android:id="@+id/tv_column_category_description"
+        android:layout_width="172dp"
+        android:layout_height="match_parent"
+        android:text="@string/column_menu_description_dummy"
+        android:fontFamily="@font/suite_medium"
+        android:textSize="12sp"
+        android:textColor="@color/gray4"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+        android:paddingVertical="10dp"
+        />
+
+</FrameLayout>

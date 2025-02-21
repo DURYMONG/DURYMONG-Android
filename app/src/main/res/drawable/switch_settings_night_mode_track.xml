@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="36.5dp"/>
+            <size android:width="78dp"  android:height="48dp"/>
+            <solid android:color="@color/gray3"/>
+        </shape>
+    </item>
+
+
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="36.5dp"/>
+            <size android:width="78dp"  android:height="48dp"/>
+            <!--임의로 넣어둔 색상 -->
+            <solid android:color="@color/main_purple"/>
+        </shape>
+    </item>
+</selector>

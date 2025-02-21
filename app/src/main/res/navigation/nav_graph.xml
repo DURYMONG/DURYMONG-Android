@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_mong">
+
+    <!--Mong-->
+    <fragment
+        android:id="@+id/fragment_mong"
+        android:name="com.example.durymong.view.mong.HomeFragment"
+        android:label="mong"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_settings"
+            app:destination="@id/fragment_settings"/>
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_home_chat"
+            app:destination="@id/fragment_home_chat"/>
+    </fragment>
+
+
+    <!--Chat-->
+    <fragment
+        android:id="@+id/fragment_chat"
+        android:name="com.example.durymong.view.chat.ChatMainFragment"
+        android:label="chat"
+        tools:layout="@layout/fragment_chat_main">
+
+        <!-- Chat Detail로 이동하는 Action -->
+        <action
+            android:id="@+id/action_chatMain_to_chatDetail"
+            app:destination="@id/fragment_chat_detail">
+
+            <argument
+                android:name="chatBotId"
+                app:argType="integer"
+                android:defaultValue="0"/>
+            <argument
+                android:name="chatBotImage"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument
+                android:name="message"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument
+                android:name="chatSessionId"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </action>
+    </fragment>
+
+    <!-- Chat Detail Fragment -->
+    <fragment
+        android:id="@+id/fragment_chat_detail"
+        android:name="com.example.durymong.view.chat.ChatDetailFragment"
+        android:label="Chat Detail"
+        tools:layout="@layout/fragment_chat_detail">
+
+        <argument
+            android:name="chatBotId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="chatBotImage"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="chatSessionId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
+
+    <!--Column -->
+    <fragment
+        android:id="@+id/fragment_column"
+        android:name="com.example.durymong.view.column.ColumnFragment"
+        android:label="column"
+        tools:layout="@layout/fragment_column">
+        <action
+            android:id="@+id/action_fragment_column_to_fragment_column_detail"
+            app:destination="@id/fragment_column_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_column_detail"
+        android:name="com.example.durymong.view.column.ColumnDetailFragment"
+        android:label="column_detail"
+        tools:layout="@layout/fragment_column_detail">
+    </fragment>
+
+    <!--Do It-->
+    <fragment
+        android:id="@+id/fragment_do_it"
+        android:name="com.example.durymong.view.do_it.DoItFragment"
+        android:label="do_it"
+        tools:layout="@layout/fragment_do_it">
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_do_it_walk"
+            app:destination="@id/fragment_do_it_walk" />
+
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_do_it_bed_clean"
+            app:destination="@id/fragment_do_it_bed_clean" />
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_do_it_stretching"
+            app:destination="@id/fragment_do_it_stretching" />
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_level_test"
+            app:destination="@id/fragment_level_test" />
+
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_do_it_monthly_diary"
+            app:destination="@id/fragment_do_it_monthly_diary" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_monthly_diary"
+        android:name="com.example.durymong.view.do_it.record.MonthlyRecordFragment"
+        android:label="do_it_monthly_diary"
+        tools:layout="@layout/fragment_do_it_monthly_record"
+        >
+        <action
+            android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_record"
+            app:destination="@id/fragment_do_it_daily_record" />
+        <action
+            android:id="@+id/action_fragment_do_it_monthly_diary_to_fragment_do_it_daily_diary"
+            app:destination="@id/fragment_do_it_daily_diary"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_diary"
+        android:name="com.example.durymong.view.do_it.record.DailyDiaryFragment"
+        android:label="do_it_record_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_diary"/>
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_diary_disabled"
+        android:name="com.example.durymong.view.do_it.record.DailyDiaryDisabledFragment"
+        android:label="do_it_record_daily_diary_disabled"
+        tools:layout="@layout/fragment_do_it_daily_diary_disabled"/>
+
+    <fragment
+        android:id="@+id/fragment_do_it_daily_record"
+        android:name="com.example.durymong.view.do_it.record.DailyRecordFragment"
+        android:label="do_it_daily_diary"
+        tools:layout="@layout/fragment_do_it_daily_record" >
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_mong_history"
+            app:destination="@id/fragment_do_it_mong_history"/>
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_chat_history_character"
+            app:destination="@id/fragment_chat_history_character"/>
+        <action
+            android:id="@+id/action_fragment_do_it_daily_record_to_fragment_do_it_daily_diary_disabled"
+            app:destination="@id/fragment_do_it_daily_diary_disabled"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_mong_history"
+        android:name="com.example.durymong.view.do_it.record.DoItMongHistoryFragment"
+        android:label="do_it_mong_history"
+        tools:layout="@layout/fragment_do_it_mong_history"/>
+
+    <fragment
+        android:id="@+id/fragment_chat_history"
+        android:name="com.example.durymong.view.do_it.record.DoItChatHistoryFragment"
+        android:label="do_it_chat_history"
+        tools:layout="@layout/fragment_do_it_chat_history"/>
+
+    <fragment
+        android:id="@+id/fragment_chat_history_character"
+        android:name="com.example.durymong.view.do_it.record.DoItChatHistoryCharacterFragment"
+        android:label="do_it_chat_history_character"
+        tools:layout="@layout/fragment_do_it_chat_history_character"
+        >
+        <action
+            android:id="@+id/action_fragment_do_it_chat_history_character_to_fragment_do_it_chat_history"
+            app:destination="@id/fragment_chat_history"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_walk"
+        android:name="com.example.durymong.view.do_it.walk.DoItWalkFragment"
+        android:label="do_it_walk"
+        tools:layout="@layout/fragment_do_it_walk">
+        <argument
+            android:name="activityName"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_stress_test_page"
+        android:name="com.example.durymong.view.do_it.test_page.TestPageFragment"
+        android:label="stress_test_page"
+        tools:layout="@layout/fragment_test_page">
+        <argument
+            android:name="testName"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_level_test"
+        android:name="com.example.durymong.view.do_it.test_page.LevelTestFragment"
+        android:label="level_test"
+        tools:layout="@layout/fragment_level_test">
+
+        <action
+            android:id="@+id/action_levelTestFragment_to_testPageFragment"
+            app:destination="@id/fragment_stress_test_page" />
+
+        <argument
+            android:name="testName"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_bed_clean"
+        android:name="com.example.durymong.view.do_it.DoItBedFragment"
+        android:label="do_it_bed_clean"
+        tools:layout="@layout/fragment_do_it_bed" />
+
+    <fragment
+        android:id="@+id/fragment_do_it_stretching"
+        android:name="com.example.durymong.view.do_it.DoItStretchingFragment"
+        android:label="do_it_stretching"
+        tools:layout="@layout/fragment_do_it_stretching" />
+
+    <!--setting-->
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.example.durymong.view.settings.SettingsFragment"
+        android:label="settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_edit_password"
+            app:destination="@id/fragment_settings_edit_password"/>
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_edit_user_info"
+            app:destination="@id/fragment_settings_edit_user_info"/>
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_alarm"
+            app:destination="@id/fragment_settings_alarm"/>
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_resign"
+            app:destination="@id/fragment_settings_resign"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_settings_edit_password"
+        android:name="com.example.durymong.view.settings.SettingsEditPasswordFragment"
+        android:label="settings_edit_password"
+        tools:layout="@layout/fragment_settings_edit_password"/>
+
+    <fragment
+        android:id="@+id/fragment_settings_edit_user_info"
+        android:name="com.example.durymong.view.settings.SettingsEditUserInfo"
+        android:label="settings_edit_user_info"
+        tools:layout="@layout/fragment_settings_edit_user_info"/>
+
+    <fragment
+        android:id="@+id/fragment_settings_alarm"
+        android:name="com.example.durymong.view.settings.SettingsAlarmFragment"
+        android:label="settings_alarm"
+        tools:layout="@layout/fragment_settings_alarm"/>
+
+    <fragment
+        android:id="@+id/fragment_settings_resign"
+        android:name="com.example.durymong.view.settings.SettingsResignFragment"
+        android:label="settings_resign"
+        tools:layout="@layout/fragment_settings_resign"/>
+
+    <!--home관련-->
+    <fragment
+        android:id="@+id/fragment_home_chat"
+        android:name="com.example.durymong.view.mong.HomeChatFragment"
+        android:label="home_chat"
+        tools:layout="@layout/item_home_chat"/>
+
+</navigation>

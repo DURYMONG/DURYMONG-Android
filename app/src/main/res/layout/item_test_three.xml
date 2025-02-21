@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:id="@+id/iv_test_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="보라색 테두리"
+        android:src="@drawable/img_test_warning_rectangle"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_question_name"
+        android:layout_width="wrap_content"
+        android:maxWidth="350dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="1. 쉽게 짜증이 나고 기분의 변동이 심하다."
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="250dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_not_at_all"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        >
+
+        <RadioButton
+            android:id="@+id/rb_test_1"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@drawable/ic_test_radio_button_left"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_test_2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="82dp"
+            android:background="@drawable/ic_test_radio_button_mid"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_test_3"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="82dp"
+            android:background="@drawable/ic_test_radio_button_right"
+            android:button="@null" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_not_at_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="그렇지 않다"
+        android:textColor="@color/gray3"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_question_name"
+        app:layout_constraintStart_toStartOf="@id/v_stress_test_line" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="매우 그렇다"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/gray3"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_question_name"
+        app:layout_constraintEnd_toEndOf="@id/v_stress_test_line" />
+
+
+    <View
+        android:id="@+id/v_stress_test_line"
+        android:layout_width="358dp"
+        android:layout_height="1dp"
+        android:background="@color/gray2"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white">
+
+    <!--top-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_settings_alarm_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_settings_alarm_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_settings_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="알림 설정"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="358dp"
+        android:layout_height="489dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/v_home_radius_20dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_settings_alarm_top">
+
+        <!--폰트 확인 필요-->
+        <LinearLayout
+            android:id="@+id/ll_settings_alarm_description1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_medium"
+                android:text="'두리몽'은 "
+                android:textColor="@color/gray4"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_settings_alarm_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="엘리자베스"
+                android:textColor="@color/gray4"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_medium"
+                android:text="님을 지속적으로 응원하기 위해"
+                android:textColor="@color/gray4"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_settings_alarm_description2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_medium"
+            android:text="일주일간 미접속 시 알림을 보내드리고 있습니다."
+            android:textColor="@color/gray4"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_settings_alarm_description1" />
+
+        <TextView
+            android:id="@+id/tv_settings_alarm_description3"
+            android:layout_width="218dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/v_settings_alarm_radius_about7"
+            android:backgroundTint="@color/light_purple"
+            android:fontFamily="@font/suite_semi_bold"
+            android:gravity="center"
+            android:text="알림 OFF 시 알림이 가지 않습니다."
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_alarm_description2" />
+
+        <ImageView
+            android:id="@+id/iv_settings_alarm_character"
+            android:layout_width="125.15dp"
+            android:layout_height="167dp"
+            android:layout_marginTop="19dp"
+            android:src="@drawable/img_home_character"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_alarm_description3" />
+
+        <TextView
+            android:id="@+id/tv_settings_alarm_description4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/img_home_chat_light"
+            android:fontFamily="@font/suite_medium"
+            android:src="@drawable/img_home_chat_light"
+            android:text="잊지않게 응원해줄게요!"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_settings_alarm_character" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_alarm_description4">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="OFF"
+                android:textColor="@color/gray3"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sw_settings_alarm_onoff"
+                android:layout_width="78dp"
+                android:layout_height="32dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="ON"
+                android:textColor="@color/do_it_bed_purple" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_daily_record_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_top_app_bar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:contentDescription="@string/top_bar_back_button"
+            android:src="@drawable/ic_topbar_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_top_app_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="RECORD"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_daily_record_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="16dp"
+        android:background="#FAFAFA"
+        app:layout_constraintTop_toBottomOf="@id/cl_daily_record_top_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_date_info_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_bold"
+                android:text="11월 28일"
+                android:textColor="@color/main_purple"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/cl_date_info_container"
+                app:layout_constraintTop_toTopOf="@id/cl_date_info_container" />
+
+            <TextView
+                android:id="@+id/tv_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="의 기록"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintTop_toTopOf="@id/cl_date_info_container" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_character_background"
+            android:layout_width="122dp"
+            android:layout_height="122dp"
+            android:layout_marginTop="31dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="61dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_date_info_container">
+
+            <!--    캐릭터 배치     -->
+            <ImageView
+                android:id="@+id/iv_mong"
+                android:layout_width="122dp"
+                android:layout_height="122dp"
+                android:paddingVertical="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mong"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_mong_chat_record"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_character_background">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_mong_chat_record"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10.dp">
+
+                <TextView
+                    android:id="@+id/tv_see_mong_chat_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/suite_bold"
+                    android:textSize="16sp"
+                    android:text="몽과의 대화 보기"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/suite_medium"
+                    android:textSize="14sp"
+                    android:text="지금까지 함께한 몽과의 대화를 볼 수 있어요!"
+                    android:textColor="@color/gray3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_see_mong_chat_record" />
+
+                <ImageView
+                    android:id="@+id/iv_mong_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="arrow"
+                    android:src="@drawable/ic_do_it_record_arrow_gray2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_ai_chat_record"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_mong_chat_record">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_ai_chat_record"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10.dp">
+
+                <TextView
+                    android:id="@+id/tv_see_ai_chat_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/suite_bold"
+                    android:textSize="16sp"
+                    android:text="상담 채팅 보기"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/suite_medium"
+                    android:text="AI 상담가와의 상담 기록을 볼 수 있어요!"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_see_ai_chat_record" />
+
+                <ImageView
+                    android:id="@+id/iv_ai_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="arrow"
+                    android:src="@drawable/ic_do_it_record_arrow_gray2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/btn_see_record"
+            style="@style/CustomButtonStyle"
+            android:layout_width="173dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/btn_bg_8_white_purple"
+            android:backgroundTint="@null"
+            android:drawableLeft="@drawable/ic_do_it_archive"
+            android:paddingHorizontal="30dp"
+            android:text="기록 조회"
+            android:textColor="@color/main_purple"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_ai_chat_record" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

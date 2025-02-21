@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="401dp"
+    android:background="@drawable/img_timer_bottom_sheet_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_timer_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="401dp"
+        android:background="@drawable/img_timer_bottom_sheet_background">
+
+        <View
+            android:layout_width="48dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/img_bottom_sheet_top_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/suite_semi_bold"
+            android:gravity="center"
+            android:text="타이머 설정하기"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_timer_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:contentDescription="60분 추가 버튼 바뀔때 글자색도 main _ gray3"
+            android:src="@drawable/btn_timer_selected"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="+ 30분"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_timer_30"
+            app:layout_constraintEnd_toEndOf="@id/iv_timer_30"
+            app:layout_constraintStart_toStartOf="@id/iv_timer_30"
+            app:layout_constraintTop_toTopOf="@id/iv_timer_30" />
+
+        <ImageView
+            android:id="@+id/iv_timer_60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:contentDescription="60분 추가 버튼"
+            android:src="@drawable/btn_timer_selected"
+            app:layout_constraintStart_toEndOf="@id/iv_timer_30"
+            app:layout_constraintTop_toTopOf="@id/iv_timer_30" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="+ 60분"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_timer_60"
+            app:layout_constraintEnd_toEndOf="@id/iv_timer_60"
+            app:layout_constraintStart_toStartOf="@id/iv_timer_60"
+            app:layout_constraintTop_toTopOf="@id/iv_timer_60" />
+
+        <ImageView
+            android:id="@+id/iv_timer_90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:contentDescription="90분 추가 버튼"
+            android:src="@drawable/btn_timer_selected"
+            app:layout_constraintStart_toEndOf="@id/iv_timer_60"
+            app:layout_constraintTop_toTopOf="@id/iv_timer_60" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="+ 90분"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_timer_90"
+            app:layout_constraintEnd_toEndOf="@id/iv_timer_90"
+            app:layout_constraintStart_toStartOf="@id/iv_timer_90"
+            app:layout_constraintTop_toTopOf="@id/iv_timer_90" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_timer_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_timer_30">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="323dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_timer_center"
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <NumberPicker
+                        android:id="@+id/np_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:selectionDividerHeight="0dp"
+                        android:theme="@style/TimerNumberPicker"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_timer_h"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:layout_marginBottom="0.5dp"
+                        android:fontFamily="@font/suite_medium"
+                        android:text="h"
+                        android:textColor="@color/black"
+                        android:textSize="23sp" />
+
+                    <NumberPicker
+                        android:id="@+id/np_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:selectionDividerHeight="0dp"
+                        android:theme="@style/TimerNumberPicker"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:layout_marginBottom="0.5dp"
+                        android:fontFamily="@font/suite_medium"
+                        android:paddingEnd="8dp"
+                        android:text="m"
+                        android:textColor="@color/black"
+                        android:textSize="23sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/v_timer_bottom"
+                    android:layout_width="218dp"
+                    android:layout_height="0.33dp"
+                    android:layout_marginTop="170dp"
+                    android:layout_marginBottom="44dp"
+                    android:background="@color/gray2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="218dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/v_timer_bottom">
+
+                    <TextView
+                        android:id="@+id/tv_timer_reset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="Reset"
+                        android:textColor="@color/main_purple"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/tv_timer_done"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="101dp"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="Done"
+                        android:textColor="@color/main_purple"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

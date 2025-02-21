@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white"
+    android:backgroundTint="@null"
+    tools:context=".view.do_it.walk.DoItWalkFragment">
+
+    <View
+        android:id="@+id/v_do_it_walk_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_walk_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="뒤로가기 아이콘"
+        android:src="@drawable/ic_do_it_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_do_it_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/suite_semi_bold"
+        android:text="30분 걷기"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_back" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_do_it_card_center"
+        android:layout_width="358dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_do_it_walk_top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_do_it_walk_top_rectangle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="문구 네모"
+                android:src="@drawable/img_do_it_walk_top_rectangle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:contentDescription="헤드셋 아이콘"
+                android:src="@drawable/ic_do_it_walk_headset"
+                app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_top_rectangle"
+                app:layout_constraintStart_toStartOf="@id/iv_do_it_walk_top_rectangle"
+                app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_top_rectangle" />
+
+            <TextView
+                android:id="@+id/tv_do_it_walk_music_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="좋아하는 노래와 함께 30분만 걸어볼까요?"
+                android:textColor="@color/do_it_purple"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_top_rectangle"
+                app:layout_constraintStart_toStartOf="@id/iv_do_it_walk_top_rectangle"
+                app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_top_rectangle" />
+
+            <!--            원래 161dp 인데 외관상 일단 키워둠-->
+            <ProgressBar
+                android:id="@+id/pb_do_it_walk"
+                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="33dp"
+                android:max="3600"
+                android:progress="3600"
+                android:progressDrawable="@drawable/ic_do_it_circular_progress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_do_it_walk_top_rectangle" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:contentDescription="시계 아이콘"
+                android:src="@drawable/ic_do_it_walk_timer"
+                app:layout_constraintEnd_toEndOf="@id/pb_do_it_walk"
+                app:layout_constraintStart_toStartOf="@id/pb_do_it_walk"
+                app:layout_constraintTop_toTopOf="@id/pb_do_it_walk" />
+
+            <TextView
+                android:id="@+id/tv_do_it_walk_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="23시간 30분"
+                android:textColor="@color/main_purple"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/pb_do_it_walk"
+                app:layout_constraintStart_toStartOf="@id/pb_do_it_walk"
+                app:layout_constraintTop_toBottomOf="@id/iv_do_it_timer" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_walk_down_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="시간 아래 화살표"
+                android:src="@drawable/ic_do_it_walk_down_arrow"
+                app:layout_constraintBottom_toBottomOf="@id/tv_do_it_walk_time"
+                app:layout_constraintStart_toEndOf="@id/tv_do_it_walk_time"
+                app:layout_constraintTop_toTopOf="@id/tv_do_it_walk_time" />
+
+
+            <TextView
+                android:id="@+id/tv_do_it_walk_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="TIP!  강가를 걷거나 주변 공원, 학교를 걸어도 좋아요!"
+                android:textColor="@color/gray3"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pb_do_it_walk"
+
+                />
+
+            <ImageView
+                android:id="@+id/iv_do_it_walk_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="24dp"
+                android:contentDescription="30분 연장하기 네모"
+                android:src="@drawable/img_do_it_walk_bottom_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="@color/main_purple" />
+
+            <TextView
+                android:id="@+id/tv_do_it_walk_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_medium"
+                android:text="30분 연장하기"
+                android:textColor="@color/main_purple"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_30"
+                app:layout_constraintEnd_toEndOf="@id/iv_do_it_walk_30"
+                app:layout_constraintStart_toStartOf="@id/iv_do_it_walk_30"
+                app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_30" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_walk_run_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:contentDescription="타이머 시작 네모"
+                android:src="@drawable/img_do_it_walk_run_timer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_30" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="타이머 시작"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_run_timer"
+                app:layout_constraintEnd_toEndOf="@id/iv_do_it_walk_run_timer"
+                app:layout_constraintStart_toStartOf="@id/iv_do_it_walk_run_timer"
+                app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_run_timer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/iv_do_it_walk_bottom_rectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="하단 네모"
+        android:src="@drawable/img_do_it_walk_bottom_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_walk_light_ball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="11.135dp"
+        android:contentDescription="형광등 아이콘"
+        android:src="@drawable/ic_do_it_walk_light_ball"
+        app:layout_constraintBottom_toBottomOf="@id/iv_do_it_walk_bottom_rectangle"
+        app:layout_constraintStart_toStartOf="@id/iv_do_it_walk_bottom_rectangle"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_bottom_rectangle" />
+
+    <TextView
+        android:id="@+id/tv_do_it_bottom_tip"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-3dp"
+        android:fontFamily="@font/suite_regular"
+        android:text="간단한 걷기운동은 행복 호르몬을 분비하여 기분을 개선해주고, 심리적인 안정감을 주는데 도움이 됩니다."
+        android:textColor="@color/gray4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/iv_do_it_walk_light_ball"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_walk_light_ball" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

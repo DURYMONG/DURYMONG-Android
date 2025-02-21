@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_monthly_diary_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_top_app_bar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:contentDescription="@string/top_bar_back_button"
+            android:src="@drawable/ic_topbar_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_top_app_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="수면장애"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_column_detail_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FAFAFA"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_monthly_diary_top_bar">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="0dp"
+            android:elevation="8dp"
+            android:background="@drawable/card_bg_20_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_column_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="19dp">
+
+                <ImageView
+                    android:id="@+id/iv_column_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:contentDescription="thumbnail img"
+                    android:src="@color/white"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_column_headline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="잠 못 드는 하루하루, 수면장애"
+                    android:fontFamily="@font/suite_medium"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray3"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_column_img"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_column_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="수면장애에 대한 이야기"
+                    android:fontFamily="@font/suite_semi_bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_column_headline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_column_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다"
+                    android:fontFamily="@font/suite_medium"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray4"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="21dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_column_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

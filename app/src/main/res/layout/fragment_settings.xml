@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white">
+    <!--top-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_settings_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_settings_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_settings_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="SETTINGS"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_settings_night_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        app:layout_constraintTop_toBottomOf="@id/cl_settings_top">
+
+        <TextView
+            android:id="@+id/tv_settings_night_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="나이트 모드"
+            android:textColor="@color/gray4"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--height 디자인에서는 32dp, 48dp 이상이어야 함 -> 커스텀/수정 필요해서 우선 wrap으로 설정-->
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_settings_night_mode"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16.11dp"
+            android:checked="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_night_mode"
+            app:thumbTextPadding="28dp" />
+
+        <!--        <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sw_settings_night_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16.11dp"
+                    android:checked="false"
+                    android:switchMinWidth="0dp"
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/switch_settings_night_mode_thumb"
+                    android:track="@drawable/switch_settings_night_mode_track"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_settings_night_mode"
+                    app:thumbTextPadding="28dp" />-->
+
+
+        <TextView
+            android:id="@+id/tv_settings_night_mode_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24.11dp"
+            android:layout_marginEnd="12dp"
+            android:text="OFF"
+            android:textColor="@color/gray4"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/sw_settings_night_mode"
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_night_mode" />
+
+        <TextView
+            android:id="@+id/tv_settings_night_mode_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24.11dp"
+            android:fontFamily="@font/suite_medium"
+            android:text="ON"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/sw_settings_night_mode"
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_night_mode" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_settings_edit_password"
+        android:layout_width="173dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/v_settings_menu_buttons"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/suite_semi_bold"
+        android:gravity="center"
+        android:text="비밀번호 수정"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_settings_night_mode" />
+
+    <TextView
+        android:id="@+id/tv_settings_edit_user_info"
+        android:layout_width="173dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/v_settings_menu_buttons"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/suite_semi_bold"
+        android:gravity="center"
+        android:text="회원 정보 수정"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_settings_edit_password" />
+
+    <TextView
+        android:id="@+id/tv_settings_set_alarm"
+        android:layout_width="173dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/v_settings_menu_buttons"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/suite_semi_bold"
+        android:gravity="center"
+        android:text="알림 설정"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_settings_edit_user_info" />
+
+    <TextView
+        android:id="@+id/tv_settings_resign"
+        android:layout_width="173dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/v_settings_menu_buttons"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/suite_semi_bold"
+        android:gravity="center"
+        android:text="탈퇴하기"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_settings_set_alarm" />
+
+    <TextView
+        android:id="@+id/tv_settings_logout"
+        android:layout_width="173dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/v_settings_menu_buttons"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/suite_regular"
+        android:gravity="center"
+        android:text="로그아웃"
+        android:textColor="@color/main_purple"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_settings_resign" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

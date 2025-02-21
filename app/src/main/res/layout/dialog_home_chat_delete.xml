@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="342dp"
+    android:layout_height="190dp"
+    android:layout_gravity="center"
+    android:background="@drawable/v_home_radius_20dp">
+
+    <!--대화 기록 삭제 버튼 클릭시 보여질 dialog-->
+    <TextView
+        android:id="@+id/tv_home_chat_delete_description1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/suite_semi_bold"
+        android:text="정말로 대화 기록을 삭제하시겠어요?"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_home_chat_delete_description2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="해당 날짜의 질문과 답변이 모두 삭제돼요!"
+        android:textColor="@color/gray3"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_home_chat_delete_description1" />
+
+    <Button
+        android:id="@+id/btn_home_chat_delete_cancel"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/v_home_radius_8dp_stroke_1dp_main_purple"
+        android:fontFamily="@font/suite_medium"
+        android:text="취소하기"
+        android:textColor="@color/main_purple"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_home_chat_delete_confirm"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/v_home_radius_8dp_stroke_1dp_main_purple"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/suite_medium"
+        android:text="삭제하기"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

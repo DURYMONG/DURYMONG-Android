@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Durymong</string>
+    <string name="topbar_logo">topbar logo</string>
+    <string name="durymong">두리몽</string>
+    <string name="topbar_setting_icon">topbar setting icon</string>
+    <string name="type_to_search">검색어를 입력하세요</string>
+    <string name="search_icon">search icon</string>
+    <string name="column_menu_description_dummy">수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.</string>
+    <string name="menu_description">menu description</string>
+    <string name="top_bar_back_button">top bar back button</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat_dog_greeting">\"고민에 대한 해결을 원한다면 들어와\n내가 해결할 수 있도록 도와줄게..!\"</string>
+    <string name="chat_cat_greeting">\"오늘하루 너무 힘들었지.. 고생많았어\n나랑 편하게 얘기 나누자!\"</string>
+    <string name="chat_bear_greeting">\"모든 얘기를 따뜻하게 들어줄게요,\n저와 대화 나누실래요?\"</string>
 </resources>

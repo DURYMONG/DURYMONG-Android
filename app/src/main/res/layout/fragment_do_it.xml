@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_mong_background">
+
+    <ImageView
+        android:id="@+id/iv_do_it_top_mong_icon"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="로고 이미지"
+        android:src="@drawable/ic_mong"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_do_it_top_mong_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/suite_semi_bold"
+        android:text="두리몽"
+        android:textColor="@color/main_purple"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_do_it_top_mong_icon"
+        app:layout_constraintStart_toEndOf="@id/iv_do_it_top_mong_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_top_mong_icon" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_setting"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="설정 아이콘"
+        android:src="@drawable/ic_setting"
+        app:layout_constraintBottom_toBottomOf="@id/iv_do_it_top_mong_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_top_mong_icon" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:contentDescription="두리몽 들어간 하얀 원"
+        android:src="@drawable/ic_do_it_circle_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_do_it_setting" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_main_mong"
+        android:layout_width="133.44dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="3.72dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="두리몽 이미지"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_circle" />
+    <!--    android:src="@drawable/img_do_it_mong"-->
+
+    <ImageView
+        android:id="@+id/iv_do_it_calender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:contentDescription="캘린더로 가는 아이콘"
+        android:src="@drawable/ic_do_it_calender"
+        app:layout_constraintStart_toStartOf="@id/iv_do_it_circle"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_circle" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_message"
+        android:layout_width="161dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="0.5dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="말풍선 이미지"
+        android:src="@drawable/ic_do_it_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_do_it_circle" />
+
+    <TextView
+        android:id="@+id/tv_do_it_main_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="조금만 화이팅 해볼까요?"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_do_it_message"
+        app:layout_constraintEnd_toEndOf="@id/iv_do_it_message"
+        app:layout_constraintStart_toStartOf="@id/iv_do_it_message"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_message" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_do_it_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_do_it_message">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="활동하고 쿠쿠몽을 키워주세요!"
+                android:textColor="@color/gray3"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/cb_do_it_bed_clean"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/ic_do_it_radio_button"
+                android:button="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_do_it_bed_clean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="침구 정리하기"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_bed_clean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="111dp"
+                android:layout_marginTop="3dp"
+                android:contentDescription="침구 정리하기 화살표"
+                android:src="@drawable/ic_do_it_next"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toTopOf="@id/tv_do_it_bed_clean" />
+
+            <CheckBox
+                android:id="@+id/cb_do_it_walk"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/ic_do_it_radio_button"
+                android:button="@null"
+                app:layout_constraintStart_toStartOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toBottomOf="@id/cb_do_it_bed_clean" />
+
+            <TextView
+                android:id="@+id/tv_do_it_walk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="30분 걷기"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_walk"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_walk" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_walk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="111dp"
+                android:layout_marginTop="3dp"
+                android:contentDescription="30분 걷기 아이콘"
+                android:src="@drawable/ic_do_it_next"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toTopOf="@id/tv_do_it_walk" />
+
+            <CheckBox
+                android:id="@+id/cb_do_it_stretching"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/ic_do_it_radio_button"
+                android:button="@null"
+                app:layout_constraintStart_toStartOf="@id/cb_do_it_walk"
+                app:layout_constraintTop_toBottomOf="@id/cb_do_it_walk" />
+
+            <TextView
+                android:id="@+id/tv_do_it_stretching"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="실내 스트레칭"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_stretching"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_stretching" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_stretching"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="111dp"
+                android:layout_marginTop="-3dp"
+                android:contentDescription="실내 스트레칭 아이콘"
+                android:src="@drawable/ic_do_it_next"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toTopOf="@id/cb_do_it_stretching" />
+
+            <CheckBox
+                android:id="@+id/cb_do_it_meditation"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/ic_do_it_radio_button"
+                android:button="@null"
+                app:layout_constraintStart_toStartOf="@id/cb_do_it_stretching"
+                app:layout_constraintTop_toBottomOf="@id/cb_do_it_stretching" />
+
+            <TextView
+                android:id="@+id/tv_do_it_meditation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="명상하기"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/cb_do_it_meditation"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_meditation" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_meditation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="111dp"
+                android:layout_marginTop="-3dp"
+                android:contentDescription="명상하기 아이콘"
+                android:src="@drawable/ic_do_it_next"
+                app:layout_constraintStart_toEndOf="@id/cb_do_it_bed_clean"
+                app:layout_constraintTop_toTopOf="@id/cb_do_it_meditation" />
+
+            <View
+                android:id="@+id/v_do_it_mid"
+                android:layout_width="1dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="66dp"
+                android:background="@color/gray2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_do_it_post_traumatic_stress_test"
+                android:layout_width="140dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="81dp"
+                app:cardCornerRadius="7.62dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="우울증 검사"
+                        android:textColor="@color/do_it_purple"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_do_it_sentence_completion_test"
+                android:layout_width="140dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="7.62dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
+                app:layout_constraintTop_toBottomOf="@id/cv_do_it_post_traumatic_stress_test">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="외상 후 스트레스 검사"
+                        android:textColor="@color/do_it_purple"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_do_it_stress_level_test"
+                android:layout_width="140dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="7.62dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
+                app:layout_constraintTop_toBottomOf="@id/cv_do_it_sentence_completion_test">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="스트레스 수치검사"
+                        android:textColor="@color/do_it_purple"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_do_it_depression_test"
+                android:layout_width="140dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="7.62dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
+                app:layout_constraintTop_toBottomOf="@id/cv_do_it_stress_level_test">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="조울증 검사"
+                        android:textColor="@color/do_it_purple"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_do_it_tci_test"
+                android:layout_width="140dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="7.62dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
+                app:layout_constraintTop_toBottomOf="@id/cv_do_it_depression_test">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/suite_semi_bold"
+                        android:text="범불안 장애 검사"
+                        android:textColor="@color/do_it_purple"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

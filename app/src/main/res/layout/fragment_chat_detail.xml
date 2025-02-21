@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white">
+
+    <!--top -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_chat_detail_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/img_home_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="62dp"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="두리몽"
+            android:textColor="@color/main_purple"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_chat_detail_setting"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_home_setting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_chat_detail_top">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_chat_detail_counselor_image"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_chat_bot_dog" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_chat_detail_1st_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/img_chat_from_ai"
+        android:fontFamily="@font/suite_medium"
+        android:text="반가워 NN아! 어떤 증상을 느꼈어?"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_chat_detail_top" />
+
+    <GridLayout
+        android:id="@+id/gl_chat_detail_symptom"
+        android:layout_width="328dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="30dp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_detail_1st_question">
+
+        <Button
+            android:id="@+id/btn_chat_detail_1_sleep"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="불면증"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_2_blue"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="우울감"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_3_energy"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="무기력증"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_4_headache"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="두통"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_5_eat_too_much"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="폭식"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_6_memorize"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="기억력 저하"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_7_anxiety"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="불안증세"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_8_cant_eat"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="식욕 저하"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_chat_detail_9_low_motivation"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:background="@drawable/v_chat_radius_8dp_stroke_purple_solid_white"
+            android:fontFamily="@font/suite_medium"
+            android:text="의욕 저하"
+            android:textColor="@color/main_purple"
+            android:textSize="14sp" />
+    </GridLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_chat_detail_add_symptom"
+        android:layout_width="116dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/v_chat_radius_8dp_stroke_gray3_solid_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_chat_detail_symptom">
+
+        <!--android:tint에서 오류가 발생하는데 빌드는 잘 됩니다-->
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_home_write"
+            android:tint="@color/gray3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="17.4dp"
+            android:fontFamily="@font/suite_medium"
+            android:text="추가 하기"
+            android:textColor="@color/gray3"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_chat_detail_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_chat_detail_add_symptom">
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/v_chat_oval_stroke_2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:fontFamily="@font/suite_regular"
+            android:text="건너뛰기"
+            android:textColor="@color/gray3"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_chat_detail_divider_1"
+        android:layout_width="358dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_chat_detail_skip" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chat_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/v_chat_detail_divider_1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

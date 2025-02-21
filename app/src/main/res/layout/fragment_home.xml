@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_home_background">
+
+    <!--top -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ll_home_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/img_home_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="62dp"
+            android:fontFamily="@font/suite_semi_bold"
+            android:text="두리몽"
+            android:textColor="@color/main_purple"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_home_settings"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_home_setting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_home_date"
+        android:layout_width="358dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/v_home_radius_20dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_home_top">
+
+        <!-- 텍스트 나눠서 적는게 좋을지 / 코틀린에서 합쳐서 넣는게 좋을지 -->
+        <TextView
+            android:id="@+id/tv_home_todays_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/suite_medium"
+            android:text="2024년 11월 14일"
+            android:textColor="@color/gray4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_home_until_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="21dp"
+            android:fontFamily="@font/suite_medium"
+            android:text="코코몽과 함께한지 16일째"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_home_circle"
+        android:layout_width="218dp"
+        android:layout_height="218dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="109dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_home_date">
+
+        <ImageView
+            android:id="@+id/iv_home_character"
+            android:layout_width="118dp"
+            android:layout_height="164dp"
+            android:layout_gravity="center"
+            android:src="@drawable/img_home_character" />
+    </androidx.cardview.widget.CardView>
+
+    <!--채팅 길이에 따라 길이 변하도록 함 (9patch이미지) -->
+    <TextView
+        android:id="@+id/tv_home_chat_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/img_home_chat_light"
+        android:fontFamily="@font/suite_medium"
+        android:text="오늘 무엇을 먹었나요?"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_home_circle" />
+
+    <ImageView
+        android:id="@+id/iv_home_chat_alarm"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/ic_home_chat_alarm"
+        app:layout_constraintEnd_toEndOf="@id/tv_home_chat_question"
+        app:layout_constraintTop_toTopOf="@id/tv_home_chat_question" />
+
+    <!-- 답변-->
+    <!--    <TextView
+            android:id="@+id/tv_home_chat_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/img_home_chat_dark"
+            android:fontFamily="@font/suite_medium"
+            android:text="아침에 토스트, 점심에 샐러드, 저녁 때 피자, 야식으로 마 ..."
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_chat_question" />-->
+
+    <!--답변 시 marginTop 82dp로 변경-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:background="@drawable/v_home_radius_20dp_stroke_1dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_home_circle"
+        android:layout_marginTop="110dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_home_answer"
+            android:layout_width="358dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/v_home_radius_8dp"
+            android:backgroundTint="@color/main_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="139dp"
+                android:src="@drawable/ic_home_write"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="139dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="답변하기"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_home_grow_mong"
+            android:layout_width="173dp"
+            android:layout_height="106dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/v_home_radius_8dp_stroke_1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_home_answer">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26.5dp"
+                android:src="@drawable/ic_home_heart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26.5dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="두리몽 키우기"
+                android:textColor="@color/main_purple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_home_chat_record"
+            android:layout_width="173dp"
+            android:layout_height="106dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/v_home_radius_8dp_stroke_1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_home_answer">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26.5dp"
+                android:src="@drawable/ic_home_bookmark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26.5dp"
+                android:fontFamily="@font/suite_medium"
+                android:text="대화 기록 보기"
+                android:textColor="@color/main_purple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

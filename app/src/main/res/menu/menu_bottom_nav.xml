@@ -3,19 +3,19 @@
 
 
     <item
-        android:id="@+id/mong"
+        android:id="@+id/fragment_mong"
         android:icon="@drawable/ic_bottom_nav_mong"
         android:title="MONG"/>
     <item
-        android:id="@+id/chat"
+        android:id="@+id/fragment_chat"
         android:icon="@drawable/ic_bottom_nav_chat"
         android:title="CHAT"/>
     <item
-        android:id="@+id/column"
+        android:id="@+id/fragment_column"
         android:icon="@drawable/ic_bottom_nav_column"
         android:title="COLUMN"/>
     <item
-        android:id="@+id/do_it"
+        android:id="@+id/fragment_do_it"
         android:icon="@drawable/ic_bottom_nav_do_it"
         android:title="DO-It"/>
 </menu>
