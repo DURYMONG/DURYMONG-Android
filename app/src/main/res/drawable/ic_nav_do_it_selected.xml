@@ -6,6 +6,7 @@
   <path
       android:pathData="M11.339,19.938C11.07,19.979 10.795,20 10.514,20H5.486C2.456,20 0,17.53 0,14.5C0,11.47 2.456,9 5.486,9H6.688C6.935,6.198 9.301,4 12.167,4C15.196,4 17.667,6.456 17.667,9.486V14.514C17.667,17.544 15.196,20 12.167,20C11.885,20 11.609,19.979 11.339,19.938Z"
       android:fillColor="#F6F2FA"
+      android:fillAlpha="0.1"
       android:fillType="evenOdd"/>
   <group>
     <clip-path
@@ -19,5 +20,6 @@
       android:strokeWidth="1"
       android:pathData="M12.5,14C12.5,10.962 14.962,8.5 18,8.5C21.038,8.5 23.5,10.962 23.5,14C23.5,17.038 21.038,19.5 18,19.5H12.5V14Z"
       android:fillColor="#F6F2FA"
+      android:fillAlpha="0.1"
       android:strokeColor="#9D7EF2"/>
 </vector>

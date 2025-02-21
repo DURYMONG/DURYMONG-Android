@@ -42,7 +42,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_do_it_card_center"
         android:layout_width="358dp"
-        android:layout_height="285dp"
+        android:layout_height="130dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,63 +71,123 @@
                 android:id="@+id/tv_do_it_bed_explanation1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="21dp"
                 android:fontFamily="@font/suite_medium"
-                android:text="침구를 정리하는 것은 단순한 행동처럼 보이지만,"
+                android:text="간단한 실내 스트레칭으로 몸 전체의 건강을\n유지할 수 있어요."
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_main" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_do_it_card_center_middle"
+        android:layout_width="358dp"
+        android:layout_height="232dp"
+        android:layout_marginTop="22dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_do_it_card_center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <TextView
-                android:id="@+id/tv_do_it_bed_explanation2"
+                android:id="@+id/tv_do_it_stretching_neck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="목 스트레칭"
+                android:textColor="@color/do_it_bed_purple"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_do_it_stretching_neck_explanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:fontFamily="@font/suite_medium"
-                android:text="편안한 수면과 건강한 생활을 위한 첫걸음이 됩니다."
+                android:text="천천히 고개를 좌우로 돌리며\n목의 긴장을 해소해봅시다."
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_explanation1" />
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stretching_neck" />
+
+            <ImageView
+                android:id="@+id/iv_do_it_stretching_neck"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="목 스트레칭"
+                android:src="@drawable/img_neck"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stretching_neck_explanation"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_do_it_card_center_bottom"
+        android:layout_width="358dp"
+        android:layout_height="232dp"
+        android:layout_marginTop="22dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_do_it_card_center_middle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_do_it_bed_Additional1"
+                android:id="@+id/tv_do_it_stretching_shoulder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/suite_medium"
-                android:text="매일 아침 창문을 열어 환기하고, 햇볕을 받은 깻끗한 침구는"
-                android:textColor="@color/gray3"
-                android:textSize="14dp"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/suite_semi_bold"
+                android:text="어깨 스트레칭"
+                android:textColor="@color/do_it_bed_purple"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_explanation2" />
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
-                android:id="@+id/tv_do_it_bed_Additional2"
+                android:id="@+id/tv_do_it_stretching_shoulder_explanation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:fontFamily="@font/suite_medium"
-                android:text="심리적으로 안정감을 주어 숙면에 도움이 됩니다. 또한,"
-                android:textColor="@color/gray3"
-                android:textSize="14dp"
+                android:text="어깨를 앞, 뒤로 10회씩 천천히 돌리며\n어깨와 등 부위의 긴장을 완화해봅시다."
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_Additional1" />
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stretching_shoulder" />
 
-            <TextView
-                android:id="@+id/tv_do_it_bed_Additional3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/suite_medium"
-                android:text="수면의 질 향상은 전반적인 건강증진으로 이어질 수 있습니다."
-                android:textColor="@color/gray3"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/img_shoulder"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_Additional2" />
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_stretching_shoulder_explanation"
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

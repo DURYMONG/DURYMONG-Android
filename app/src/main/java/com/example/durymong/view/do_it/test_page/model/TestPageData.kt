@@ -5,5 +5,6 @@ import com.example.durymong.model.dto.response.doit.QuestionDto
 data class TestPageData(
     val questionId: QuestionDto,
     var selected: Int,
-    val radioNumber:Int
+    val radioNumber:Int,
+    var showWarning:Boolean
 )

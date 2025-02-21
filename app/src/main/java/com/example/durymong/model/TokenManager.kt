@@ -2,6 +2,7 @@ package com.example.durymong.model
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -11,28 +12,34 @@ object TokenManager {
     private const val REFRESH_TOKEN_KEY = "refresh_token"
 
     private lateinit var prefs: SharedPreferences
-    private val _tokenLiveData = MutableLiveData<String?>()
-    val tokenLiveData: LiveData<String?> get() = _tokenLiveData
+    private val _accessTokenLiveData = MutableLiveData<String?>()
+    val accessTokenLiveData: LiveData<String?> get() = _accessTokenLiveData
+    private val _refreshTokenLiveData = MutableLiveData<String?>()
+    val refreshTokenLiveData: LiveData<String?> get() = _refreshTokenLiveData
 
     fun init(context: Context) {
         prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        _tokenLiveData.value = prefs.getString(TOKEN_KEY, null)
+        _accessTokenLiveData.value = prefs.getString(TOKEN_KEY, null)
+        Log.d("TokenManager", "init: _accessTokenLiveData.value = ${_accessTokenLiveData.value}")
     }
 
     fun saveToken(token: String) {
         prefs.edit().putString(TOKEN_KEY, token).apply()
-        _tokenLiveData.postValue(token)  // LiveData 업데이트
+        _accessTokenLiveData.postValue(token)  // LiveData 업데이트
     }
 
     fun saveRefreshToken(refreshToken: String) {
         prefs.edit().putString(REFRESH_TOKEN_KEY, refreshToken).apply()
-        // TODO: refresh token 저장
     }
 
-    fun getToken(): String? = prefs.getString(TOKEN_KEY, null)
+    fun getAccessToken(): String? = prefs.getString(TOKEN_KEY, null)
+
+    fun getRefreshToken(): String? = prefs.getString(REFRESH_TOKEN_KEY, null)
 
     fun clearToken() {
         prefs.edit().remove(TOKEN_KEY).apply()
-        _tokenLiveData.postValue(null)
+        prefs.edit().remove(REFRESH_TOKEN_KEY).apply()
+        _accessTokenLiveData.postValue(null)
+        _refreshTokenLiveData.postValue(null)
     }
 }
