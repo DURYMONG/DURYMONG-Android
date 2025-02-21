@@ -1,19 +1,20 @@
 package com.example.durymong.model.dto.response.mong
 
 data class ChatHistoryResponse(
-    val success : Boolean,
-    val code : Int,
-    val message : String,
-    val result : ChatHistoryResult
+    val success: Boolean,
+    val code: Int,
+    val message: String,
+    val result: ChatHistoryResult
 )
 
 data class ChatHistoryResult(
-    val chatHistory : List<Chat>
+    val mongImage: String,
+    val userChatHistory: List<ChatMessage>
 )
 
-data class Chat (
-    val conversationId : Int,
-    val createdAt : String,
-    val mongQuestion : String,
-    val userAnswer : String
+data class ChatMessage(
+    val conversationId: Int,
+    val createdAt: String,
+    val mongQuestion: String,
+    val userAnswer: String
 )

@@ -42,13 +42,15 @@ class AuthActivity : AppCompatActivity(){
     }
 
     private fun navigateToRegister() {
-        // TODO: 회원가입 화면으로 이동
+        val intent = Intent(this, CreateAccountActivity::class.java)
+        startActivity(intent)
     }
 
 
     private fun navigateToLogin(){
-        // TODO: 로그인 화면으로 이동
-        loginTest()
+        val intent = Intent(this, LoginFragment::class.java)
+        startActivity(intent)
+        //loginTest()
     }
 
     private fun navigateToMain(){
