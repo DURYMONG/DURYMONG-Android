@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragmentCreateAccountId">
+
+    <fragment
+        android:id="@+id/fragmentCreateAccountId"
+        android:name="com.example.durymong.view.user.CreateAccountIdFragment"
+        android:label="Create Account ID"
+        tools:layout="@layout/fragment_create_account_id">
+        <action
+            android:id="@+id/action_createAccountId_to_createAccountEmail"
+            app:destination="@id/fragmentCreateAccountEmail"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentCreateAccountEmail"
+        android:name="com.example.durymong.view.user.CreateAccountEmailFragment"
+        android:label="Create Account Email"
+        tools:layout="@layout/fragment_create_account_email" >
+        <action
+            android:id="@+id/action_createAccountEmail_to_createAccountPassword"
+            app:destination="@id/fragmentCreateAccountPassword"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentCreateAccountPassword"
+        android:name="com.example.durymong.view.user.CreateAccountPasswordFragment"
+        android:label="Create Account Password"
+        tools:layout="@layout/fragment_create_account_password" />
+</navigation>

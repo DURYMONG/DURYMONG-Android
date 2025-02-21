@@ -14,7 +14,9 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_settings"
             app:destination="@id/fragment_settings"/>
-
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_home_chat"
+            app:destination="@id/fragment_home_chat"/>
     </fragment>
 
 
@@ -23,7 +25,56 @@
         android:id="@+id/fragment_chat"
         android:name="com.example.durymong.view.chat.ChatMainFragment"
         android:label="chat"
-        tools:layout="@layout/fragment_chat_main" />
+        tools:layout="@layout/fragment_chat_main">
+
+        <!-- Chat Detail로 이동하는 Action -->
+        <action
+            android:id="@+id/action_chatMain_to_chatDetail"
+            app:destination="@id/fragment_chat_detail">
+
+            <argument
+                android:name="chatBotId"
+                app:argType="integer"
+                android:defaultValue="0"/>
+            <argument
+                android:name="chatBotImage"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument
+                android:name="message"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument
+                android:name="chatSessionId"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </action>
+    </fragment>
+
+    <!-- Chat Detail Fragment -->
+    <fragment
+        android:id="@+id/fragment_chat_detail"
+        android:name="com.example.durymong.view.chat.ChatDetailFragment"
+        android:label="Chat Detail"
+        tools:layout="@layout/fragment_chat_detail">
+
+        <argument
+            android:name="chatBotId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="chatBotImage"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="chatSessionId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 
     <!--Column -->
     <fragment
@@ -229,5 +280,12 @@
         android:name="com.example.durymong.view.settings.SettingsResignFragment"
         android:label="settings_resign"
         tools:layout="@layout/fragment_settings_resign"/>
+
+    <!--home관련-->
+    <fragment
+        android:id="@+id/fragment_home_chat"
+        android:name="com.example.durymong.view.mong.HomeChatFragment"
+        android:label="home_chat"
+        tools:layout="@layout/item_home_chat"/>
 
 </navigation>

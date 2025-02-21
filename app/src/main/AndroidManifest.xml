@@ -33,6 +33,12 @@
             android:theme="@style/Theme.Durymong">
         </activity>
 
+        <activity android:name=".view.user.CreateAccountActivity"
+            android:exported="true"
+            android:label="sign in"
+            android:theme="@style/Theme.Durymong">
+        </activity>
+
     </application>
 
 </manifest>
